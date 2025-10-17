@@ -1,46 +1,56 @@
+/* Getting rid of whitespace around banner */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .top_banner {
-
-    border: 2px solid red;
-    height: 5%;
-    width: 100%;
-    background-color: black;
-    display: flex;
-    box-shadow: 1px 5px 10px gray;
-
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 8%;
+  width: 100%;
+  background-color: black;
+  border: 2px solid red;
+  box-shadow: 1px 5px 10px gray;
 }
 
 .umbc_logo {
-
-    background-image: url("https://i0.wp.com/christinemallinson.com/wp-content/uploads/2022/09/umbc-primary-logo-cmyk-on-black.png?resize=1200%2C276&ssl=1");
-    background-size: contain;
-    height: 100%;
-    width: 33%;
-    background-repeat: no-repeat;
-    border: 2px solid rgb(43, 70, 219);
+  width: 20.5%;
+  height: 83%;
+  background-image: url("https://i0.wp.com/christinemallinson.com/wp-content/uploads/2022/09/umbc-primary-logo-cmyk-on-black.png?resize=1200%2C276&ssl=1");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 2px solid rgb(43, 70, 219);
+  margin-left: 0.5%;
 }
 
 .title {
-
-    height: 100%;
-    width: 33%;
-    border: 2px solid rgb(238, 176, 41);
-    font-size: 30px;
-    color: rgb(238, 176, 41);
-    content: center;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    margin-top: 10px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 36.2%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  color: rgb(238, 176, 41);
+  border: 2px solid rgb(238, 176, 41);
 }
 
+
 .input_line {
-
-    margin-top: 80px;
-    border: 2px solid aqua;
-    width: 100%;
-    display: flex;
-    height: 8%;
-    justify-content: space-between;
-
+  margin-top: 50px;
+  border: 2px solid aqua;
+  width: 100%;
+  height: 8%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .filler {
@@ -50,10 +60,18 @@
 }
 
 .input_boxes {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 0; 
+}
 
-    margin-top: 20px;
-    width: contain;
-
+.input_boxes label {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 input[type=text], select {
@@ -67,23 +85,31 @@ input[type=text], select {
     box-sizing: border-box;
     margin-left: 20px;
     margin-right: 20px;
-
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 input[type=submit] {
 
     width: 20%;
-    background-color: #4CAF50;
-    color: white;
+    background-color: rgb(238, 176, 41);
+    color: black;
     padding: 14px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-left: 35%;
+    margin-left: 38%;
+    border: 2px solid black;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
 }
 
+input[type=submit]:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* darker shadow on hover */
+  text-decoration: underline; /* underline on hover  */
+}
 
 .report_button {
 
@@ -94,18 +120,30 @@ input[type=submit] {
 
 .report_style {
 
-    margin-top: 20px;
-    width: 180px;
-    height: 60px;
+    margin-top: 6px;
+    width: 140px;
+    height: 45px;
     border-radius: 40px;
-    font-size: 26px;
+    font-size: 17px;
+    font-weight: bold;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
     background-color: rgb(255, 62, 62);
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
 }
 
+.report_style:hover {
+
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  text-decoration: underline;
+
+}
+
+
 .center_line {
 
-    margin-top: 80px;
+    margin-top: 63px;
     border: 2px solid coral;
     width: 100%;
     height: 55%;
@@ -118,10 +156,11 @@ input[type=submit] {
 
     width: 20%;
     height: 100%;
-    background-color: rgb(248, 243, 243);
+    background-color: rgb(250, 250, 250);
     border-radius: 25px;
     box-shadow: 1px 5px 10px gray;
     justify-content: center;
+    
 
 }
 
@@ -130,14 +169,20 @@ input[type=submit] {
     margin-top: 5px;
     height: 20%;
     width: 70%;
-    background-color: rgb(238, 192, 192);
+    background-color: rgb(238, 176, 41);
     border-radius: 25px;
     text-align: center;
     line-height: 120px;
-    font-size: 28px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    color: black;
     box-shadow: 1px 5px 10px gray;
     margin-left: 15%;
-
+    border: 2px solid black;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
 }
 
 .instruction_list {
@@ -145,14 +190,16 @@ input[type=submit] {
     margin-top: 5px;
     height: 75%;
     width: 70%;
-    background-color: rgb(238, 192, 192);
+    background-color: rgb(202, 199, 199);
     border-radius: 25px;
     text-align: center;
     line-height: 120px;
-    font-size: 28px;
+    font-size: 20px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    color: black;
     box-shadow: 1px 5px 10px gray;
     margin-left: 15%;
-
+    border: 2px solid black;
 }
 
 .map {
@@ -164,6 +211,7 @@ input[type=submit] {
     box-shadow: 1px 5px 10px gray;
     justify-content: center;
     display: flex;
+    border: 2px solid black;
 
 }
 
@@ -187,25 +235,35 @@ input[type=submit] {
     right: 0;
     width: 20%;
     height: 100%;
-    background-color: rgb(248, 243, 243);
+    background-color: rgb(250, 250, 250);
     border-radius: 25px;
     box-shadow: 1px 5px 10px gray;
     justify-content: center;
+ 
 
 }
+
+
 
 .directory_label {
 
     margin-top: 5px;
     height: 20%;
     width: 70%;
-    background-color: rgb(238, 192, 192);
+    background-color: rgb(238, 176, 41);
     border-radius: 25px;
     text-align: center;
     line-height: 120px;
-    font-size: 28px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    color: black;
     box-shadow: 1px 5px 10px gray;
     margin-left: 15%;
+    border: 2px solid black;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
 
 }
 
@@ -214,13 +272,16 @@ input[type=submit] {
     margin-top: 5px;
     height: 75%;
     width: 70%;
-    background-color: rgb(238, 192, 192);
+    background-color: rgb(202, 199, 199);
     border-radius: 25px;
     text-align: center;
     line-height: 120px;
-    font-size: 28px;
+    font-size: 20px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    color: black;
     box-shadow: 1px 5px 10px gray;
     margin-left: 15%;
+    border: 2px solid black;
 
 }
 
@@ -230,13 +291,13 @@ input[type=submit] {
     bottom: 0;
     border: 2px solid darkorchid;
     width: 100%;
-    height: 10%;
+    height: 8%;
 
 }
 
 .bottom_stuff {
 
-    width: 50%;
+    width: 45%;
     height: 100%;
     background-color: rgb(0, 0, 0);
     margin: 0 auto;
@@ -249,14 +310,23 @@ input[type=submit] {
 
 .bottom_banner_links {
 
-    width: 80%;
+    width: 100%;
+    height: 100%;
     color:rgb(255, 178, 62);
     display: flex;
     justify-content:space-evenly;
+    align-items: center;     /* vertical centering */
+    gap: 40px;
     line-height: 120px;
-    font-size: 20px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-size: 17px;
     font-weight: bold;
 
+}
+
+.link {
+  cursor: pointer;
+  text-align: center;
 }
 
 .link:hover {
