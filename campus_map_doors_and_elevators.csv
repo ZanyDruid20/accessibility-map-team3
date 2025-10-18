@@ -1,0 +1,129 @@
+BUILDING,NODE,TYPE,FLOOR,EXIT Floors,ON/OFF (Accessible),IF DOOR: RAMP?,IF DOOR: BUTTON?,IF EXIT: WHERE?,NOTES
+AOKLib,AOKLib_D1,DOOR,1,,YES,"NO, but flat",YES,Outside path (facing commons),Left end has button; only student entrance
+AOKLib,AOKLib_D2,DOOR,G,,YES,"NO, but flat",YES,by pond back,
+AOKLib,AOKLib_D3,DOOR,G,,YES,"NO, but flat",YES,by pond front,
+AOKLib,AOKLib_E1,ELEVATOR,1234567,1,YES,,,AOKLibD1,there are two of these identical
+AOKLib,AOKLib_E2,ELEVATOR,1234567M,1,YES,,,AOKLibD1,"it is behind the tutoring center, confusing"
+PHYSICS,PHYSICS_D1,DOOR,1,,YES,"NO, but flat",YES,next to PUBPOL front,
+PHYSICS,PHYSICS_D2,DOOR,1,,NO,"NO, but flat",NO,next to PUBPOL back/ parking lot,
+PHYSICS,PHYSICS_E1,ELEVATOR,1234B,1,YES,,,PHYSICSD1,2 of these identical
+PHYSICS,PHYSICS_D3,DOOR,1,,YES,YES,YES,by ILSB/commons,
+PUBPOL,PUBPOL_D1,DOOR,G,,YES,"NO, but flat",YES,next to PHYSICS front,button to the left
+PUBPOL,PUBPOL_D2,DOOR,G,,"NO, no button","NO, but flat",NO,next to PHYSICS front ,3 doors to the right of door 1
+PUBPOL,PUBPOL_E1,ELEVATOR,BG234,G,YES,,,next to PUBPOLD1,floor 1 is called G but its floor 1
+PUBPOL,PUBPOL_D3,DOOR,G,,"NO, leads to stairs","NO, but flat",NO,"next to PHYSICS, back",
+PUBPOL,PUBPOL_D4,DOOR,G,,YES,YES,YES,next to susg/ DHALL,
+CWB,CWB_D1,DOOR,1,,YES,"NO, but flat",YES,in front of erickson field,
+CWB,CWB_E1,ELEVATOR,12,1,YES,,,a little away from CWBD1,
+CWB,CWB_D2,DOOR,1,,YES,YES,NO,behind chesapeake by true grits,locked from outside but not inside?
+DHALL,DHALL_D1,DOOR,1,,YES,"NO, but flat",YES,in front of potomac,
+DHALL,DHALL_D2,DOOR,1,,YES,"NO, but flat",NO,"in front of parking lot, between ptap and ",
+DHALL,DHALL_D3,DOOR,1,,YES,"NO, but flat",YES,right next to susq,leads to dining services but can lead to oh dhall but no place to swipe?
+RAC,RAC_D1,DOOR,1,,YES,"NO, but flat",YES (to the right),in fromt of admin,
+RAC,RAC_E1,ELEVATOR,120,1,YES,,,by RACD1,
+MEYER,MEYER_D1,DOOR,B,,YES,"NO, but flat","YES, to the left","in front of biological science, next to UC",
+MEYER,MEYER_D2,DOOR,B,,YES,"NO, but flat","YES, to the right","in front of biological sciences, middle","theres two of these doors, the on on the right is accessable"
+MEYER,MEYER_D3,DOOR,B,,YES,,,"in front of biological sciences, by pond",
+MEYER,MEYER_E1,ELEVATOR,B12345,b12,YES (hard ro find),,,by MEYERD1,
+MEYER,MEYER_D4,DOOR,1,,YES,"NO, but flat (if using uc elevator)",NO,by UC floor 2,
+MEYER,MEYER_E2,ELEVATOR,B12345,b12,YES hard to find,,,by MEYERD2,
+MEYER,MEYER_D5,DOOR,2,,YES,"NO, but flat",YES,by fine arts and pond,
+MEYER,MEYER_D6,DOOR,2,,YES,"NO, but flat",YES,by fine arts and eng,
+ILSB,ilsb_D1,DOOR,1,,YES,YES,YES,ilsb ramp,
+ILSB,ilsb_D2,DOOR,1,,YES,NO but flat,YES,outside ilsb,
+ILSB,ilsb_D3,ELEVATOR,1234,1,YES,-,-,near ilsb_d1,
+Commons,Comm_D1,DOOR,1,,YES,NO but flat,YES,outside commons,
+Commons,Comm_D2,DOOR,1,,YES,NO but flat,YES,outside commons,
+Commons,Comm_D3,DOOR,M,,YES,YES,YES,outside commons,
+Commons,Comm_D4,DOOR,M,,YES,NO but flat,YES,outside commons,
+Commons,Comm_D5,DOOR,L,,YES,NO but flat,YES,outside commons,
+Commons,Comm_D6,DOOR,L,,YES,NO but flat,YES,outside commons,
+Commons,Comm_E1,ELEVATOR,1LM23,1LM,YES,-,-,"Doors on floor 1, L, or M",
+Commons,Comm_E2,ELEVATOR,1LM23,1LM,YES,-,-,"Doors on floor 1, L, or M",
+BioSci,biosci_D1,DOOR,1,,YES,NO but flat,YES,outside biosci,
+BioSci,biosci_D2,DOOR,1,,YES,NO but flat,YES,outside biosci,
+BioSci,biosci_D3,DOOR,1,,YES,NO but flat,YES,outside biosci,
+BioSci,biosci_D4,DOOR,1,,YES,NO but flat,YES,outside biosci,
+BioSci,biosci_E1,ELEVATOR,B1234,1,YES,-,-,doors d2 or d3,
+Lecture Hall 1,lechall_D1,DOOR,B,,YES,NO but flat,YES,Outside of lechall1,
+Lecture Hall 1,biosci_E1 (sam_E),ELEVATOR,All,B,YES,-,-,biosci floor 1 or lechall B,
+MathandPsych,mathpsych_D1,DOOR,1,,YES,NO but flat,YES,outside math and psych,
+MathandPsych,mathpsych_D2,DOOR,1,,YES,NO but flat,YES,outside math and psych,
+MathandPsych,mathpsych_D3,DOOR,G,,YES,NO but flat,YES,outside math and psych and sondheim,
+MathandPsych,mathpsych_E1,ELEVATOR,G1234,G1,YES,-,-,d1,
+MathandPsych,mathpsych_E2,ELEVATOR,G1234,G1,YES,-,-,d2,
+Sondheim,sond_D1,DOOR,1,,YES,NO but flat,YES,front of sondheim,
+Sondheim,sond_D2,DOOR,1,,YES,NO but flat,YES,front of sondheim,
+Sondheim,sond_D3,DOOR,1,,YES,YES,YES,temp ramp,
+Sondheim,sond_D4,DOOR,1,,YES,YES,YES,temp ramp,
+Sondheim,sond_E1,ELEVATOR,1,1,YES,-,-,d1 or d3,
+Sondheim,sond_E2,ELEVATOR,1,1,YES,-,-,d2 or d4,
+ITE,ITE_D1,DOOR,1,,YES,NO,YES,FRONT,
+ITE,ITE_D2,DOOR,1,,YES,NO,YES,ITED1 and INSIDE,Might just ignore this door since it's like an indoor door.
+ITE,ITE_D3,DOOR,1,,NO,NO,NO,FRONT,D3&4&5 are next to each other so can count as 1 accessible entrance
+ITE,ITE_D4,DOOR,1,,NO,NO,NO,FRONT,
+ITE,ITE_D5,DOOR,1,,YES,NO,YES,FRONT,
+ITE,ITE_E1,ELEVATOR,1234,123,,,,,
+ITE,ITE_D6,DOOR,2,,NO,NO,NO,Staircase on the left of ITE,
+ITE,ITE_D7,DOOR,2,,NO,NO,NO,"RIGHT, TO ENGINEERING",
+ITE,ITE_D8,DOOR,3,,YES,YES,YES,BACK OF ITE,
+ENG,ENG_D1,DOOR,1,,NO,NO,NO,FRONT,D1&2 are next to each other and can count as an accessible entrance
+ENG,ENG_D2,DOOR,1,,YES,NO,YES,FRONT,
+ENG,ENG_E1,ELEVATOR,1234,123,,,,,
+ENG,ENG_E2,ELEVATOR,1234,123,,,,,
+ENG,ENG_D3,DOOR,2,,YES,NO,YES,"RIGHT, TO FINE ARTS",
+ENG,ENG_D4,DOOR,2,,NO,NO,NO,LEFT TO ITE,
+ENG,ENG_D5,DOOR,3,,NO,YES,NO,BACK,D5&6 are next to each other and can count as 1 accessible entrance
+ENG,ENG_D6,DOOR,3,,YES,YES,YES,BACK,
+FINE ARTS,FINEARTS_D1,DOOR,1,NO,NO,NO,NO,FRONT,D1&2 are next to each other and can count as an accessible entrance
+FINE ARTS,FINEARTS_D2,DOOR,1,,YES,NO,YES,FRONT,
+FINE ARTS,FINEARTS_D3,DOOR,1,,YES,NO,YES,FRONT,D3&4 are next to each other and can count as a single accessible entrance
+FINE ARTS,FINEARTS_D4,DOOR,1,,NO,NO,NO,FRONT,
+FINE ARTS,FINEARTS_D5,DOOR,2,,NO,YES,NO,RIGHT TO ROAD,
+FINE ARTS,FINEARTS_E1,ELEVATOR,B123456,123,,,,,
+FINE ARTS,FINEARTS_D6,DOOR,2,,YES,NO,YES,LEFT TO ENG,D6&7&8 are right next to each other and can count as an accessible entrance BUT only from ENG
+FINE ARTS,FINEARTS_D7,DOOR,2,,NO,NO,NO,LEFT TO ENG,
+FINE ARTS,FINEARTS_D8,DOOR,2,,NO,NO,NO,LEFT TO ENG,
+FINE ARTS,FINEARTS_D9,DOOR,3,,NO,NO,NO,BACK,
+FINE ARTS,FINEARTS_D10,DOOR,3,,YES,NO,YES,BACK,
+FINE ARTS,FINEARTS_D11,DOOR,3,,NO,NO,NO,BACK,
+FINE ARTS,FINEARTS_D12,DOOR,3,,NO,NO,NO,BACK,
+FINE ARTS,FINEARTS_D13,DOOR,3,,NO,NO,NO,BACK,
+FINE ARTS,FINEARTS_D14,DOOR,2,,NO,YES,NO,RIGHT TO ROAD,
+FINE ARTS,FINEARTS_D15,DOOR,2,,NO,YES,NO,RIGHT TO ROAD,
+FINE ARTS,FINEARTS_D16,DOOR,2,,NO,YES,NO,RIGHT TO ROAD,
+PAHB,PAHB_D1,DOOR,1,,YES,YES,YES,FRONT,
+PAHB,PAHB_D2,DOOR,1,,NO,YES,NO,FRONT,
+PAHB,PAHB_D3,DOOR,1,,NO,YES,NO,FRONT,
+PAHB,PAHB_D4,DOOR,1,,YES,YES,YES,RIGHT TO ROAD,
+PAHB,PAHB_D5,DOOR,1,,NO,YES,NO,RIGHT TO ROAD,
+PAHB,PAHB_D6,DOOR,1,,NO,YES,NO,RIGHT TO ROAD,
+PAHB,PAHB_D7,DOOR,1,,NO,YES,NO,RIGHT TO ROAD,
+PAHB,PAHB_D8,DOOR,1,,NO,YES,NO,RIGHT TO ROAD,
+PAHB,PAHB_D9,DOOR,1,,NO,YES,NO,RIGHT TO ROAD,
+PAHB,PAHB_D10,DOOR,1,,NO,NO,NO,LEFT TO ROAD,
+PAHB,PAHB_D11,DOOR,1,,NO,NO,NO,LEFT TO ROAD,
+PAHB,PAHB_D12,DOOR,1,,NO,NO,NO,LEFT TO ROAD,
+PAHB,PAHB_E1,ELEVATOR,1234,12,,,,,
+PAHB,PAHB_D13,DOOR,2,,YES,YES,NO,RIGHT TO ROAD,"D13&14&15 are next to each other, so can count as one accessible exit"
+PAHB,PAHB_D14,DOOR,2,,NO,YES,NO,RIGHT TO ROAD,
+PAHB,PAHB_D15,DOOR,2,,NO,YES,NO,RIGHT TO ROAD,
+PAHB,PAHB_E2,ELEVATOR,1234,12,,,,,
+UC,UC_D1,DOOR,3,,YES,NO,YES,BACK TO ENG,D1&2&3&4 are next to each other so could count as one accessible exit
+UC,UC_D2,DOOR,3,,NO,NO,YES,BACK TO ENG,
+UC,UC_D3,DOOR,3,,NO,NO,YES,BACK TO ENG,
+UC,UC_D4,DOOR,3,,NO,NO,YES,BACK TO ENG,
+UC,UC_E1,ELEVATOR,123,123,,,,,
+UC,UC_D5,DOOR,2,,YES,NO,YES,RIGHT TO MEYERHOFF,D5&6 are next to each other and can count as one accessible entrance
+UC,UC_D6,DOOR,2,,NO,NO,NO,RIGHT TO MEYERHOFF,Accessible only from Meyerhoff
+UC,UC_D7,DOOR,2,,YES,NO,YES,LEFT TO SHERMAN,Accessible only from Sherman
+UC,UC_D8,DOOR,1,,NO,NO,NO,FRONT,D8&9&10 are next to each other and can count as a single accessible entrance
+UC,UC_D8,DOOR,1,,NO,NO,NO,FRONT,D8&9&10 are next to each other and can count as a single accessible entrance
+UC,UC_D9,DOOR,1,,YES,NO,YES,FRONT,
+UC,UC_D11,DOOR,1,,YES,NO,YES,FRONT,
+ADMIN,ADMIN_D1,DOOR,1,,NO,NO,NO,FRONT,D1&2&3&4 are next to each other and can count as an accessible entrance
+ADMIN,ADMIN_D2,DOOR,1,,YES,NO,YES,FRONT,
+ADMIN,ADMIN_D3,DOOR,1,,NO,NO,NO,FRONT,
+ADMIN,ADMIN_D4,DOOR,1,,NO,NO,,FRONT,
+ADMIN,ADMIN_D5,DOOR,1,,YES,NO,YES,LEFT,
+ADMIN,ADMIN_E1,ELEVATOR,B12345678910,1B,,,,,
