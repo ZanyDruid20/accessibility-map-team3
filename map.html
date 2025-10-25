@@ -1,94 +1,119 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Zoomable Interactive Map</title>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background-color: #111;
-    }
+  <head>
+    <title>Zoomable Interactive Map</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #111;
+      }
 
-    #map-container {
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
-      cursor: grab;
-    }
+      #map-container {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+      }
 
-    /* The wrapper that scales + moves */
-    #map-wrapper {
-      transform-origin: center center;
-      transition: transform 0.1s ease-out;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
+      /* The wrapper that scales + moves */
+      #map-wrapper {
+        transform-origin: center center;
+        transition: transform 0.1s ease-out;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
 
-    /* The map image */
-    #map {
-      display: block;
-      width: 1000px; /* You can adjust this to your image’s native size */
-      height: auto;
-    }
+      /* The map image */
+      #map {
+        display: block;
+        width: 1000px; /* You can adjust this to your image’s native size */
+        height: auto;
+      }
 
-    /* Example markers/nodes */
-    .marker {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background-color: rgba(255, 0, 0, 0.8);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      cursor: pointer;
-      border: 2px solid white;
-    }
+      /* Example markers/nodes */
+      .marker {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: rgba(255, 0, 0, 0.8);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        border: 2px solid white;
+      }
 
-    .marker:hover {
-      background-color: yellow;
-    }
+      .marker:hover {
+        background-color: yellow;
+      }
 
-    .building_info {
+      .building_info {
 
-      background-color:rgb(201, 203, 206);
-      font-size: 10px;
-      position: absolute;
-      border-radius: 30px;
-      text-align: center;
-      object-fit: contain;
-      width: 150px; 
-      height:150px;
-      visibility: hidden;
+        background-color:rgb(201, 203, 206);
+        font-size: 10px;
+        position: absolute;
+        border-radius: 30px;
+        text-align: center;
+        object-fit: contain;
+        width: 150px; 
+        height:150px;
+        visibility: hidden;
+        z-index: 9999;
 
-    }
-    
-    .building_info img {
+      }
+      
+      .building_info img {
 
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
-      border-radius: 30px;
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        border-radius: 30px;
 
-    }
+      }
 
-    .icon_style {
+      .icon_style {
 
-      font-size: 34px;
-      visibility: visible;
+        font-size: 34px;
+        visibility: visible;
 
-    }
+      }
 
-  </style>
+      .circle {
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        width: 10px;
+        height: 10px;
+        border-radius: 45px;
+        background-color: red;
+        position: absolute;
+        /*Will be made hidden on actual map*/
+        visibility: visible;
+        border: 1px solid rgb(0, 0, 0);
 
-</head>
+      }
+
+      .node_info {
+  
+        position: absolute;
+        background-color:rgb(251, 253, 255);
+        font-size: 12px;
+        border-radius: 30px;
+        text-align: center;
+        width: 95px;
+        height: 20px;
+
+      }
+
+    </style>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  </head>
   <body>
     <div id="map-container">
       <div id="map-wrapper">
-        <img id="map" onclick="showPopUp('map')" src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/567405479_17902397412273898_6017296793961984612_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzc0NTA5OTA2MzkwMjMzOTUzNQ%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyNjZ4MTAwMS5zZHIuQzMifQ%3D%3D&_nc_ohc=th5GH3cQxEwQ7kNvwE3k6pb&_nc_oc=AdnkWL19EhEjjjkvpBa4kbri2tZok4LM-xqnb8WIy8zlFehxGQupUwt72sbF6hKN1hQ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_gid=4-faifJz8JjTyhT6ZgODWQ&oh=00_AfernrPxg4S0buSYkw4qvovM7rDtfuud-J8ZVIANmqPdDw&oe=68F7AC66" alt="Map">
+        <img id="map" onclick="showPopUp('map'); createNodeBubble(0, 0, 'map');" src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/567405479_17902397412273898_6017296793961984612_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzc0NTA5OTA2MzkwMjMzOTUzNQ%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyNjZ4MTAwMS5zZHIuQzMifQ%3D%3D&_nc_ohc=6_giXRHBBsYQ7kNvwFHkFYL&_nc_oc=Adn3qoQtxrEifbw731aNJcG2ITsTL_y-UOMFmScyOvC28xLZ42svDztU7CA5fXc5kw0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_gid=BGUmV5CCzTf1-6KhCRFcWA&oh=00_Afe64Si-tX1vt6Jck9oXpcTnRYpiJ34hEI8Sk0UeHnPklg&oe=69018FA6" alt="Map">
 
         <!-- Elements attached to the map -->
         <button id="PAHB" style="top: 420px; left: 25px; position: absolute; width: 150px; height:100px; opacity:0.2;" onclick="showPopUp('PAHB_info')">PAHB</button>
@@ -331,9 +356,74 @@
         </div>
         <i id="TRUEGRITS_FLAG" class="material-icons" style="visibility: hidden; top: 50px; left: 900px; position: absolute;">flag_circle</i>
         <button onclick="showPath(flag_array)">HELLO</button>
+
+        <!--Nodes-->
+        <!--Green-->
+        <div id="greenint_1" class="circle" style="top:392px; left:155px;" onclick="createNodeBubble(155, 392, 'greenint_1')"></div>
+        <div id="PAHB_d13" class="circle" style="top:442px; left:155px; background-color: blue;" onclick="createNodeBubble(155, 442, 'PAHB_d13')"></div>
+        <div id="greenint_2" class="circle" style="top:442px; left:190px;" onclick="createNodeBubble(190, 442, 'greenint_2')"></div>
+        <div id="PAHB_d1" class="circle" style="top:460px; left:190px; background-color: blue;" onclick="createNodeBubble(190, 460, 'PAHB_d1')"></div>
+        <div id="greenint_10" class="circle" style="top:460px; left:228px;" onclick="createNodeBubble(228, 460, 'greenint_10')"></div>
+        <div id="greenint_3" class="circle" style="top:391px; left:228px;" onclick="createNodeBubble(228, 391, 'greenint_3')"></div>
+        <div id="greenint_4" class="circle" style="top:391px; left:246px;" onclick="createNodeBubble(246, 391, 'greenint_4')"></div>
+        <div id="greenint_5" class="circle" style="top:357px; left:246px;" onclick="createNodeBubble(246, 357, 'greenint_5')"></div>
+        <div id="greenint_6" class="circle" style="top:357px; left:195px;" onclick="createNodeBubble(195, 357, 'greenint_6')"></div>
+        <div id="greenint_7" class="circle" style="top:357px; left:170px;" onclick="createNodeBubble(170, 357, 'greenint_7')"></div>
+        <div id="greenint_8" class="circle" style="top:330px; left:246px;" onclick="createNodeBubble(246, 330, 'greenint_8')"></div>
+        <div id="greenint_11" class="circle" style="top:460px; left:248px;" onclick="createNodeBubble(248, 460, 'greenint_11')"></div>
+        <div id="greenint_12" class="circle" style="top:423px; left:248px;" onclick="createNodeBubble(248, 423, 'greenint_12')"></div>
+        <div id="greenint_13" class="circle" style="top:520px; left:211px;" onclick="createNodeBubble(211, 520, 'greenint_13')"></div>
+        <div id="greenint_14" class="circle" style="top:565px; left:225px;" onclick="createNodeBubble(225, 565, 'greenint_14')"></div>
+        <div id="greenint_16" class="circle" style="top:586px; left:344px;" onclick="createNodeBubble(347, 586, 'greenint_16')"></div>
+        <div id="greenint_17" class="circle" style="top:514px; left:344px;" onclick="createNodeBubble(344, 514, 'greenint_17')"></div>
+        <div id="greenint_18" class="circle" style="top:432px; left:344px;" onclick="createNodeBubble(344, 432, 'greenint_18')"></div>
+        <div id="greenint_19" class="circle" style="top:372px; left:344px;" onclick="createNodeBubble(344, 372, 'greenint_19')"></div>
+        <div id="greenint_20" class="circle" style="top:565px; left:246px;" onclick="createNodeBubble(246, 565, 'greenint_20')"></div>
+        <div id="greenint_21" class="circle" style="top:388px; left:344px;" onclick="createNodeBubble(344, 388, 'greenint_21')"></div>
+        <div id="FINEARTS_d10" class="circle" style="top:423px; left:284px; background-color: blue;" onclick="createNodeBubble(284, 423, 'FINEARTS_d10')"></div>
+        <div id="FINEARTS_d6" class="circle" style="top:452px; left:296px; background-color: blue;" onclick="createNodeBubble(296, 452, 'FINEARTS_d6')"></div>
+        <div id="FINEARTS_d2" class="circle" style="top:432px; left:326px; background-color: blue;" onclick="createNodeBubble(326, 432, 'FINEARTS_d2')"></div>
+        <div id="FINEARTS_d3" class="circle" style="top:388px; left:326px; background-color: blue;" onclick="createNodeBubble(326, 388, 'FINEARTS_d3')"></div>
+        <div id="ENG_d3" class="circle" style="top:466px; left:285px; background-color: blue;" onclick="createNodeBubble(285, 466, 'ENG_d3')"></div>
+        <div id="ENG_d6" class="circle" style="top:515px; left:248px; background-color: blue;" onclick="createNodeBubble(248, 515, 'ENG_d6')"></div>
+        <div id="ENG_d1" class="circle" style="top:514px; left:328px; background-color: blue;" onclick="createNodeBubble(328, 514, 'ENG_d1')"></div>
+        <div id="ITE_d8" class="circle" style="top:583px; left:248px; background-color: blue;" onclick="createNodeBubble(248, 583, 'ITE_d8')"></div>
+        <div id="ITE_d1" class="circle" style="top:586px; left:330px; background-color: blue;" onclick="createNodeBubble(330, 586, 'ITE_d1')"></div>
+        <div id="UC_d1" class="circle" style="top:514px; left:355px; background-color: blue;" onclick="createNodeBubble(355, 514, 'UC_d1')"></div>
+        <div id="MEYER_d6" class="circle" style="top:432px; left:355px; background-color: blue;" onclick="createNodeBubble(355, 432, 'MEYER_d6')"></div>
+        <div id="MEYER_d5" class="circle" style="top:372px; left:355px; background-color: blue;" onclick="createNodeBubble(355, 372, 'MEYER_d5')"></div>
+
+        <!--Blue-->
+        <div id="blueint_1" class="circle" style="top:380px; left:445px;" onclick="createNodeBubble(445, 380, 'blueint_1')"></div>
+        <div id="blueint_2" class="circle" style="top:410px; left:445px;" onclick="createNodeBubble(445, 410, 'blueint_2')"></div>
+        <div id="blueint_3" class="circle" style="top:445px; left:445px;" onclick="createNodeBubble(445, 445, 'blueint_3')"></div>
+        <div id="blueint_4" class="circle" style="top:460px; left:445px;" onclick="createNodeBubble(445, 460, 'blueint_4')"></div>
+        <div id="blueint_5" class="circle" style="top:475.5px; left:445px;" onclick="createNodeBubble(445, 475.5, 'blueint_5')"></div>
+        <div id="blueint_6" class="circle" style="top:486px; left:445px;" onclick="createNodeBubble(445, 486, 'blueint_6')"></div>
+        <div id="blueint_7" class="circle" style="top:538px; left:429px;" onclick="createNodeBubble(429, 538, 'blueint_7')"></div>
+        <div id="blueint_8" class="circle" style="top:560px; left:438px;" onclick="createNodeBubble(438, 560, 'blueint_8')"></div>
+        <div id="blueint_9" class="circle" style="top:560px; left:445px;" onclick="createNodeBubble(445, 560, 'blueint_9')"></div>
+        <div id="blueint_10" class="circle" style="top:580px; left:445px;" onclick="createNodeBubble(445, 580, 'blueint_10')"></div>
+        <div id="blueint_11" class="circle" style="top:651px; left:445px;" onclick="createNodeBubble(445, 651, 'blueint_11')"></div>
+        <div id="blueint_12" class="circle" style="top:777px; left:445px;" onclick="createNodeBubble(445, 777, 'blueint_12')"></div>
+        <div id="meyer_d1" class="circle" style="top:380px; left:432px; background-color: blue;" onclick="createNodeBubble(432, 380, 'meyer_d1')"></div>
+        <div id="meyer_d2" class="circle" style="top:410px; left:432px; background-color: blue;" onclick="createNodeBubble(432, 410, 'meyer_d2')"></div>
+        <div id="meyer_d3" class="circle" style="top:445px; left:432px; background-color: blue;" onclick="createNodeBubble(432, 445, 'meyer_d3')"></div>
+        <div id="biosci_d1" class="circle" style="top:451px; left:460px; background-color: blue;" onclick="createNodeBubble(460, 451, 'biosci_d1')"></div>
+        <div id="mathpsych_d1" class="circle" style="top:475.5px; left:460px; background-color: blue;" onclick="createNodeBubble(460, 475.5, 'mathpsych_d1')"></div>
+        <div id="uc_d9" class="circle" style="top:486px; left:395px; background-color: blue;" onclick="createNodeBubble(395, 486, 'uc_d9')"></div>
+        <div id="uc_d11" class="circle" style="top:538px; left:418px; background-color: blue;" onclick="createNodeBubble(418, 538, 'uc_d11')"></div>
+        <div id="mathpsych_d2" class="circle" style="top:551px; left:464px; background-color: blue;" onclick="createNodeBubble(464, 551, 'mathpsych_d2')"></div>
+        <div id="sond_d1" class="circle" style="top:580px; left:460px; background-color: blue;" onclick="createNodeBubble(460, 580, 'sond_d1')"></div>
+        <div id="sher_d1" class="circle" style="top:580px; left:432px; background-color: blue;" onclick="createNodeBubble(432, 580, 'sher_d1')"></div>
+        <div id="sond_d2" class="circle" style="top:651px; left:460px; background-color: blue;" onclick="createNodeBubble(460, 651, 'sond_d2')"></div>
+        <div id="sher_d2" class="circle" style="top:651px; left:432px; background-color: blue;" onclick="createNodeBubble(432, 651, 'sher_d2')"></div>
+        <div id="admin_d1" class="circle" style="top:708px; left:432px; background-color: blue;" onclick="createNodeBubble(432, 708, 'admin_d1')"></div>
+        
+        <!--Add your parts here-->
+
       </div>
     </div>
-
     <script>
       const container = document.getElementById('map-container');
       const wrapper = document.getElementById('map-wrapper');
@@ -342,7 +432,8 @@
       let posX = 0, posY = 0;
       let isPanning = false;
       let startX, startY;
-      let currentPopUp = ''; 
+      let currentPopUp = '';
+      let popUpStatus = '';
       let flag_array = ['PAHB_FLAG', 'ENG_FLAG', 'UC_FLAG', 'MATHPSYCH_FLAG', 'PHYSICS_FLAG'];
 
       function showPath(flag_array){
@@ -404,31 +495,83 @@
           const getBubble = document.getElementById(bubble);
           getBubble.style.visibility = 'visible';
           currentPopUp = bubble;
+          popUpStatus = "building";
           console.log(currentPopUp);
         }else{
           TurnPopUpOff(currentPopUp);
           const getBubble = document.getElementById(bubble);
           getBubble.style.visibility = 'visible';
           currentPopUp = bubble;
+          popUpStatus = "building";
           console.log(currentPopUp);
         }
-
-        /*
-        const getBubble = document.getElementById(bubble);
-        //if (!getBubble) {
-        //  console.error(`No element found with ID "${getBubble}"`);
-        //  return;
-        //}
-        getBubble.style.opacity = 1;
-        currentPopUp = name;
-        console.log(currentPopUp);
-        */
       }
 
       function TurnPopUpOff(bubble) {
-        const getBubble = document.getElementById(bubble);
-        getBubble.style.visibility = 'hidden';
-        currentPopUp = '';
+        if (popUpStatus == 'building'){
+          const getBubble = document.getElementById(bubble);
+          getBubble.style.visibility = 'hidden';
+          currentPopUp = '';
+          popUpStatus = '';
+        }else{
+          const deleteDiv = document.getElementById('node_info');
+          deleteDiv.remove();
+          currentPopUp = '';
+          popUpStatus = '';
+        }
+      }
+
+      /*This code is for allowing you to see the x, y coordinate of where your cursor clicked*/
+      /*NOTE THOUGH, the coordinates are only accurate from the original map size, like without any zoom. So just refresh the page and DON'T ZOOM IN OR OUT and then the coords will be accurate*/
+      const mapImage = document.getElementById('map');
+
+      mapImage.addEventListener('click', (event) => {
+        const rect = mapImage.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        console.log(`X: ${x}, Y: ${y}`);
+      });
+
+      function createNodeBubble(x, y, name) {
+        //God the structure of this function is ugly
+        //This handles the info bubble for the nodes so that I don't have to create a div bubble for each node (no way omg)
+        if (currentPopUp == '' && popUpStatus == '' && name != 'map'){
+          let newDiv = document.createElement('div');
+          newDiv.id = 'node_info'
+          newDiv.innerText = name;
+          newDiv.classList.add("node_info");
+          let newX = (x - 45) + "px";
+          let newY = (y - 30) + "px";
+          console.log(newX, newY);
+          newDiv.style.top = newY;
+          newDiv.style.left = newX;
+          wrapper.appendChild(newDiv);
+          currentPopUp = name;
+          popUpStatus = "node";
+        }else if(name == 'map' && currentPopUp != ''){
+          TurnPopUpOff(currentPopUp);
+          return;
+        }else if(name == 'map' && currentPopUp == ''){
+          return;
+        }else if(currentPopUp == name){
+          TurnPopUpOff(name);
+          return;
+        }else{
+          TurnPopUpOff(currentPopUp);
+          let newDiv = document.createElement('div');
+          newDiv.id = 'node_info'
+          newDiv.innerText = name;
+          newDiv.classList.add("node_info");
+          let newX = (x - 40) + "px";
+          let newY = (y - 30) + "px";
+          console.log(newX, newY);
+          newDiv.style.top = newY;
+          newDiv.style.left = newX;
+          wrapper.appendChild(newDiv);
+          currentPopUp = name;
+          popUpStatus = "node";
+        }
       }
 
     </script>
