@@ -27,7 +27,7 @@ During this process it will prompt you enter a password make sure you remember t
 3. Type "mariadb -u root -p" (input your password when prompted)
 4. Type "CREATE DATABASE campus_map;"
 5. Type "USE campus_map;"
-6. Type "SOURCE /path/to/campus_map_schema.sql;" 
+6. Type "SOURCE /path/to/create_database_campus_map.sql;" 
 NOTE: This should be whereever in your computer you downloaded the .sql file
 
 
@@ -36,9 +36,11 @@ NOTE: This should be whereever in your computer you downloaded the .sql file
 1. Adjust the parsers (campus_map_parser_doors_and_elevators.py and campus_map_parser_paths_and_intersections.py) to fit your setting
     - This should just be chnaging the "password" under DB_CONFIG to be your password
 2. Make sure the parsers and the csv file are under the same folder
-3. Run campus_map_parser_doors_and_elevators.py (MAKE SURE TO RUN THIS ONE FIRST OR IT WONT WORK)
-4. Run campus_map_parser_paths_and_intersections.py
-5. You should get indicators of success printed on your console output (if not uhh.. contact me: Kaila)
+3. Exit maria db and cd into this folder
+4. You may need to pip install pandas if getting a module not found error
+5. Run campus_map_parser_door_and_elevator.py (MAKE SURE TO RUN THIS ONE FIRST OR IT WONT WORK)
+6. Run campus_map_parser_paths_and_intersection.py
+7. You should get indicators of success printed on your console output (if not uhh.. contact me: Kaila)
 
 Note: If you run into issues you can type "DROP DATABASE campus_map;" to delete the whole database and start over (start with number 2.4 since there is no need to reinstall mariadbor log back in)
 
@@ -132,6 +134,7 @@ Defines the connections between two nodes, enabling pathfinding or route analysi
 2. DESCRIBE table_name; (describes attributes of your chosen table)
 3. SELECT * FROM table_name; (outputs everything inserted into your chosen table)
 4. SELECT * FROM table_name WHERE attribute_name LIKE 'example'; (outputs everything in your chosen table that matches the where condition )
+
 
 
 
