@@ -2,26 +2,25 @@
 
 // List of valid building names and alternate names
 const buildings = {
-    "administration building": ["admin", "admin building", "administration"],
-    "biological sciences building": ["bio sci", "biology", "biological sciences"],
-    "commons": ["the commons"],
-    "engineering building": ["engineering"],
-    "fine arts building": ["fa", "fine arts"],
-    "information and technology/engineering building": ["it", "ite", "information and technology"],
-    "interdisciplinary life sciences building": ["interdisciplinary life sciences", "ilsb"],
-    "lecture hall 1": ["lh1"],
-    "library & gallery, albin o. kuhn": ["library", "aok"],
-    "math and psychology building": ["math and psychology", "math and psych"],
-    "meyerhoff chemistry building": ["meyrhoff"],
-    "performing arts and humanities": ["performing arts", "humanities"],
-    "physics building": ["physics"],
-    "public policy building": ["public policy", "pb"],
-    "retriever activities center": ["rac"],
-    "sherman hall": ["sherman"],
-    "sondheim hall": ["sondheim"],
-    "the center for well-being": ["rih", "the center for wellbeing"],
-    "true grit’s": ["dining hall", "true grits"],
-    "university center": ["uc"]
+    "ADMIN": ["administration building", "admin", "admin building", "administration"],
+    "BioSci": ["biological sciences building", "bio sci", "biology", "biological sciences"],
+    "Commons": ["the commons", "commons building"],
+    "ENG": ["engineering building", "engineering"],
+    "FINE ARTS": ["fa", "fine arts building", "fine arts"],
+    "ITE": ["information and technology/engineering building", "it", "ite", "information and technology"],
+    "ILSB": ["interdisciplinary life sciences building", "interdisciplinary life sciences", "ilsb"],
+    "Lecture Hall 1": ["lecture hall 1", "lh1"],
+    "AOKLib": ["library & gallery, albin o. kuhn", "library", "aok", "aok library"],
+    "MathandPsych": ["math and psychology building", "math and psychology", "math and psych"],
+    "MEYER": ["meyerhoff chemistry building", "meyerhoff", "chemistry"],
+    "PAHB": ["performing arts and humanities building", "performing arts", "humanities", "pahb"],
+    "PHYSICS": ["physics building", "physics"],
+    "PUBPOL": ["public policy building", "public policy", "pb"],
+    "RAC": ["retriever activities center", "rac", "gym"],
+    "Sondheim": ["sondheim hall", "sondheim"],
+    "CWB": ["the center for well-being", "center for well-being", "rih", "wellbeing center"],
+    "DHALL": ["true grit’s", "dining hall", "true grits"],
+    "UC": ["university center", "uc"]
 };
 
 // Normalize input

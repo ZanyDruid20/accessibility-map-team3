@@ -165,7 +165,7 @@ input[type=submit]:hover {
 }
 
 .instruction_label {
-
+    position: sticky;
     margin-top: 5px;
     height: 20%;
     width: 70%;
@@ -183,24 +183,61 @@ input[type=submit]:hover {
     display: flex; 
     align-items: center;
     justify-content: center;
+    
 }
 
 .instruction_list {
+  direction: rtl; /* scrollbar on left */
+  overflow-y: scroll;
+  width: 100%;
+  height: 75%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 10px;
+  scrollbar-color: #BABABA transparent;
+  scrollbar-width: thin;
+  padding-right: 10px;
+  box-sizing: border-box;
 
-    margin-top: 5px;
-    height: 75%;
-    width: 70%;
-    background-color: rgb(202, 199, 199);
-    border-radius: 25px;
-    text-align: center;
-    line-height: 120px;
-    font-size: 20px;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
-    color: black;
-    box-shadow: 1px 5px 10px gray;
-    margin-left: 15%;
-    border: 2px solid black;
 }
+
+.instruction_list > .step_item {
+  direction: ltr; /* ✅ content stays left-aligned */
+}
+
+.instruction_list::-webkit-scrollbar {
+  width: 10px;
+}
+.instruction_list::-webkit-scrollbar-thumb {
+  background-color: #BABABA;
+  border-radius: 6px;
+}
+.instruction_list::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.step_item {
+  min-height: 80px; 
+  width: 70%;
+  background-color: rgb(202, 199, 199);
+  border-radius: 25px;
+  border: 2px solid black;
+  box-shadow: 1px 5px 10px gray;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 550;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  color: black;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;   /* vertically center */
+  justify-content: center;  /* horizontally center */
+  text-align: center; 
+}
+
 
 .map {
 
