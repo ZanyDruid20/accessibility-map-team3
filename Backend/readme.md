@@ -18,7 +18,8 @@ The following is a description of the backend used in this project and how to se
 1. Navigate to the folder holding all relevant files in your terminal
 2. run 'uvicorn main:app --reload'
 3. Open your browser and run your request
-    ex: http://127.0.0.1:8000/shortest-path?start_building=A&end_building=B
-    NOTE: shortest-path is the only request that exists right now; replace A and B with the buildings you wish to navigate to and from
-4. If you run into issues contact me (Kaila)
+    - ex: http://127.0.0.1:8000/shortest-path?start_building=A&end_building=B
+    - NOTE: shortest-path is the only request that exists right now; replace A and B with the buildings you wish to navigate to and from
+5. If you run into issues contact me (Kaila)
+
 
