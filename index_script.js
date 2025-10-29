@@ -23,11 +23,6 @@ const buildings = {
     "UC": ["university center", "uc"]
 };
 
-// Normalize input
-function normalize(input) {
-    return input.toLowerCase().replace(/\s/g, "");
-}
-
 // Get the canonical building name if valid (to help with same location validation), otherwise null
 function getCanonicalBuildingName(input) {
     const normInput = normalize(input);
@@ -76,3 +71,152 @@ document.addEventListener("DOMContentLoaded", function() {
 
     });
 });
+
+const container = document.getElementById('map-container');
+const wrapper = document.getElementById('map-wrapper');
+
+let scale = 1;
+let posX = 0, posY = 0;
+let isPanning = false;
+let startX, startY;
+let currentPopUp = '';
+let popUpStatus = '';
+let flag_array = ['PAHB_FLAG', 'ENG_FLAG', 'UC_FLAG', 'MATHPSYCH_FLAG', 'PHYSICS_FLAG'];
+
+function showPath(flag_array){
+
+for(let i = 0; i < flag_array.length; i++){
+    const getFlag = document.getElementById(flag_array[i]);
+    getFlag.style.visibility = 'visible';
+}
+
+}
+
+// Handle mouse drag (panning)
+/*
+container.addEventListener('mousedown', e => {
+isPanning = true;
+startX = e.clientX - posX;
+startY = e.clientY - posY;
+container.style.cursor = 'grabbing';
+});
+
+container.addEventListener('mouseup', () => {
+isPanning = false;
+container.style.cursor = 'grab';
+});
+
+container.addEventListener('mousemove', e => {
+if (!isPanning) return;
+posX = e.clientX - startX;
+posY = e.clientY - startY;
+updateTransform();
+});
+*/
+// Handle scroll wheel zoom
+container.addEventListener('wheel', e => {
+e.preventDefault();
+    const zoomIntensity = 0.1;
+    const delta = e.deltaY < 0 ? 1 : -1;
+    scale += delta * zoomIntensity;
+    scale = Math.min(Math.max(0.5, scale), 3);
+    updateTransform();
+});
+
+function updateTransform() {
+    wrapper.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
+}
+
+function showPopUp(bubble) {
+    console.log("HI");
+    if (currentPopUp == bubble){
+        TurnPopUpOff(bubble);
+        return;
+    }else if(bubble == 'map' && currentPopUp != ''){
+        console.log("MAP SELECTED");
+        TurnPopUpOff(currentPopUp);
+        return;
+    }else if(bubble == 'map' && currentPopUp == ''){
+        return;
+    }else if(currentPopUp == ''){
+        const getBubble = document.getElementById(bubble);
+        getBubble.style.visibility = 'visible';
+        currentPopUp = bubble;
+        popUpStatus = "building";
+        console.log(currentPopUp);
+    }else{
+        TurnPopUpOff(currentPopUp);
+        const getBubble = document.getElementById(bubble);
+        getBubble.style.visibility = 'visible';
+        currentPopUp = bubble;
+        popUpStatus = "building";
+        console.log(currentPopUp);
+    }
+}
+
+function TurnPopUpOff(bubble) {
+    if (popUpStatus == 'building'){
+        const getBubble = document.getElementById(bubble);
+        getBubble.style.visibility = 'hidden';
+        currentPopUp = '';
+        popUpStatus = '';
+    }else{
+        const deleteDiv = document.getElementById('node_info');
+        deleteDiv.remove();
+        currentPopUp = '';
+        popUpStatus = '';
+    }
+}
+
+/*This code is for allowing you to see the x, y coordinate of where your cursor clicked*/
+/*NOTE THOUGH, the coordinates are only accurate from the original map size, like without any zoom. So just refresh the page and DON'T ZOOM IN OR OUT and then the coords will be accurate*/
+const mapImage = document.getElementById('map');
+
+mapImage.addEventListener('click', (event) => {
+    const rect = mapImage.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    console.log(`X: ${x}, Y: ${y}`);
+});
+
+function createNodeBubble(x, y, name) {
+    //God the structure of this function is ugly
+    //This handles the info bubble for the nodes so that I don't have to create a div bubble for each node (no way omg)
+    if (currentPopUp == '' && popUpStatus == '' && name != 'map'){
+        let newDiv = document.createElement('div');
+        newDiv.id = 'node_info'
+        newDiv.innerText = name;
+        newDiv.classList.add("node_info");
+        let newX = (x - 45) + "px";
+        let newY = (y - 30) + "px";
+        console.log(newX, newY);
+        newDiv.style.top = newY;
+        newDiv.style.left = newX;
+        wrapper.appendChild(newDiv);
+        currentPopUp = name;
+        popUpStatus = "node";
+    }else if(name == 'map' && currentPopUp != ''){
+        TurnPopUpOff(currentPopUp);
+        return;
+    }else if(name == 'map' && currentPopUp == ''){
+        return;
+    }else if(currentPopUp == name){
+        TurnPopUpOff(name);
+        return;
+    }else{
+        TurnPopUpOff(currentPopUp);
+        let newDiv = document.createElement('div');
+        newDiv.id = 'node_info'
+        newDiv.innerText = name;
+        newDiv.classList.add("node_info");
+        let newX = (x - 40) + "px";
+        let newY = (y - 30) + "px";
+        console.log(newX, newY);
+        newDiv.style.top = newY;
+        newDiv.style.left = newX;
+        wrapper.appendChild(newDiv);
+        currentPopUp = name;
+        popUpStatus = "node";
+    }
+}

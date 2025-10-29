@@ -160,9 +160,9 @@ input[type=submit]:hover {
     border-radius: 25px;
     box-shadow: 1px 5px 10px gray;
     justify-content: center;
-    
 
 }
+
 
 .instruction_label {
     position: sticky;
@@ -180,11 +180,12 @@ input[type=submit]:hover {
     box-shadow: 1px 5px 10px gray;
     margin-left: 15%;
     border: 2px solid black;
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: center;
-    
+   
 }
+
 
 .instruction_list {
   direction: rtl; /* scrollbar on left */
@@ -202,11 +203,14 @@ input[type=submit]:hover {
   padding-right: 10px;
   box-sizing: border-box;
 
+
 }
+
 
 .instruction_list > .step_item {
   direction: ltr; /* ✅ content stays left-aligned */
 }
+
 
 .instruction_list::-webkit-scrollbar {
   width: 10px;
@@ -219,8 +223,9 @@ input[type=submit]:hover {
   background-color: transparent;
 }
 
+
 .step_item {
-  min-height: 80px; 
+  min-height: 80px;
   width: 70%;
   background-color: rgb(202, 199, 199);
   border-radius: 25px;
@@ -235,7 +240,7 @@ input[type=submit]:hover {
   display: flex;
   align-items: center;   /* vertically center */
   justify-content: center;  /* horizontally center */
-  text-align: center; 
+  text-align: center;
 }
 
 
@@ -247,8 +252,9 @@ input[type=submit]:hover {
     border-radius: 25px;
     box-shadow: 1px 5px 10px gray;
     justify-content: center;
-    display: flex;
+    display: inline-block;
     border: 2px solid black;
+    overflow: hidden;
 
 }
 
@@ -369,5 +375,108 @@ input[type=submit]:hover {
 .link:hover {
 
     text-decoration: underline;
+
+}
+
+/*ADDED*/
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #111;
+}
+
+#map-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* The wrapper that scales + moves */
+#map-wrapper {
+  transform-origin: center center;
+  transition: transform 0.1s ease-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* The map image */
+#map {
+  display: block;
+  width: 1000px; /* You can adjust this to your image’s native size */
+  height: auto;
+}
+
+/* Example markers/nodes */
+.marker {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 0, 0, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+.marker:hover {
+  background-color: yellow;
+}
+
+.building_info {
+
+  background-color:rgb(201, 203, 206);
+  font-size: 10px;
+  position: absolute;
+  border-radius: 30px;
+  text-align: center;
+  object-fit: contain;
+  width: 150px; 
+  height:150px;
+  visibility: hidden;
+  z-index: 9999;
+
+}
+
+.building_info img {
+
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 30px;
+
+}
+
+.icon_style {
+
+  font-size: 34px;
+  visibility: visible;
+
+}
+
+.circle {
+
+  width: 10px;
+  height: 10px;
+  border-radius: 45px;
+  background-color: red;
+  position: absolute;
+  /*Will be made hidden on actual map*/
+  visibility: visible;
+  border: 1px solid rgb(0, 0, 0);
+
+}
+
+.node_info {
+
+  position: absolute;
+  background-color:rgb(251, 253, 255);
+  font-size: 12px;
+  border-radius: 30px;
+  text-align: center;
+  width: 95px;
+  height: 20px;
 
 }
