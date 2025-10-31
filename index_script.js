@@ -23,6 +23,11 @@ const buildings = {
     "UC": ["university center", "uc"]
 };
 
+// Normalize input for comparison
+function normalize(input) {
+    return input.toLowerCase().replace(/\s/g, "");
+}
+
 // Get the canonical building name if valid (to help with same location validation), otherwise null
 function getCanonicalBuildingName(input) {
     const normInput = normalize(input);
