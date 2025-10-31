@@ -86,19 +86,91 @@ let isPanning = false;
 let startX, startY;
 let currentPopUp = '';
 let popUpStatus = '';
-let flag_array = ['PAHB_FLAG', 'ENG_FLAG', 'UC_FLAG', 'MATHPSYCH_FLAG', 'PHYSICS_FLAG'];
+let flag_array = ['PAHB_FLAG', 'PAHB_d1', 'greenint_10', 'greenint_11', 'ENG_d3', 'ENG_FLAG', 'ENG_d1', 'greenint_17',  'UC_d1', 'UC_FLAG', 'uc_d9', 'blueint_13', 'blueint_6', 'blueint_5', 'mathpsych_d1', 'MATHPSYCH_FLAG', 'PHYSICS_FLAG'];
 
+function showPath(flag_array) {
+    let svg = document.getElementById("path-lines");
+    if (!svg) {
+        svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("id", "path-lines");
+        svg.style.position = "absolute";
+        svg.style.top = "0";
+        svg.style.left = "0";
+        svg.style.width = "100%";
+        svg.style.height = "100%";
+        svg.style.pointerEvents = "none";
+        document.body.appendChild(svg);
+    }
+
+    svg.innerHTML = "";
+
+    for (let i = 0; i < flag_array.length - 1; i++) {
+        const startFlag = document.getElementById(flag_array[i]);
+        const endFlag = document.getElementById(flag_array[i + 1]);
+        if (!startFlag || !endFlag) continue;
+
+        const startX = parseFloat(startFlag.style.left);
+        const startY = parseFloat(startFlag.style.top);
+        const endX = parseFloat(endFlag.style.left);
+        const endY = parseFloat(endFlag.style.top);
+
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", startX + startFlag.offsetWidth / 2);
+        line.setAttribute("y1", startY + startFlag.offsetHeight / 2);
+        line.setAttribute("x2", endX + endFlag.offsetWidth / 2);
+        line.setAttribute("y2", endY + endFlag.offsetHeight / 2);
+        line.setAttribute("stroke", "#5294ff");
+        line.setAttribute("stroke-width", "4");
+
+        svg.appendChild(line);
+
+        startFlag.style.visibility = "visible";
+        endFlag.style.visibility = "visible";
+        wrapper.appendChild(svg);
+    }
+}
+/*
 function showPath(flag_array){
 
-for(let i = 0; i < flag_array.length; i++){
-    const getFlag = document.getElementById(flag_array[i]);
-    getFlag.style.visibility = 'visible';
-}
+    for(let i = 0; i < (flag_array.length - 1); i++){
+
+        const createSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        createSVG.style.position = "absolute";
+        createSVG.style.width = "100%";
+        createSVG.style.height = "100%";
+        svg.style.pointerEvents = "none";
+
+        const startFlag = document.getElementById(flag_array[i]);
+        const endFlag = document.getElementById(flag_array[i+1]);
+        const startName = startFlag.id;
+        const endName = endFlag.id;
+        const startXCoord = startFlag.style.left;
+        const startYCoord = startFlag.style.top;
+        const endXCoord = endFlag.style.left;
+        const endYCoord = endFlag.style.top;
+        console.log("Start Node: " + startName + " (" + startXCoord, startYCoord + ") End Node: " + endName + " (" + endXCoord, endYCoord + ")");
+        startFlag.style.visibility = 'visible';
+        endFlag.style.visibility = 'visible';
+
+        const createLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        //createLine.setAttribute("x1", startX + startFlag.offsetWidth / 2);
+        //createLine.setAttribute("y1", startY + startFlag.offsetHeight / 2);
+        //createLine.setAttribute("x2", endX + endFlag.offsetWidth / 2);
+        //createLine.setAttribute("y2", endY + endFlag.offsetHeight / 2);
+
+        createLine.setAttribute("x1", startXCoord);
+        createLine.setAttribute("y1", startYCoord);
+        createLine.setAttribute("x2", endXCoord);
+        createLine.setAttribute("y2", endYCoord);
+        createSVG.appendChild(createLine);
+
+        container.appendChild(createSVG);
+
+    }
 
 }
-
+*/
 // Handle mouse drag (panning)
-/*
 container.addEventListener('mousedown', e => {
 isPanning = true;
 startX = e.clientX - posX;
@@ -117,7 +189,6 @@ posX = e.clientX - startX;
 posY = e.clientY - startY;
 updateTransform();
 });
-*/
 // Handle scroll wheel zoom
 container.addEventListener('wheel', e => {
 e.preventDefault();
@@ -225,3 +296,139 @@ function createNodeBubble(x, y, name) {
         popUpStatus = "node";
     }
 }
+
+/**Real Time Navigation Code*/
+
+async function requestLocationOnce() {
+  if (!('permissions' in navigator) || !('geolocation' in navigator)) {
+    console.error('Geolocation not supported');
+    return;
+  }
+
+  const status = await navigator.permissions.query({ name: 'geolocation' });
+
+  if (status.state === 'granted') {
+    console.log('Permission already granted!');
+    startRepeatingLocation(); // call your existing getLocation() here
+  } else if (status.state === 'prompt') {
+    console.log('Asking for permission...');
+    //getLocation(); // this will trigger the prompt once
+    startRepeatingLocation();
+  } else {
+    console.warn('Permission denied.');
+  }
+
+  // Listen for permission changes
+  status.onchange = () => console.log('Permission state changed:', status.state);
+}
+
+//METHOD 1 (Updates only when detected movement)
+
+
+var watchId = null;
+
+function startWatchingLocation() {
+  if ('geolocation' in navigator) {
+    watchId = navigator.geolocation.watchPosition(
+      (pos) => {
+        const { latitude, longitude, accuracy } = pos.coords;
+        console.log('Location:', latitude, longitude, 'accuracy (m):', accuracy);
+      },
+      (err) => {
+        console.error('Geolocation error', err);
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    );
+  } else {
+    console.error('Geolocation not supported');
+  }
+}
+
+function stopWatchingLocation() {
+  if (watchId !== null) {
+    navigator.geolocation.clearWatch(watchId);
+    console.log('Stopped watching location');
+    watchId = null;
+  }
+}
+
+//METHOD 2 (Updates on regular intervals)
+
+/*
+let intervalId = null;
+
+function startRepeatingLocation() {
+  intervalId = setInterval(getLocation, 3000); // every 5 seconds
+}
+
+function stopRepeatingLocation() {
+  clearInterval(intervalId);
+  console.log('Stopped repeating location');
+}
+
+function getLocation(){
+    if ('geolocation' in navigator){ //&& status.status === 'granted') {
+        console.log("HI");
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+            const { latitude, longitude, accuracy } = pos.coords;
+            console.log('Location:', latitude, longitude, 'accuracy (m):', accuracy);
+            // Send to backend:
+            //fetch('/api/location', {
+            //  method: 'POST',
+            //  headers: { 'Content-Type': 'application/json' },
+            //  body: JSON.stringify({ latitude, longitude, accuracy, timestamp: pos.timestamp })
+            //});
+            }//,
+        // (err) => {
+        //   console.error('Geolocation error', err);
+        //// handle different error.code values (1=permission denied, 2=position unavailable, 3=timeout)
+        // },
+        //  { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+        );
+    } else {
+        console.error('Geolocation not supported');
+    }
+}
+*/
+
+/*
+const watchId = navigator.geolocation.watchPosition(
+  (pos) => {
+    // called on each update
+    console.log(pos.coords);
+  },
+  (err) => console.error(err),
+  { enableHighAccuracy: true, maximumAge: 2000, timeout: 10000 }
+);
+
+navigator.geolocation.clearWatch(watchId);
+*/
+
+//EXAMPLE OF FETCHING A BACKEND REQUEST
+
+/*
+function addToCart(box_id, series_cover, series_price){
+
+    const series_box = {
+        name: box_id,
+        cover: series_cover,
+        price: series_price
+    };
+
+    fetch("http://localhost:8000/AddToShoppingCart", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(series_box)
+    })
+
+    .then(response => response.json())
+    .then(data => {
+        console.log("Server Response:", data);
+
+    })
+}
+
+*/
