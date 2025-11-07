@@ -400,12 +400,13 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  margin-left: 10px;
 }
 
 /* The map image */
 #map {
   display: block;
-  width: 1000px; /* You can adjust this to your image’s native size */
+  width: 1000px;
   height: auto;
 }
 
@@ -479,6 +480,10 @@ body {
   width: 95px;
   height: 20px;
 
+}
+
+.curved_paths {
+  visibility: hidden;
 }
 
 .bottom_banner_links a {

@@ -86,9 +86,11 @@ let isPanning = false;
 let startX, startY;
 let currentPopUp = '';
 let popUpStatus = '';
-let flag_array = ['PAHB_FLAG', 'PAHB_d1', 'greenint_10', 'greenint_11', 'ENG_d3', 'ENG_FLAG', 'ENG_d1', 'greenint_17',  'UC_d1', 'UC_FLAG', 'uc_d9', 'blueint_13', 'blueint_6', 'blueint_5', 'mathpsych_d1', 'MATHPSYCH_FLAG', 'PHYSICS_FLAG'];
+let flag_array = ['PAHB_FLAG', 'PAHB_d1', 'greenint_10', 'greenint_11', 'ENG_d3', 'ENG_FLAG', 'ENG_d1', 'greenint_17',  'UC_d1', 'UC_FLAG', 'uc_d9', 'blueint_13', 'blueint_6', 'blueint_5', 'mathpsych_d1', 'MATHPSYCH_FLAG'];
 
 function showPath(flag_array) {
+
+    //Will need to adjust function for the curved lines
     let svg = document.getElementById("path-lines");
     if (!svg) {
         svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
