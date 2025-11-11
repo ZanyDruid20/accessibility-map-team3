@@ -480,3 +480,233 @@ body {
   height: 20px;
 
 }
+
+.bottom_banner_links a {
+    color: rgb(255, 178, 62);   /* UMBC gold */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.bottom_banner_links a:hover {
+    color: rgb(255, 178, 62);   /* keep same color on hover */
+    text-decoration: underline; /* optional: remove if you don't want underline */
+}
+
+/* =======================
+   Admin Login Page Styling
+   ======================= */
+
+body.admin-login {
+    position: relative;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; 
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+body.admin-login::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;  
+    bottom: 0;  
+    background-image: url("https://explore.baltimoreheritage.org/files/fullsize/95c0bf0857c907713759ed4b9fbeb0a0.jpg");
+    background-size: cover;
+    background-position: center 25%; 
+    background-repeat: no-repeat;
+    transform: scaleX(-1);
+    z-index: -1;
+}
+
+body.admin-login::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60vw;            /* how much of the page it covers */
+    height: 100vh;
+    background: rgba(0,0,0,0.78); /* semi-transparent black */
+    transform: skewX(-12deg) translateX(250px);    /* angle */
+    transform-origin: right;     /* pivot from the right edge */
+    z-index: -1;                 /* behind login form */
+}
+
+
+/* Back Button */
+.back-button {
+    display: inline-flex; 
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
+
+.back-arrow {
+    width: 100px;  /* adjust size as needed */
+    height: auto;
+    margin-right: 14px;
+}
+
+/* Login page specific overrides */
+body.admin-login * { box-sizing: border-box; } /* safe global for login page */
+
+.login-container {
+  position: fixed;
+  top: 50%;
+  right: 10.9%;             /* move horizontally toward the shield */
+  transform: translateY(-50%); /* vertically center */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  z-index: 3; /* ensure it's above the overlay and background */
+}
+
+
+.login-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0 0 12px 0; /* space below the title */
+}
+
+/* form wrapper */
+#adminLoginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 18px;
+  min-height: 300px;
+  width: 570px; 
+  padding: 24px;
+  background: rgba(255,255,255,0.85); /* subtle panel so inputs are visible on background */
+  border-radius: 8px;
+  border: 2.5px solid black;
+}
+
+/* Each row holds label + input side-by-side */
+#adminLoginForm .input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Fix label width so inputs align perfectly */
+#adminLoginForm .input-row label {
+  flex: 0 0 120px;       /* fixed label width */
+  text-align: right;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+/* Force inputs to be exactly same width and ignore other global input rules */
+#adminLoginForm .input-row input {
+  flex: 1 1 auto;        /* fill remaining space */
+  width: 100%;           /* consistent sizing */
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid black;
+  border-radius: 6px;
+  box-sizing: border-box; 
+  margin: 0;              
+  display: block;
+}
+
+/* Ensure password and username get the same computed width */
+#adminLoginForm .input-row input[type="text"],
+#adminLoginForm .input-row input[type="password"] {
+  min-width: 0; 
+}
+
+/* Button centered and sized */
+#adminLoginForm .input-row button {
+  width: 160px;
+  padding: 10px 18px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  margin: 0 auto; /* center the button row */
+}
+
+
+#adminLoginForm .input-row button:hover { background-color: #333; }
+
+.umbc-shield {
+    position: fixed;
+    top: 50%;
+    right: 10%; 
+    transform: translateY(-50%); /* vertically centers it */
+    height: 700px; /* adjust as needed */
+    z-index: 2; /* above the black overlay */
+    pointer-events: none; 
+}
+
+/* Login Button styling */
+#adminLoginForm > button {
+    width: 140px;           
+    padding: 8px 16px;      
+    font-size: 20px;       
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(253, 181, 21); 
+    color: black;               /* text color */
+    cursor: pointer;
+    margin: 20px auto 0 auto;          /* center the button */
+    display: block;             
+}
+
+/* Hover effect */
+#adminLoginForm > button:hover {
+    background-color: #e0a500;  /* slightly darker on hover */
+}
+
+.left-banner {
+    position: fixed;
+    top: 45%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: black;
+    color: rgb(253, 181, 21);
+    font-weight: bold;
+    font-size: 35px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+
+    /* Adjust width and height */
+    width: 590px;       /* set the horizontal size of the banner */
+    height: 80px;      /* set vertical size */
+
+
+    padding: 20px;      
+
+    border-radius: 0 8px 8px 0;
+    z-index: 3;
+    text-align: center;
+
+    display: flex;      /* for vertical centering of text */
+    justify-content: center; 
+    align-items: center;
+
+    box-shadow: 6px 8px 20px rgba(0, 0, 0, 0.5);
+
+    
+}
+
+
+
+
+
+
