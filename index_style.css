@@ -501,7 +501,7 @@ body.admin-login {
     margin: 0;
     height: 100vh;
     width: 100vw;
-    overflow: hidden; /* prevent scrollbars */
+    overflow: hidden; 
     font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
@@ -514,7 +514,7 @@ body.admin-login::before {
     bottom: 0;  
     background-image: url("https://explore.baltimoreheritage.org/files/fullsize/95c0bf0857c907713759ed4b9fbeb0a0.jpg");
     background-size: cover;
-    background-position: center 25%; /* shift down by 20% */
+    background-position: center 25%; 
     background-repeat: no-repeat;
     transform: scaleX(-1);
     z-index: -1;
@@ -530,7 +530,7 @@ body.admin-login::after {
     background: rgba(0,0,0,0.78); /* semi-transparent black */
     transform: skewX(-12deg) translateX(250px);    /* angle */
     transform-origin: right;     /* pivot from the right edge */
-    z-index: -1;                 /* behind your login form */
+    z-index: -1;                 /* behind login form */
 }
 
 
@@ -586,7 +586,6 @@ body.admin-login * { box-sizing: border-box; } /* safe global for login page */
   gap: 18px;
   font-size: 18px;
   min-height: 300px;
-  /* optional: add a width so inputs have a predictable container */
   width: 570px; 
   padding: 24px;
   background: rgba(255,255,255,0.85); /* subtle panel so inputs are visible on background */
@@ -612,20 +611,20 @@ body.admin-login * { box-sizing: border-box; } /* safe global for login page */
 /* Force inputs to be exactly same width and ignore other global input rules */
 #adminLoginForm .input-row input {
   flex: 1 1 auto;        /* fill remaining space */
-  width: 100%;           /* ensure consistent sizing */
+  width: 100%;           /* consistent sizing */
   padding: 10px;
   font-size: 18px;
   border: 2px solid black;
   border-radius: 6px;
-  box-sizing: border-box; /* important */
-  margin: 0;              /* cancel any stray margins */
+  box-sizing: border-box; 
+  margin: 0;              
   display: block;
 }
 
 /* Ensure password and username get the same computed width */
 #adminLoginForm .input-row input[type="text"],
 #adminLoginForm .input-row input[type="password"] {
-  min-width: 0; /* prevent flex-resize quirks */
+  min-width: 0; 
 }
 
 /* Button centered and sized */
@@ -642,24 +641,24 @@ body.admin-login * { box-sizing: border-box; } /* safe global for login page */
   margin: 0 auto; /* center the button row */
 }
 
-/* Small visual polish (optional) */
+
 #adminLoginForm .input-row button:hover { background-color: #333; }
 
 .umbc-shield {
     position: fixed;
     top: 50%;
-    right: 10%; /* move left/right along the overlay */
+    right: 10%; 
     transform: translateY(-50%); /* vertically centers it */
     height: 700px; /* adjust as needed */
-    z-index: 2; /* ensure it is above the overlay */
-    pointer-events: none; /* so clicks don’t interfere */
+    z-index: 2; /* above the black overlay */
+    pointer-events: none; 
 }
 
 /* Login Button styling */
 #adminLoginForm > button {
-    width: 140px;           /* smaller width */
-    padding: 8px 16px;      /* smaller padding */
-    font-size: 20px;        /* slightly smaller text */
+    width: 140px;           
+    padding: 8px 16px;      
+    font-size: 20px;       
     font-weight: bold;
     border-radius: 20px;
     border: none;
@@ -667,12 +666,12 @@ body.admin-login * { box-sizing: border-box; } /* safe global for login page */
     color: black;               /* text color */
     cursor: pointer;
     margin: 20px auto 0 auto;          /* center the button */
-    display: block;             /* ensure margin:auto works */
+    display: block;             
 }
 
 /* Hover effect */
 #adminLoginForm > button:hover {
-    background-color: #e0a500;  /* slightly darker gold on hover */
+    background-color: #e0a500;  /* slightly darker on hover */
 }
 
 .left-banner {
@@ -687,10 +686,10 @@ body.admin-login * { box-sizing: border-box; } /* safe global for login page */
     font-family: 'Inter', Arial, Helvetica, sans-serif;
 
     /* Adjust width and height */
-    width: 590px;       /* sets the horizontal size of the banner */
-    height: 80px;      /* sets vertical size */
+    width: 590px;       /* set the horizontal size of the banner */
+    height: 80px;      /* set vertical size */
 
-    /* Optional: keep some padding inside */
+
     padding: 20px;      
 
     border-radius: 0 8px 8px 0;
