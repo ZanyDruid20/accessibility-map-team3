@@ -88,7 +88,8 @@ input[type=text], select {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-input[type=submit] {
+/* input[type=submit] { */
+.destination_submit {
 
     width: 20%;
     background-color: rgb(238, 176, 41);
@@ -203,7 +204,6 @@ input[type=submit]:hover {
   padding-right: 10px;
   box-sizing: border-box;
 
-
 }
 
 
@@ -310,21 +310,62 @@ input[type=submit]:hover {
 
 }
 
+.directory_wrapper {
+
+  height: 75%;
+  width: 70%;
+  margin-left: 15%;
+  overflow-y: scroll;
+  scrollbar-color: #BABABA transparent;
+  scrollbar-width: thin;
+  direction: ltr;  
+
+}
+
 .directory_list {
 
-    margin-top: 5px;
-    height: 75%;
-    width: 70%;
-    background-color: rgb(202, 199, 199);
-    border-radius: 25px;
-    text-align: center;
-    line-height: 120px;
-    font-size: 20px;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
-    color: black;
-    box-shadow: 1px 5px 10px gray;
-    margin-left: 15%;
-    border: 2px solid black;
+  direction: ltr;
+  overflow-y: scroll;
+  width: 100%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 10px;
+  scrollbar-color: #BABABA transparent;
+  scrollbar-width: thin;
+  padding-left: 10px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+}
+
+.directory_list_style {
+
+  width: 70%;
+  background-color: rgb(202, 199, 199);
+  border-radius: 25px;
+  text-align: center;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  color: black;
+  box-shadow: 1px 5px 10px gray;
+  border: 2px solid black;
+  font-size: 16px;
+  font-weight: 550;
+
+}
+
+.directory_entry {
+
+  margin-top: 8px;
+
+}
+
+.directory_entry:hover {
+  
+  text-decoration: underline;
+  cursor: pointer;
 
 }
 
@@ -403,6 +444,36 @@ body {
   margin-left: 10px;
 }
 
+#popup-map-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+#popup-map-wrapper {
+  transform-origin: center center;
+  transition: transform 0.1s ease-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#popup-map-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+#popup-map-wrapper {
+  transform-origin: center center;
+  transition: transform 0.1s ease-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 /* The map image */
 #map {
   display: block;
@@ -437,7 +508,7 @@ body {
   width: 150px; 
   height:150px;
   visibility: hidden;
-  z-index: 9999;
+  z-index: 1000;
 
 }
 
@@ -467,6 +538,33 @@ body {
   /*Will be made hidden on actual map*/
   visibility: visible;
   border: 1px solid rgb(0, 0, 0);
+
+}
+
+.circle:hover {
+
+  cursor: pointer;
+  background-color: yellow !important;
+
+}
+
+.circle_two {
+
+  width: 10px;
+  height: 10px;
+  border-radius: 45px;
+  background-color: red;
+  position: absolute;
+  /*Will be made hidden on actual map*/
+  visibility: visible;
+  border: 1px solid rgb(0, 0, 0);
+
+}
+
+.circle_two:hover {
+
+  cursor: pointer;
+  background-color: yellow !important;
 
 }
 
@@ -715,3 +813,217 @@ body.admin-login * { box-sizing: border-box; } /* safe global for login page */
 
 
 
+
+
+.dark_screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about_us_style {
+
+  display: none;
+  width: 40%;
+  height: 37%;
+  background-color: beige;
+  border: 1px solid rgb(255, 0, 0);
+  text-align: center;
+  position: relative;
+  border-radius: 25px;
+
+}
+
+.contact_style {
+
+  /* display: none;
+  width: 40%;
+  height: 30%;
+  background-color: beige;
+  border: 1px solid rgb(255, 0, 0);
+  opacity: 1;
+  text-align: center; */
+  display: none;
+  width: 40%;
+  height: 37%;
+  /* height: auto; */
+  background-color: beige;
+  border: 1px solid rgb(255, 0, 0);
+  text-align: center;
+  position: relative;
+  border-radius: 25px;
+
+}
+
+.UI_exit_button {
+
+  position: absolute;
+  top: -5px;
+  right: 22px;
+  font-size: 42px;
+  cursor: pointer;
+  content: "\00d7";
+  color: red;
+
+}
+
+.UI_back_button {
+
+  position: absolute;
+  top: -10px;
+  left: 22px;
+  font-size: 42px;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+
+}
+
+.UI_body {
+
+  font-size: 24px;
+  direction: ltr;
+  overflow-y: scroll;
+  scrollbar-color: #BABABA transparent;
+  scrollbar-width: thin;
+  height: 70%;
+  padding: 20px;
+
+}
+
+.report_options_style {
+
+  display: block;
+  width: auto;
+  height: auto;
+  background-color: beige;
+  border: 1px solid rgb(255, 0, 0);
+  text-align: center;
+  position: relative;
+  border-radius: 25px;
+  padding: 30px;
+
+}
+
+.report_buttons {
+
+  display: flex;
+
+}
+
+.report_button_ui_route {
+
+  width: 50%;
+  height: 10%;
+  margin: 5%;
+  border-radius: 25px;
+  background-color: red;
+  color: black;
+  font-size: 20px;
+
+}
+
+.report_button_ui_website {
+
+  width: 50%;
+  height: 10%;
+  margin: 5%;
+  border-radius: 25px;
+  background-color: red;
+  color: black;
+  font-size: 20px;
+
+}
+
+.error_button_message {
+
+  visibility: visible;
+  font-size: 16px;
+  color: gray;
+  font-style: italic;
+
+}
+
+.make_report_style {
+
+  display: none;
+  width: 40%;
+  height: 38%;
+  background-color: beige;
+  border: 1px solid rgb(255, 0, 0);
+  text-align: center;
+  position: relative;
+  border-radius: 25px;
+
+}
+
+.report_website_message {
+
+  width: 70%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+}
+
+.report_website_submit {
+
+  width: 20%;
+  background-color: rgb(238, 176, 41);
+  color: black;
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 2px solid black;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+textarea {
+
+  resize: none;
+
+}
+
+.node_report_options_style {
+
+  position: absolute;
+  display: block;
+  width: auto;
+  height: auto;
+  background-color: beige;
+  border: 1px solid rgb(255, 0, 0);
+  text-align: center;
+  border-radius: 25px;
+  padding: 30px;
+
+}
+
+.dark_screen_layer_two {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

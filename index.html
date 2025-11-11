@@ -20,12 +20,14 @@
                     <label for="end">End: </label>
                     <input type="text" id="end_destination" name="end_dest" placeholder="Enter destination....">
 
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Submit" class="destination_submit">
                 </form>
                 <div>
                 </div>
             </div>
-            <div class="report_button"><button class="report_style">Bug Report</button></div>     
+            <div class="report_button">
+                <button class="report_style" onclick="turnOnUIPopUp('reportOptionsUI')">Bug Report</button>
+            </div>     
         </div>
 
         <div class = "center_line">
@@ -42,7 +44,7 @@
 
                         <!-- Elements attached to the map -->
                         <button id="PAHB" style="top: 420px; left: 25px; position: absolute; width: 150px; height:100px; opacity:0.2;" onclick="showPopUp('PAHB_info')">PAHB</button>
-                        <div id="PAHB_info" style="top: 300px; left: 35px;" onclick="showPopUp('PAHB_info')" class="building_info">
+                        <div id="PAHB_info" style="top: 300px; left: 25px;" onclick="showPopUp('PAHB_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Performing Arts and Humanities (PAHB)
                         </div>
@@ -54,7 +56,7 @@
                         <i id="PAHB_FLAG" class="material-icons" style="visibility: hidden; top: 455px; left: 90px; position: absolute;">flag_circle</i>
 
                         <button id="FINEARTS" style="top: 370px; left: 255px; position: absolute; width: 75px; height:90px; opacity:0.2;" onclick="showPopUp('FINEARTS_info')">FINEARTS</button>
-                        <div id="FINEARTS_info" style="top: 270px; left: 255px;" onclick="showPopUp('FINEARTS_info')" class="building_info">
+                        <div id="FINEARTS_info" style="top: 270px; left: 215px;" onclick="showPopUp('FINEARTS_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Fine Arts (FINEARTS)
                         </div>
@@ -66,7 +68,7 @@
                         <i id="FINEARTS_FLAG" class="material-icons" style="visibility: hidden; top: 400px; left: 290px; position: absolute;">flag_circle</i>
 
                         <button id="ENG" style="top: 475px; left: 255px; position: absolute; width: 75px; height:85px; opacity:0.2;" onclick="showPopUp('ENG_info')">ENG</button>
-                        <div id="ENG_info" style="top: 370px; left: 255px;" onclick="showPopUp('ENG_info')" class="building_info">
+                        <div id="ENG_info" style="top: 370px; left: 215px;" onclick="showPopUp('ENG_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Engineering (ENG)
                         </div>
@@ -78,7 +80,7 @@
                         <i id="ENG_FLAG" class="material-icons" style="visibility: hidden; top: 500px; left: 280px; position: absolute;">flag_circle</i>
 
                         <button id="ITE" style="top: 585px; left: 255px; position: absolute; width: 80px; height:90px; opacity:0.2;" onclick="showPopUp('ITE_info')">ITE</button>
-                        <div id="ITE_info" style="top: 470px; left: 255px;" onclick="showPopUp('ITE_info')" class="building_info">
+                        <div id="ITE_info" style="top: 470px; left: 215px;" onclick="showPopUp('ITE_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Information Technology and Engineering (ITE)
                         </div>
@@ -90,7 +92,7 @@
                         <i id="ITE_FLAG" class="material-icons" style="visibility: hidden; top: 610px; left: 285px; position: absolute;">flag_circle</i>
                         
                         <button id="MEYERHOFF" style="top: 368px; left: 360px; position: absolute; width: 80px; height:95px; opacity:0.2;" onclick="showPopUp('MEYERHOFF_info')">MEYERHOFF</button>
-                        <div id="MEYERHOFF_info" style="top: 260px; left: 360px;" onclick="showPopUp('MEYERHOFF_info')" class="building_info">
+                        <div id="MEYERHOFF_info" style="top: 260px; left: 320px;" onclick="showPopUp('MEYERHOFF_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Meyerhoff Chemistry (CHEM)
                         </div>
@@ -102,7 +104,7 @@
                         <i id="MEYERHOFF_FLAG" class="material-icons" style="visibility: hidden; top: 400px; left: 390px; position: absolute;">flag_circle</i>
                         
                         <button id="UC" style="top: 470px; left: 357px; position: absolute; width: 65px; height:90px; opacity:0.2;" onclick="showPopUp('UC_info')">UC</button>
-                        <div id="UC_info" style="top: 368px; left: 360px;" onclick="showPopUp('UC_info')" class="building_info">
+                        <div id="UC_info" style="top: 368px; left: 320px;" onclick="showPopUp('UC_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             University Center (UC)
                         </div>
@@ -114,7 +116,7 @@
                         <i id="UC_FLAG" class="material-icons" style="visibility: hidden; top: 500px; left: 370px; position: absolute;">flag_circle</i>
                         
                         <button id="SHERMAN" style="top: 575px; left: 360px; position: absolute; width: 80px; height:90px; opacity:0.2;" onclick="showPopUp('SHERMAN_info')">SHERMAN</button>
-                        <div id="SHERMAN_info" style="top: 468px; left: 360px;" onclick="showPopUp('SHERMAN_info')" class="building_info">
+                        <div id="SHERMAN_info" style="top: 468px; left: 320px;" onclick="showPopUp('SHERMAN_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Shermall Hall (SHER)
                         </div>
@@ -126,19 +128,19 @@
                         <i id="SHERMAN_FLAG" class="material-icons" style="visibility: hidden; top: 600px; left: 390px; position: absolute;">flag_circle</i>
                         
                         <button id="ADMIN" style="top: 685px; left: 402px; position: absolute; width: 40px; height:40px; opacity:0.2;" onclick="showPopUp('ADMIN_info')">ADMIN</button>
-                        <div id="ADMIN_info" style="top: 550px; left: 370px;" onclick="showPopUp('ADMIN_info')" class="building_info">
+                        <div id="ADMIN_info" style="top: 550px; left: 350px;" onclick="showPopUp('ADMIN_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Adminstration Building (ADMIN)
                         </div>
                         <div>
-                            Building of Adminstration idk lol
+                            Building of Adminstration
                         </div>
                         <img src="https://umbc.edu/wp-content/uploads/2022/02/Spring-Campus19-55681.jpg">
                         </div>
                         <i id="ADMIN_FLAG" class="material-icons" style="visibility: hidden; top: 690px; left: 410px; position: absolute;">flag_circle</i>
                         
                         <button id="MATHPSYCH" style="top: 472px; left: 468px; position: absolute; width: 25px; height:90px; opacity:0.2;" onclick="showPopUp('MATHPSYCH_info')">MATHPSYCH</button>
-                        <div id="MATHPSYCH_info" style="top: 370px; left: 430px;" onclick="showPopUp('MATHPSYCH_info')" class="building_info">
+                        <div id="MATHPSYCH_info" style="top: 370px; left: 410px;" onclick="showPopUp('MATHPSYCH_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Math and Psychology Building (Math/Psychology)
                         </div>
@@ -150,7 +152,7 @@
                         <i id="MATHPSYCH_FLAG" class="material-icons" style="visibility: hidden; top: 500px; left: 470px; position: absolute;">flag_circle</i>
                         
                         <button id="SONDHEIM" style="top: 577px; left: 463px; position: absolute; width: 30px; height:85px; opacity:0.2;" onclick="showPopUp('SONDHEIM_info')">SONDHEIM</button>
-                        <div id="SONDHEIM_info" style="top: 450px; left: 435px;" onclick="showPopUp('SONDHEIM_info')" class="building_info">
+                        <div id="SONDHEIM_info" style="top: 450px; left: 410px;" onclick="showPopUp('SONDHEIM_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Janet & Walker Sondheim Hall (Janet & Walker Sondheim Hall)
                         </div>
@@ -162,7 +164,7 @@
                         <i id="SONDHEIM_FLAG" class="material-icons" style="visibility: hidden; top: 605px; left: 465px; position: absolute;">flag_circle</i>
                         
                         <button id="BIOLOGICALSCI" style="top: 308px; left: 463px; position: absolute; width: 30px; height:150px; opacity:0.2;" onclick="showPopUp('BIOLOGICALSCI_info')">BIOLOGICALSCI</button>
-                        <div id="BIOLOGICALSCI_info" style="top: 230px; left: 420px;" onclick="showPopUp('BIOLOGICALSCI_info')" class="building_info">
+                        <div id="BIOLOGICALSCI_info" style="top: 230px; left: 410px;" onclick="showPopUp('BIOLOGICALSCI_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Biological Sciences 
                         </div>
@@ -174,7 +176,7 @@
                         <i id="BIOLOGICALSCI_FLAG" class="material-icons" style="visibility: hidden; top: 380px; left: 465px; position: absolute;">flag_circle</i>
                         
                         <button id="LECTUREHALLONE" style="top: 375px; left: 505px; position: absolute; width: 25px; height:30px; opacity:0.2;" onclick="showPopUp('LECTUREHALL_info')">LECTUREHALLONE</button>
-                        <div id="LECTUREHALL_info" style="top: 235px; left: 455px;" onclick="showPopUp('LECTUREHALL_info')" class="building_info">
+                        <div id="LECTUREHALL_info" style="top: 235px; left: 445px;" onclick="showPopUp('LECTUREHALL_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Lecture Hall 1 (Lecture Hall 1)
                         </div>
@@ -186,7 +188,7 @@
                         <i id="LECTUREHALL_FLAG" class="material-icons" style="visibility: hidden; top: 377px; left: 505px; position: absolute;">flag_circle</i>
                         
                         <button id="RAC" style="top: 612px; left: 520px; position: absolute; width: 62px; height:155px; opacity:0.2;" onclick="showPopUp('RAC_info')">RAC</button>
-                        <div id="RAC_info" style="top: 560px; left: 485px;" onclick="showPopUp('RAC_info')" class="building_info">
+                        <div id="RAC_info" style="top: 540px; left: 475px;" onclick="showPopUp('RAC_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Retriever Activity Center (RAC)
                         </div>
@@ -198,7 +200,7 @@
                         <i id="RAC_FLAG" class="material-icons" style="visibility: hidden; top: 680px; left: 535px; position: absolute;">flag_circle</i>
                         
                         <button id="LIBRARY" style="top: 60px; left: 380px; position: absolute; width: 120px; height:150px; opacity:0.2;" onclick="showPopUp('LIBRARY_info')">LIBRARY</button>
-                        <div id="LIBRARY_info" style="top: 5px; left: 385px;" onclick="showPopUp('LIBRARY_info')" class="building_info">
+                        <div id="LIBRARY_info" style="top: 5px; left: 365px;" onclick="showPopUp('LIBRARY_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Albin O. Kuhn Library & Gallery (Library)
                         </div>
@@ -210,7 +212,7 @@
                         <i id="LIBRARY_FLAG" class="material-icons" style="visibility: hidden; top: 110px; left: 435px; position: absolute;">flag_circle</i>
                         
                         <button id="WELLBEING" style="top: 80px; left: 747px; position: absolute; width: 63px; height:40px; opacity:0.2;" onclick="showPopUp('WELLBEING_info')">WELLBEING</button>
-                        <div id="WELLBEING_info" style="top: 110px; left: 680px;" onclick="showPopUp('WELLBEING_info')" class="building_info">
+                        <div id="WELLBEING_info" style="top: 110px; left: 700px;" onclick="showPopUp('WELLBEING_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Center For Well-Being (Well-Being)
                         </div>
@@ -222,7 +224,7 @@
                         <i id="WELLBEING_FLAG" class="material-icons" style="visibility: hidden; top: 86px; left: 770px; position: absolute;">flag_circle</i>
                         
                         <button id="PUBLICPOLICY" style="top: 205px; left: 750px; position: absolute; width: 85px; height:40px; opacity:0.2;" onclick="showPopUp('PUP_info')">PUBLICPOLICY</button>
-                        <div id="PUP_info" style="top: 225px; left: 680px;" onclick="showPopUp('PUP_info')" class="building_info">
+                        <div id="PUP_info" style="top: 225px; left: 715px;" onclick="showPopUp('PUP_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Public Policy Building (PUP)
                         </div>
@@ -234,7 +236,7 @@
                         <i id="PUBLICPOLICY_FLAG" class="material-icons" style="visibility: hidden; top: 218px; left: 785px; position: absolute;">flag_circle</i>
                         
                         <button id="PHYSICS" style="top: 315px; left: 755px; position: absolute; width: 50px; height:75px; opacity:0.2;" onclick="showPopUp('PHYSICS_info')">PHYSICS</button>
-                        <div id="PHYSICS_info" style="top: 200px; left: 685px;" onclick="showPopUp('PHYSICS_info')" class="building_info">
+                        <div id="PHYSICS_info" style="top: 200px; left: 700px;" onclick="showPopUp('PHYSICS_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Physics Building (PHYS)
                         </div>
@@ -246,7 +248,7 @@
                         <i id="PHYSICS_FLAG" class="material-icons" style="visibility: hidden; top: 340px; left: 759px; position: absolute;">flag_circle</i>
                         
                         <button id="ILSB" style="top: 445px; left: 625px; position: absolute; width: 85px; height:65px; opacity:0.2;" onclick="showPopUp('ILSB_info')">ILSB</button>
-                        <div id="ILSB_info" style="top: 320px; left: 625px;" onclick="showPopUp('ILSB_info')" class="building_info">
+                        <div id="ILSB_info" style="top: 320px; left: 595px;" onclick="showPopUp('ILSB_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             Interdisciplinary Life Science Building (ILSB)
                         </div>
@@ -258,7 +260,7 @@
                         <i id="ILSB_FLAG" class="material-icons" style="visibility: hidden; top: 460px; left: 655px; position: absolute;">flag_circle</i>
                         
                         <button id="COMMONS" style="top: 308px; left: 518px; position: absolute; width: 120px; height:65px; opacity:0.2;" onclick="showPopUp('COMMONS_info')">COMMONS</button>
-                        <div id="COMMONS_info" style="top: 180px; left: 525px;" onclick="showPopUp('COMMONS_info')" class="building_info">
+                        <div id="COMMONS_info" style="top: 180px; left: 500px;" onclick="showPopUp('COMMONS_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             University Commons (Commons)
                         </div>
@@ -270,7 +272,7 @@
                         <i id="COMMONS_FLAG" class="material-icons" style="visibility: hidden; top: 315px; left: 600px; position: absolute;">flag_circle</i>
                         
                         <button id="TRUEGRITS" style="top: 5px; left: 895px; position: absolute; width: 35px; height:120px; opacity:0.2;" onclick="showPopUp('TRUEGRITS_info')">TRUEGRITS</button>
-                        <div id="TRUEGRITS_info" style="top: 50px; left: 820px;" onclick="showPopUp('TRUEGRITS_info')" class="building_info">
+                        <div id="TRUEGRITS_info" style="top: 50px; left: 840px;" onclick="showPopUp('TRUEGRITS_info')" class="building_info">
                         <div style="margin-top: 15px;">
                             True Grit's
                         </div>
@@ -471,21 +473,336 @@
 
             <div class="directory">
                 <div class="directory_label">Directory:</div>
-                <div class="directory_list">Building info goes here</div>
+                <div class="directory_list">
+                    <div class="directory_list_style">
+                        <div class="directory_entry" style="margin-top: 15px;" onclick="showPopUp('ADMIN_info')">1. Administration Building</div>
+                        <div class="directory_entry" onclick="showPopUp('BIOLOGICALSCI_info')">2. Biological Sciences Building</div>
+                        <div class="directory_entry" onclick="showPopUp('WELLBEING_info')">3. Center for Well-Being</div>
+                        <div class="directory_entry" onclick="showPopUp('COMMONS_info')">4. The Commons</div>
+                        <div class="directory_entry" onclick="showPopUp('ENG_info')">5. Engineering Building</div>
+                        <div class="directory_entry" onclick="showPopUp('FINEARTS_info')">6. Fine Arts Building</div>
+                        <div class="directory_entry" onclick="showPopUp('ITE_info')">7. Information Technology/Engineering Building (ITE)</div>
+                        <div class="directory_entry" onclick="showPopUp('ILSB_info')">8. Interdisciplinary Life Sciences Building</div>
+                        <div class="directory_entry" onclick="showPopUp('LIBRARY_info')">9. Library & Gallery, Albin O. Kuhn</div>
+                        <div class="directory_entry" onclick="showPopUp('MATHPSYCH_info')">10. Mathematics & Psychology Building</div>
+                        <div class="directory_entry" onclick="showPopUp('MEYERHOFF_info')">11. Meyerhoff Chemistry Building</div>
+                        <div class="directory_entry" onclick="showPopUp('PAHB_info')">12. Performing Arts & Humanities Building</div>
+                        <div class="directory_entry" onclick="showPopUp('PHYSICS_info')">13. Physics Building</div>
+                        <div class="directory_entry" onclick="showPopUp('PUP_info')">14. Public Policy Building</div>
+                        <div class="directory_entry" onclick="showPopUp('RAC_info')">15. Retriever Activites Center (RAC)</div>
+                        <div class="directory_entry" onclick="showPopUp('SHERMAN_info')">16. Sherman Hall</div>
+                        <div class="directory_entry" onclick="showPopUp('SONDHEIM_info')">17. Sondheim Hall</div>
+                        <div class="directory_entry" onclick="showPopUp('TRUEGRITS_info')">18. True Grit's (Dining)</div>
+                        <div class="directory_entry" onclick="showPopUp('UC_info')">19. University Center</div>
+                        <div class="directory_entry" style="margin-top: 8px; margin-bottom: 15px;" onclick="showPopUp('LECTUREHALL_info')">20. Lecture Hall 1</div>
+                    </div>
+                </div>
             </div>
 
         <div class = "bottom_banner">
             <div class="bottom_stuff">
                 <div class="bottom_banner_links">
-                    <div class="link">
+                    <div class="link" onclick="turnOnUIPopUp('aboutUsUI')">
                         About Us
                     </div>
-                    <div class="link">
+                    <div class="link" onclick="turnOnUIPopUp('contactUI')">
                         Contact
                     </div>
                     <a class="link" href="admin_login.html">
                     Login
                     </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="aboutUsDarkScreen" class="dark_screen">
+            <div id="aboutUsUI" class="about_us_style" style="display: none;">
+                <div class="UI_exit_button" onclick="turnOnUIPopUp('aboutUsUI')">&times;</div>
+                <h2 style="font-weight: bold; padding-top: 20px">&#129454; About Us &#129454;</h2>
+                <br>
+                <div class="UI_body">
+                    <p>
+                        This is a student made Accessibility Routing Application for our very own UMBC Campus! 
+                        <br>
+                        Brought to you by: Andrew Lam, Furnom Dam, Kaila Hoskins, and Sanaa Thomas
+                    </p>
+                    <br>
+                    <p>
+                        Our goal was to create an application that is able to help students, 
+                        faculty, or any person of any status to be able to navigate 
+                        their way across campus! With this, we wanted to focus specifically 
+                        on accessible routes on campus, which can be difficult to find since 
+                        our campus is built on the side of a hill, but they exists! We hope 
+                        that our application is able to provide you a quick and accessible way 
+                        to your destination! Go Retrievers! :)
+                    </p>
+                </div>
+            </div>
+            <div id="contactUI" class="contact_style" style="display: none;">
+                <div class="UI_exit_button" onclick="turnOnUIPopUp('contactUI')">&times;</div>
+                <h2 style="font-weight: bold; padding-top: 20px">&#129454; Contact &#129454;</h2>
+                <br>
+                <div class="UI_body">
+                    <p>
+                        Email of someone goes here
+                        <br>
+                        example@umbc.edu
+                    </p>
+                    <p>
+                        Incase an accessible door operator is malfunctioning
+                        <br>
+                        Call 410-455-2550
+                    </p>
+                </div>
+            </div>
+            <div id="reportOptionsUI" class="report_options_style" style="display: none;">
+                <div class="UI_exit_button" onclick="turnOnUIPopUp('reportOptionsUI')">&times;</div>
+                <h2 style="font-weight: bold; padding-top: 12px">What do you wish to report?</h2>
+                <div class="report_buttons">
+                    <button class="report_button_ui_route" onclick="turnOnUIReportPopUp('chooseNodeReport')">Route Report</button>
+                    <button class="report_button_ui_website" onclick="turnOnUIReportPopUp('makeReportUI')">Website Report</button>
+                </div>
+                <div id="regular_message" class="error_button_message">A route report or a website bug/error report?</div>
+            </div>
+            <div id="makeReportUI" class="make_report_style" style="display: none;">
+                <div class="UI_back_button" onclick="turnOnUIReportPopUp('makeReportUI')">&#8592;</div>
+                <div class="UI_exit_button" onclick="turnOnUIPopUp('makeReportUI')">&times;</div>
+                <h2 style="font-weight: bold; padding-top: 12px">What would you like report?</h2>
+                <div id="regular_message" class="error_button_message">500 Character Limit</div>
+                <br>
+                <form class="report_website_form">
+                    <textarea id='myInput' rows="11" wrap="soft" maxlength="500" class="report_website_message"></textarea>
+                    <br>
+                    <input type="submit" value="Submit" class="report_website_submit">
+                </form>
+            </div>
+            <div id="chooseNodeReport" class="report_options_style" style="display: block; width: 40%; height: 70%;">
+                <div class="UI_back_button" onclick="turnOnUIReportPopUp('chooseNodeReport')">&#8592;</div>
+                <div class="UI_exit_button" onclick="turnOnUIPopUp('chooseNodeReport')">&times;</div>
+                <h2 style="font-weight: bold; padding-top: 12px">Which node would you like to report?</h2>
+                <div id="regular_message" class="error_button_message">Report a node/door/pathway/elevator</div>
+                <br>
+
+                <div class="map" style="width: 90%; height: 80%">
+                    <div id="popup-map-container" style="overflow:hidden; cursor:grab;">
+                        <div id="popup-map-wrapper">
+                            <img id="map" onclick="showPopUp('map'); createNodeBubble(0, 0, 'map');" src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/567405479_17902397412273898_6017296793961984612_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzc0NTA5OTA2MzkwMjMzOTUzNQ%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyNjZ4MTAwMS5zZHIuQzMifQ%3D%3D&_nc_ohc=6_giXRHBBsYQ7kNvwFHkFYL&_nc_oc=Adn3qoQtxrEifbw731aNJcG2ITsTL_y-UOMFmScyOvC28xLZ42svDztU7CA5fXc5kw0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_gid=BGUmV5CCzTf1-6KhCRFcWA&oh=00_Afe64Si-tX1vt6Jck9oXpcTnRYpiJ34hEI8Sk0UeHnPklg&oe=69018FA6" alt="Map">
+
+                            <i id="PAHB_FLAG" class="material-icons" style="visibility: hidden; top: 455px; left: 90px; position: absolute;">flag_circle</i>
+
+                            <i id="FINEARTS_FLAG" class="material-icons" style="visibility: hidden; top: 400px; left: 290px; position: absolute;">flag_circle</i>
+
+                            <i id="ENG_FLAG" class="material-icons" style="visibility: hidden; top: 500px; left: 280px; position: absolute;">flag_circle</i>
+
+                            <i id="ITE_FLAG" class="material-icons" style="visibility: hidden; top: 610px; left: 285px; position: absolute;">flag_circle</i>
+
+                            <i id="MEYERHOFF_FLAG" class="material-icons" style="visibility: hidden; top: 400px; left: 390px; position: absolute;">flag_circle</i>
+                            
+                            <i id="UC_FLAG" class="material-icons" style="visibility: hidden; top: 500px; left: 370px; position: absolute;">flag_circle</i>
+
+                            <i id="SHERMAN_FLAG" class="material-icons" style="visibility: hidden; top: 600px; left: 390px; position: absolute;">flag_circle</i>
+
+                            <i id="ADMIN_FLAG" class="material-icons" style="visibility: hidden; top: 690px; left: 410px; position: absolute;">flag_circle</i>
+
+                            <i id="MATHPSYCH_FLAG" class="material-icons" style="visibility: hidden; top: 500px; left: 470px; position: absolute;">flag_circle</i>
+
+                            <i id="SONDHEIM_FLAG" class="material-icons" style="visibility: hidden; top: 605px; left: 465px; position: absolute;">flag_circle</i>
+
+                            <i id="BIOLOGICALSCI_FLAG" class="material-icons" style="visibility: hidden; top: 380px; left: 465px; position: absolute;">flag_circle</i>
+
+                            <i id="LECTUREHALL_FLAG" class="material-icons" style="visibility: hidden; top: 377px; left: 505px; position: absolute;">flag_circle</i>
+
+                            <i id="RAC_FLAG" class="material-icons" style="visibility: hidden; top: 680px; left: 535px; position: absolute;">flag_circle</i>
+
+                            <i id="LIBRARY_FLAG" class="material-icons" style="visibility: hidden; top: 110px; left: 435px; position: absolute;">flag_circle</i>
+
+                            <i id="WELLBEING_FLAG" class="material-icons" style="visibility: hidden; top: 86px; left: 770px; position: absolute;">flag_circle</i>
+
+                            <i id="PUBLICPOLICY_FLAG" class="material-icons" style="visibility: hidden; top: 218px; left: 785px; position: absolute;">flag_circle</i>
+
+                            <i id="PHYSICS_FLAG" class="material-icons" style="visibility: hidden; top: 340px; left: 759px; position: absolute;">flag_circle</i>
+
+                            <i id="ILSB_FLAG" class="material-icons" style="visibility: hidden; top: 460px; left: 655px; position: absolute;">flag_circle</i>
+
+                            <i id="COMMONS_FLAG" class="material-icons" style="visibility: hidden; top: 315px; left: 600px; position: absolute;">flag_circle</i>
+
+                            <i id="TRUEGRITS_FLAG" class="material-icons" style="visibility: hidden; top: 50px; left: 900px; position: absolute;">flag_circle</i>
+
+                            <!--Nodes-->
+                            <!--Green-->
+                            <div id="greenint_1r" class="circle_two" style="top:392px; left:155px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_1')"></div>
+                            <div id="PAHB_d13r" class="circle_two" style="top:442px; left:155px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions','PAHB_d13')"></div>
+                            <div id="greenint_2r" class="circle_two" style="top:442px; left:190px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_2')"></div>
+                            <div id="PAHB_d1r" class="circle_two" style="top:460px; left:190px; background-color: blue;" onclick="createNodeBubble(190, 460, 'PAHB_d1')"></div>
+                            <div id="greenint_10r" class="circle_two" style="top:460px; left:228px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_10')"></div>
+                            <div id="greenint_3r" class="circle_two" style="top:391px; left:228px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_3')"></div>
+                            <div id="greenint_4r" class="circle_two" style="top:391px; left:246px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_4')"></div>
+                            <div id="greenint_5r" class="circle_two" style="top:357px; left:246px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_5')"></div>
+                            <div id="greenint_6r" class="circle_two" style="top:357px; left:195px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_6')"></div>
+                            <div id="greenint_7r" class="circle_two" style="top:357px; left:170px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_7')"></div>
+                            <div id="greenint_8r" class="circle_two" style="top:330px; left:246px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_8')"></div>
+                            <div id="greenint_11r" class="circle_two" style="top:460px; left:248px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_11')"></div>
+                            <div id="greenint_12r" class="circle_two" style="top:423px; left:248px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_12')"></div>
+                            <div id="greenint_13r" class="circle_two" style="top:520px; left:211px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_13')"></div>
+                            <div id="greenint_14r" class="circle_two" style="top:565px; left:225px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_14')"></div>
+                            <div id="greenint_16r" class="circle_two" style="top:586px; left:344px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_16')"></div>
+                            <div id="greenint_17r" class="circle_two" style="top:514px; left:344px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_17')"></div>
+                            <div id="greenint_18r" class="circle_two" style="top:432px; left:344px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_18')"></div>
+                            <div id="greenint_19r" class="circle_two" style="top:372px; left:344px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_19')"></div>
+                            <div id="greenint_20r" class="circle_two" style="top:565px; left:246px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_20')"></div>
+                            <div id="greenint_21r" class="circle_two" style="top:388px; left:344px;" onclick="sendNodeReport('reportNodeOptions', 'greenint_21')"></div>
+                            <div id="FINEARTS_d10r" class="circle_two" style="top:423px; left:284px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'FINEARTS_d10')"></div>
+                            <div id="FINEARTS_d6r" class="circle_two" style="top:452px; left:296px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'FINEARTS_d6')"></div>
+                            <div id="FINEARTS_d2r" class="circle_two" style="top:432px; left:326px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'FINEARTS_d2')"></div>
+                            <div id="FINEARTS_d3r" class="circle_two" style="top:388px; left:326px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'FINEARTS_d3')"></div>
+                            <div id="ENG_d3r" class="circle_two" style="top:466px; left:285px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'ENG_d3')"></div>
+                            <div id="ENG_d6r" class="circle_two" style="top:515px; left:248px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'ENG_d6')"></div>
+                            <div id="ENG_d1r" class="circle_two" style="top:514px; left:328px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'ENG_d1')"></div>
+                            <div id="ITE_d8r" class="circle_two" style="top:583px; left:248px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'ITE_d8')"></div>
+                            <div id="ITE_d1r" class="circle_two" style="top:586px; left:330px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'ITE_d1')"></div>
+                            <div id="UC_d1r" class="circle_two" style="top:514px; left:355px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'UC_d1')"></div>
+                            <div id="MEYER_d6r" class="circle_two" style="top:432px; left:355px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'MEYER_d6')"></div>
+                            <div id="MEYER_d5r" class="circle_two" style="top:372px; left:355px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'MEYER_d5')"></div>
+
+                            <!--Blue-->
+                            <div id="blueint_1r" class="circle_two" style="top:380px; left:445px;" onclick="sendNodeReport('reportNodeOptions', 'blueint_1')"></div>
+                            <div id="blueint_2r" class="circle_two" style="top:410px; left:445px;" onclick="sendNodeReport('reportNodeOptions', 'blueint_2')"></div>
+                            <div id="blueint_3r" class="circle_two" style="top:445px; left:445px;" onclick="sendNodeReport('reportNodeOptions', 'blueint_3')"></div>
+                            <div id="blueint_4r" class="circle_two" style="top:460px; left:445px;" onclick="sendNodeReport('reportNodeOptions', 'blueint_4')"></div>
+                            <div id="blueint_5r" class="circle_two" style="top:475.5px; left:445px;" onclick="sendNodeReport('reportNodeOptions', 'blueint_5')"></div>
+                            <div id="blueint_6r" class="circle_two" style="top:486px; left:445px;" onclick="sendNodeReport('reportNodeOptions', 'blueint_6')"></div>
+                            <div id="blueint_7r" class="circle_two" style="top:538px; left:429px;" onclick="sendNodeReport('reportNodeOptions', 'blueint_7')"></div>
+                            <div id="blueint_8r" class="circle_two" style="top:560px; left:438px;" onclick="sendNodeReport('reportNodeOptions', 'blueint_8')"></div>
+                            <div id="blueint_9r" class="circle_two" style="top:560px; left:445px;" onclick="sendNodeReport('reportNodeOptions', 'blueint_9')"></div>
+                            <div id="blueint_10r" class="circle_two" style="top:580px; left:445px;" onclick="sendNodeReport('reportNodeOptions', 'blueint_10')"></div>
+                            <div id="blueint_11r" class="circle_two" style="top:651px; left:445px;" onclick="sendNodeReport('reportNodeOptions', 'blueint_11')"></div>
+                            <div id="blueint_12r" class="circle_two" style="top:777px; left:445px;" onclick="sendNodeReport('reportNodeOptions', 'blueint_12')"></div>
+                            <div id="blueint_13r" class="circle_two" style="top:486px; left:418px;" onclick="sendNodeReport('reportNodeOptions', 'blueint_13')"></div>
+                            <div id="meyer_d1r" class="circle_two" style="top:380px; left:432px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'meyer_d1')"></div>
+                            <div id="meyer_d2r" class="circle_two" style="top:410px; left:432px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'meyer_d2')"></div>
+                            <div id="meyer_d3r" class="circle_two" style="top:445px; left:432px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'meyer_d3')"></div>
+                            <div id="biosci_d1r" class="circle_two" style="top:451px; left:460px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'biosci_d1')"></div>
+                            <div id="mathpsych_d1r" class="circle_two" style="top:475.5px; left:460px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'mathpsych_d1')"></div>
+                            <div id="uc_d9r" class="circle_two" style="top:486px; left:395px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'uc_d9')"></div>
+                            <div id="uc_d11r" class="circle_two" style="top:538px; left:418px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'uc_d11')"></div>
+                            <div id="mathpsych_d2r" class="circle_two" style="top:551px; left:464px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'mathpsych_d2')"></div>
+                            <div id="sond_d1r" class="circle_two" style="top:580px; left:460px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'sond_d1')"></div>
+                            <div id="sher_d1r" class="circle_two" style="top:580px; left:432px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'sher_d1')"></div>
+                            <div id="sond_d2r" class="circle_two" style="top:651px; left:460px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'sond_d2')"></div>
+                            <div id="sher_d2r" class="circle_two" style="top:651px; left:432px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'sher_d2')"></div>
+                            <div id="admin_d1r" class="circle_two" style="top:708px; left:432px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'admin_d1')"></div>
+                            
+                            <!--Add your parts here-->
+                            <!--Purple-->
+                            <div id="purpleint_1r" class="circle_two" style="top:284px; left:449px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_1')"></div>
+                            <div id="purpleint_2r" class="circle_two" style="top:292px; left:501px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_2')"></div>
+                            <div id="purpleint_5r" class="circle_two" style="top:304px; left:448px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_5')"></div>
+                            <div id="purpleint_6r" class="circle_two" style="top:304px; left:501px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_6')"></div>
+                            <div id="purpleint_3r" class="circle_two" style="top:292px; left:586px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_3')"></div>
+                            <div id="purpleint_30r" class="circle_two" style="top:292px; left:633px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_30')"></div>
+                            <div id="purpleint_7r" class="circle_two" style="top:343px; left:448px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_7')"></div>
+                            <div id="purpleint_12r" class="circle_two" style="top:356px; left:463px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_12')"></div>
+                            <div id="biosci_d2r" class="circle_two" style="top:375px; left:460px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'biosci_d2')"></div>
+                            <div id="biosci_d4r" class="circle_two" style="top:343px; left:462px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'biosci_d4')"></div>
+                            <div id="purpleint_8r" class="circle_two" style="top:356px; left:501px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_8')"></div>
+                            <div id="purpleint_9r" class="circle_two" style="top:356px; left:521px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_9')"></div>
+                            <div id="purpleint_10r" class="circle_two" style="top:356px; left:588px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_10')"></div>
+                            <div id="comm_d5r" class="circle_two" style="top:334px; left:521px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'comm_d5')"></div>
+                            <div id="comm_d6r" class="circle_two" style="top:334px; left:588px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'comm_d6')"></div>
+                            <div id="comm_d4r" class="circle_two" style="top:299px; left:600px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'comm_d4')"></div>
+                            <div id="comm_d3r" class="circle_two" style="top:299px; left:625px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'comm_d3')"></div>
+                            <div id="comm_d1r" class="circle_two" style="top:405px; left:603px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'comm_d1')"></div>
+                            <div id="comm_d2r" class="circle_two" style="top:405px; left:617px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'comm_d2')"></div>
+                            <div id="purpleint_4r" class="circle_two" style="top:308px; left:642px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_4')"></div>
+                            <div id="biosci_d3r" class="circle_two" style="top:367px; left:481px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'biosci_d3')"></div>
+                            <div id="purpleint_11r" class="circle_two" style="top:367px; left:501px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_11')"></div>
+                            <div id="purpleint_13r" class="circle_two" style="top:431px; left:508px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_13')"></div>
+                            <div id="purpleint_14r" class="circle_two" style="top:431px; left:526px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_14')"></div>
+                            <div id="purpleint_15r" class="circle_two" style="top:431px; left:584px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_15')"></div>
+                            <div id="purpleint_16r" class="circle_two" style="top:440px; left:603px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_16')"></div>
+                            <div id="purpleint_35r" class="circle_two" style="top:419px; left:526px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_35')"></div>
+                            <div id="purpleint_36r" class="circle_two" style="top:410px; left:518px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_36')"></div>
+                            <div id="lechall_d1r" class="circle_two" style="top:404px; left:527px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'lechall_d1')"></div>
+                            <div id="purpleint_23r" class="circle_two" style="top:462px; left:513px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_23')"></div>
+                            <div id="purpleint_24r" class="circle_two" style="top:462px; left:574px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_24')"></div>
+                            <div id="purpleint_25r" class="circle_two" style="top:463px; left:603px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_25')"></div>
+                            <div id="purpleint_26r" class="circle_two" style="top:516px; left:518px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_26')"></div>
+                            <div id="purpleint_27r" class="circle_two" style="top:516px; left:603px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_27')"></div>
+                            <div id="purpleint_28r" class="circle_two" style="top:543px; left:512px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_28')"></div>
+                            <div id="purpleint_29r" class="circle_two" style="top:560px; left:496px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_29')"></div>
+                            <div id="ilsb_d1r" class="circle_two" style="top:467px; left:621px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'ilsb_d1')"></div>
+                            <div id="purpleint_17r" class="circle_two" style="top:427px; left:686px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_17')"></div>
+                            <div id="purpleint_18r" class="circle_two" style="top:431px; left:705px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_18')"></div>
+                            <div id="purpleint_19r" class="circle_two" style="top:421px; left:724px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_19')"></div>
+                            <div id="purpleint_20r" class="circle_two" style="top:403px; left:739px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_20')"></div>
+                            <div id="purpleint_21r" class="circle_two" style="top:381px; left:722px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_21')"></div>
+                            <div id="ilsb_d2r" class="circle_two" style="top:444px; left:690px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'ilsb_d2')"></div>
+                            <div id="purpleint_31r" class="circle_two" style="top:777px; left:603px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_31')"></div>
+                            <div id="purpleint_32r" class="circle_two" style="top:777px; left:473px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_32')"></div>
+                            <div id="purpleint_33r" class="circle_two" style="top:755px; left:445px;" onclick="sendNodeReport('reportNodeOptions', 'purpleint_33')"></div>
+
+                            <!--Pink-->
+                            <div id="aoklibd2r" class="circle_two" style="top:167px; left:366px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'aoklibd2')"></div> 
+                            <div id="aoklibd3r" class="circle_two" style="top:197px; left:421px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'aoklibd3')"></div>
+                            <div id="pinkint35r" class="circle_two" style="top:225px; left:448px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint35')"></div>
+                            <div id="pinkint34r" class="circle_two" style="top:197px; left:498px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint34')"></div>
+                            <div id="pinkint40r" class="circle_two" style="top:214px; left:517px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint40')"></div>
+                            <div id="pinkint33r" class="circle_two" style="top:231px; left:535px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint33')"></div>
+                            <div id="pinkint32r" class="circle_two" style="top:197px; left:538px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint32')"></div>
+                            <div id="pinkint31r" class="circle_two" style="top:62px; left:541px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint31')"></div>
+                            <div id="physicsd3r" class="circle_two" style="top:388px; left:757px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'physicsd3')"></div>
+                            <div id="pinkint24r" class="circle_two" style="top:368px; left:725px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint24')"></div>
+                            <div id="pinkint20r" class="circle_two" style="top:295px; left:771px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint20')"></div>
+                            <div id="physicsd1r" class="circle_two" style="top:311px; left:763px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'physicsd1')"></div>
+                            <div id="pinkint21r" class="circle_two" style="top:307px; left:748px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint21')"></div>
+                            <div id="pinkint23r" class="circle_two" style="top:312px; left:725px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint23')"></div>
+                            <div id="pinkint22r" class="circle_two" style="top:295px; left:725px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint22')"></div>
+                            <div id="pinkint28r" class="circle_two" style="top:195px; left:700px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint28')"></div>
+                            <div id="pinkint17r" class="circle_two" style="top:196px; left:730px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint17')"></div>
+                            <div id="pinkint39r" class="circle_two" style="top:196px; left:785px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint39')"></div>
+                            <div id="pinkint11r" class="circle_two" style="top:196px; left:857px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint11')"></div>
+                            <div id="pubpold2r" class="circle_two" style="top:213px; left:785px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'pubpold2')"></div>
+                            <div id="pinkint29r" class="circle_two" style="top:240px; left:657px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint29')"></div>
+                            <div id="pinkint36r" class="circle_two" style="top:232px; left:725px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint36')"></div>
+                            <div id="pubpold1r" class="circle_two" style="top:231px; left:751px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'pubpold1')"></div>
+                            <div id="pinkint18r" class="circle_two" style="top:254px; left:725px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint18')"></div>
+                            <div id="pinkint19r" class="circle_two" style="top:254px; left:795px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint19')"></div>
+                            <div id="pinkint27r" class="circle_two" style="top:58px; left:709px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint27')"></div>
+                            <div id="pinkint14r" class="circle_two" style="top:58px; left:727px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint14')"></div>   
+                            <div id="pinkint38r" class="circle_two" style="top:58px; left:776px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint38')"></div>      
+                            <div id="pinkint13r" class="circle_two" style="top:58px; left:857px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint13')"></div>
+                            <div id="pinkint15r" class="circle_two" style="top:93px; left:729px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint15')"></div>
+                            <div id="cwbd1r" class="circle_two" style="top:93px; left:743px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'cwbd1')"></div>
+                            <div id="cwbd2r" class="circle_two" style="top:79px; left:779px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'cwbd2')"></div>
+                            <div id="pinkint12r" class="circle_two" style="top:104px; left:858px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint12')"></div>
+                            <div id="pinkint16r" class="circle_two" style="top:173px; left:733px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint16')"></div>
+                            <div id="pinkint10r" class="circle_two" style="top:173px; left:857px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint10')"></div>
+                            <div id="pinkint1r" class="circle_two" style="top:3px; left:932px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint1')"></div>
+                            <div id="pinkint2r" class="circle_two" style="top:36px; left:972px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint2')"></div>
+                            <div id="pinkint3r" class="circle_two" style="top:40px; left:986px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint3')"></div>
+                            <div id="dhalld1r" class="circle_two" style="top:44px; left:933px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'dhalld1')"></div>
+                            <div id="pinkint37r" class="circle_two" style="top:42px; left:962px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint37')"></div>
+                            <div id="pinkint4r" class="circle_two" style="top:53px; left:972px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint4')"></div>
+                            <div id="dhalld3r" class="circle_two" style="top:99px; left:869px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'dhalld3')"></div>
+                            <div id="dhalld2r" class="circle_two" style="top:121px; left:909px; background-color: blue;" onclick="sendNodeReport('reportNodeOptions', 'dhalld2')"></div>
+                            <div id="pinkint5r" class="circle_two" style="top:112px; left:961px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint5')"></div>
+                            <div id="pinkint9r" class="circle_two" style="top:142px; left:909px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint9')"></div>
+                            <div id="pinkint8r" class="circle_two" style="top:154px; left:949px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint8')"></div>
+                            <div id="pinkint6r" class="circle_two" style="top:142px; left:965px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint6')"></div>
+                            <div id="pinkint7r" class="circle_two" style="top:173px; left:963px;" onclick="sendNodeReport('reportNodeOptions', 'pinkint7')"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="another_dark_screen" class="dark_screen_layer_two" style="display: none;" onclick="closeNodeReport()">
+                <div id="reportNodeOptions" class="node_report_options_style" style="display: none;">
+                    <div class="UI_exit_button" onclick="sendNodeReport('reportNodeOptions', 'none')">&times;</div>
+                    <h2 style="font-weight: bold; padding-top: 12px">Send report?</h2>
+                    <div class="report_buttons">
+                        <button class="report_button_ui_route" style="background-color: rgb(202, 202, 202)" onclick="sendNodeReport('reportNodeOptions', 'none')">No</button>
+                        <button id="reportNodeButton" class="report_button_ui_website">Yes</button>
+                    </div>
                 </div>
             </div>
         </div>
