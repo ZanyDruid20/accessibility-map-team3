@@ -434,3 +434,198 @@ function addToCart(box_id, series_cover, series_price){
 }
 
 */
+
+function turnOnUIPopUp(name){
+
+    const uiBox = document.getElementById(name);
+    const dark_box = document.getElementById('aboutUsDarkScreen');
+    if (uiBox.style.display == 'none'){
+        uiBox.style.display = 'block';
+        dark_box.style.display = 'flex';
+    }else{
+        uiBox.style.display = 'none';
+        dark_box.style.display = 'none';
+        console.log('hi')
+    }
+
+}
+
+function turnOnUIReportPopUp(name){
+
+    const uiBox = document.getElementById(name);
+    const reportBox = document.getElementById('reportOptionsUI');
+    if (uiBox.style.display == 'none'){
+        uiBox.style.display = 'block';
+        reportBox.style.display = 'none';
+    }else{
+        reportBox.style.display = 'block';
+        uiBox.style.display = 'none';
+    }
+
+    if (name === 'chooseNodeReport'){
+        const nodeMap = document.getElementById("report-map-wrapper")
+        nodeMap.innerHTML='<object type="text/html" data="report_map.html" ></object>';
+    }
+
+}
+
+const dark_screen = document.querySelector('.dark_screen');
+
+dark_screen.addEventListener('click', function (e) {
+  if (e.target === this) {
+    console.log('Container clicked!');
+    const childElements = this.children;
+    for (const child of childElements){
+        child.style.display = 'none';
+        this.style.display = 'none';
+    }
+  }
+});
+
+document.querySelector(".report_button_ui_route").addEventListener('mouseenter', () => {
+    console.log('hitting');
+    document.querySelector("#regular_message").innerText = 'Report an unavailable pathway/door/node/elevator';
+});
+
+document.querySelector(".report_button_ui_route").addEventListener('mouseleave', () => {
+    document.querySelector("#regular_message").innerText = 'A route report or a website bug/error report?';
+});
+
+document.querySelector(".report_button_ui_website").addEventListener('mouseenter', () => {
+    console.log('hitting');
+    document.querySelector("#regular_message").innerText = 'Report an error with the website itself';
+});
+
+document.querySelector(".report_button_ui_website").addEventListener('mouseleave', () => {
+    document.querySelector("#regular_message").innerText = 'A route report or a website bug/error report?';
+});
+
+const report_website_form = document.querySelector('.report_website_form');
+
+// Add a submit event listener
+report_website_form.addEventListener('submit', (event) => {
+    event.preventDefault(); // prevent page reload
+
+    // Get the textarea value
+    const message = document.querySelector('#myInput').value;
+
+    // Log or use the value
+    console.log(message);
+    //POST REQUEST GOES HERE
+});
+
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /*loop through a collection of all HTML elements:*/
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /*make an HTTP request using the attribute value as the file name:*/
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /*remove the attribute, and call this function once more:*/
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }      
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /*exit the function:*/
+      return;
+    }
+  }
+};
+
+let isPanningTwo = false;
+let startXTwo = 0;
+let startYTwo = 0;
+let posXTwo = 0;
+let posYTwo = 0;
+let scaleTwo = 1;
+
+// Reference the popup map container and its inner content
+const containerTwo = document.getElementById('popup-map-container'); // outer container
+const wrapperTwo = document.getElementById('popup-map-wrapper'); // inner map element (image or map div)
+
+// Handle mouse drag (panning)
+containerTwo.addEventListener('mousedown', e => {
+  isPanningTwo = true;
+  startXTwo = e.clientX - posXTwo;
+  startYTwo = e.clientY - posYTwo;
+  containerTwo.style.cursor = 'grabbing';
+});
+
+containerTwo.addEventListener('mouseup', () => {
+  isPanningTwo = false;
+  containerTwo.style.cursor = 'grab';
+});
+
+containerTwo.addEventListener('mouseleave', () => {
+  // stop dragging if mouse leaves container
+  isPanningTwo = false;
+  containerTwo.style.cursor = 'grab';
+});
+
+containerTwo.addEventListener('mousemove', e => {
+  if (!isPanningTwo) return;
+  posXTwo = e.clientX - startXTwo;
+  posYTwo = e.clientY - startYTwo;
+  updateTransformTwo();
+});
+
+// Handle scroll wheel zoom for popup map
+containerTwo.addEventListener('wheel', e => {
+  e.preventDefault();
+  const zoomIntensity = 0.1;
+  const delta = e.deltaY < 0 ? 1 : -1;
+  scaleTwo += delta * zoomIntensity;
+  scaleTwo = Math.min(Math.max(0.5, scaleTwo), 3); // limit zoom range
+  updateTransformTwo();
+});
+
+function updateTransformTwo() {
+  wrapperTwo.style.transform = `translate(${posXTwo}px, ${posYTwo}px) scale(${scaleTwo})`;
+}
+
+function sendNodeReport(name, nodeName) {
+
+    const uiBox = document.getElementById(name);
+    const secondDarkScreen = document.getElementById("another_dark_screen");
+    const reportButton = document.getElementById("reportNodeButton");
+
+    if (uiBox.style.display == 'none'){
+        uiBox.style.display = 'block';
+        secondDarkScreen.style.display = 'flex';
+
+    }else{
+        uiBox.style.display = 'none';
+        secondDarkScreen.style.display = 'none';
+        return;
+    }
+
+    reportButton.dataset.nodeName = nodeName;
+
+    reportButton.onclick = () => {
+        const id = reportButton.dataset.nodeName;
+        console.log("Reporting node:", id);
+        uiBox.style.display = 'none';
+        secondDarkScreen.style.display = 'none';
+        //INSERT PUT REQUEST HERE
+    };
+
+}
+
+function closeNodeReport() {
+
+    const uiBox = document.getElementById("reportNodeOptions");
+    const secondDarkScreen = document.getElementById("another_dark_screen");
+    uiBox.style.display = 'none';
+    secondDarkScreen.style.display = 'none';
+
+}
