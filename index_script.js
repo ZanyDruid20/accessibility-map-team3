@@ -2,25 +2,25 @@
 
 // List of valid building names and alternate names
 const buildings = {
-    "ADMIN": ["administration building", "admin", "admin building", "administration"],
-    "BioSci": ["biological sciences building", "bio sci", "biology", "biological sciences"],
-    "Commons": ["the commons", "commons building"],
-    "ENG": ["engineering building", "engineering"],
-    "FINE ARTS": ["fa", "fine arts building", "fine arts"],
-    "ITE": ["information and technology/engineering building", "it", "ite", "information and technology"],
-    "ILSB": ["interdisciplinary life sciences building", "interdisciplinary life sciences", "ilsb"],
-    "Lecture Hall 1": ["lecture hall 1", "lh1"],
-    "AOKLib": ["library & gallery, albin o. kuhn", "library", "aok", "aok library"],
-    "MathandPsych": ["math and psychology building", "math and psychology", "math and psych"],
-    "MEYER": ["meyerhoff chemistry building", "meyerhoff", "chemistry"],
-    "PAHB": ["performing arts and humanities building", "performing arts", "humanities", "pahb"],
-    "PHYSICS": ["physics building", "physics"],
-    "PUBPOL": ["public policy building", "public policy", "pb"],
-    "RAC": ["retriever activities center", "rac", "gym"],
-    "Sondheim": ["sondheim hall", "sondheim"],
-    "CWB": ["the center for well-being", "center for well-being", "rih", "wellbeing center"],
-    "DHALL": ["true grit’s", "dining hall", "true grits"],
-    "UC": ["university center", "uc"]
+    "admin": ["administration building", "admin", "admin building", "administration"],
+    "biosci": ["biological sciences building", "bio sci", "biology", "biological sciences"],
+    "commons": ["the commons", "commons building"],
+    "eng": ["engineering building", "engineering"],
+    "fine arts": ["fa", "fine arts building", "fine arts"],
+    "ite": ["information and technology/engineering building", "it", "ite", "information and technology"],
+    "ilsb": ["interdisciplinary life sciences building", "interdisciplinary life sciences", "ilsb"],
+    "lecture hall 1": ["lecture hall 1", "lh1"],
+    "aoklib": ["library & gallery, albin o. kuhn", "library", "aok", "aok library"],
+    "mathandpysch": ["math and psychology building", "math and psychology", "math and psych"],
+    "meyer": ["meyerhoff chemistry building", "meyerhoff", "chemistry"],
+    "pahb": ["performing arts and humanities building", "performing arts", "humanities", "pahb"],
+    "physics": ["physics building", "physics"],
+    "puppol": ["public policy building", "public policy", "pb"],
+    "rac": ["retriever activities center", "rac", "gym"],
+    "sondheim": ["sondheim hall", "sondheim"],
+    "cwb": ["the center for well-being", "center for well-being", "rih", "wellbeing center"],
+    "dhall": ["true grit’s", "dining hall", "true grits"],
+    "uc": ["university center", "uc"]
 };
 
 // Normalize input for comparison
@@ -73,8 +73,37 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("End:", endCanonical);
         
         // TODO: Connect to backend
+        const url = `http://localhost:8000/shortest-path?start_building=${encodeURIComponent(start)}&end_building=${encodeURIComponent(end)}`;
 
-    });
+        // fetch(url, {
+        //   method: "GET", // or "GET", depending on your backend route
+        //   // headers: {
+        //   //   "Content-Type": "application/json",
+        //   // },
+        // })
+
+        // .then(data => {console.warn(data)})
+
+        fetch(url)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            // Convert the Response object into usable JSON
+            return response.json();
+          })
+          .then(data => {
+            console.log("Received data from backend:", data);
+            console.log(data.path[0])
+            console.log(data.total_time_sec)
+            // 👇 now you can use 'data' however you want
+            showPath(data.path)
+          })
+          .catch(error => {
+            console.error("Fetch error:", error);
+          });
+
+        });
 });
 
 const container = document.getElementById('map-container');
@@ -109,6 +138,9 @@ function showPath(flag_array) {
     for (let i = 0; i < flag_array.length - 1; i++) {
         const startFlag = document.getElementById(flag_array[i]);
         const endFlag = document.getElementById(flag_array[i + 1]);
+        // if ((startFlag == "purpleint_7" && endFlag == "aoklib_d2") || (startFlag == "aoklib_d2" && endFlag == "purpleint_7")){
+          
+        // }
         if (!startFlag || !endFlag) continue;
 
         const startX = parseFloat(startFlag.style.left);

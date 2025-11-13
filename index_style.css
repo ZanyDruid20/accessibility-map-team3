@@ -536,7 +536,7 @@ body {
   background-color: red;
   position: absolute;
   /*Will be made hidden on actual map*/
-  visibility: visible;
+  visibility: hidden;
   border: 1px solid rgb(0, 0, 0);
 
 }
@@ -556,12 +556,32 @@ body {
   background-color: red;
   position: absolute;
   /*Will be made hidden on actual map*/
-  visibility: visible;
+  visibility: hidden;
   border: 1px solid rgb(0, 0, 0);
 
 }
 
 .circle_two:hover {
+
+  cursor: pointer;
+  background-color: yellow !important;
+
+}
+
+.circle_three {
+
+  width: 10px;
+  height: 10px;
+  border-radius: 45px;
+  background-color: rgb(90, 255, 84);
+  position: absolute;
+  /*Will be made hidden on actual map*/
+  visibility: hidden;
+  border: 1px solid rgb(0, 0, 0);
+
+}
+
+.circle_three:hover {
 
   cursor: pointer;
   background-color: yellow !important;
@@ -808,13 +828,6 @@ body.admin-login * { box-sizing: border-box; } /* safe global for login page */
     
 }
 
-
-
-
-
-
-
-
 .dark_screen {
   position: fixed;
   top: 0;
@@ -823,7 +836,7 @@ body.admin-login * { box-sizing: border-box; } /* safe global for login page */
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9998;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 }
@@ -1004,7 +1017,7 @@ textarea {
 .node_report_options_style {
 
   position: absolute;
-  display: block;
+  display: none;
   width: auto;
   height: auto;
   background-color: beige;
