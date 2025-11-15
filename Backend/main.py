@@ -258,7 +258,7 @@ async def get_unresolved_reports():
                     for r in rows
                 ]
 
-                return reports
+                return {"reports": reports}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Database error: {e}")
@@ -343,3 +343,4 @@ async def toggle_node_status(node: str = Query(...)):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Database error: {e}")
+
