@@ -75,3 +75,11 @@ CREATE TABLE Paths (
         ON DELETE CASCADE
 );
 
+-- ===========================================================
+-- REPORTS
+-- ===========================================================
+CREATE TABLE Reports (
+    report_id INT AUTO_INCREMENT PRIMARY KEY,
+    state BOOLEAN DEFAULT 0, -- 0 for unresolved, 1 once resolved
+    content TEXT
+);
