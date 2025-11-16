@@ -115,12 +115,12 @@ let isPanning = false;
 let startX, startY;
 let currentPopUp = '';
 let popUpStatus = '';
-let flag_array = ['PAHB_FLAG', 'PAHB_d1', 'greenint_10', 'greenint_11', 'ENG_d3', 'ENG_FLAG', 'ENG_d1', 'greenint_17',  'UC_d1', 'UC_FLAG', 'uc_d9', 'blueint_13', 'blueint_6', 'blueint_5', 'mathpsych_d1', 'MATHPSYCH_FLAG'];
+//let flag_array = ['PAHB_FLAG', 'pahb_d1', 'greenint_2', 'greenint_3', 'purpleint_7', 'aoklib_d2', 'purpleint_2', 'purpleint_1',  'pinkint_9', 'pinkint_5', 'uc_d9', 'blueint_13', 'blueint_6', 'blueint_5', 'mathpsych_d1', 'MATHPSYCH_FLAG'];
 
 function showPath(flag_array) {
 
-    //Will need to adjust function for the curved lines
     let svg = document.getElementById("path-lines");
+    console.log("YADA");
     if (!svg) {
         svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         svg.setAttribute("id", "path-lines");
@@ -138,31 +138,88 @@ function showPath(flag_array) {
     for (let i = 0; i < flag_array.length - 1; i++) {
         const startFlag = document.getElementById(flag_array[i]);
         const endFlag = document.getElementById(flag_array[i + 1]);
-        // if ((startFlag == "purpleint_7" && endFlag == "aoklib_d2") || (startFlag == "aoklib_d2" && endFlag == "purpleint_7")){
-          
-        // }
-        if (!startFlag || !endFlag) continue;
+        if ((flag_array[i] == "purpleint_7" && flag_array[i + 1] == "aoklib_d2") || (flag_array[i] == "aoklib_d2" && flag_array[i + 1] == "purpleint_7")){
+          console.log("YADA");
+          const curvedPath = document.getElementById("curved_path1");
+          curvedPath.style.visibility = "visible";
+        } else if ((flag_array[i] == "greenint_2" && flag_array[i + 1] == "greenint_3") || (flag_array[i] == "greenint_3" && flag_array[i + 1] == "greenint_2")){
+          console.log("YADA");
+          const curvedPath = document.getElementById("curved_path2");
+          curvedPath.style.visibility = "visible";
+        } else if ((flag_array[i] == "purpleint_2" && flag_array[i + 1] == "purpleint_1") || (flag_array[i] == "purpleint_1" && flag_array[i + 1] == "purpleint_2")){
+          console.log("YADA");
+          const curvedPath = document.getElementById("curved_path3");
+          curvedPath.style.visibility = "visible";
+        } else if ((flag_array[i] == "pinkint_10" && flag_array[i + 1] == "pinkint_9") || (flag_array[i] == "pinkint_9" && flag_array[i + 1] == "pinkint_10")){
+          console.log("YADA");
+          const curvedPath = document.getElementById("curved_path4");
+          curvedPath.style.visibility = "visible";
+        } else if ((flag_array[i] == "pinkint_5" && flag_array[i + 1] == "pinkint_9") || (flag_array[i] == "pinkint_9" && flag_array[i + 1] == "pinkint_5")){
+          console.log("YADA");
+          const curvedPath = document.getElementById("curved_path5");
+          curvedPath.style.visibility = "visible";
+        } else if ((flag_array[i] == "pinkint_12" && flag_array[i + 1] == "pinkint_9") || (flag_array[i] == "pinkint_9" && flag_array[i + 1] == "pinkint_12")){
+          console.log("YADA");
+          const curvedPath = document.getElementById("curved_path6");
+          curvedPath.style.visibility = "visible";
+        } else {
+          if (!startFlag || !endFlag) continue;
 
-        const startX = parseFloat(startFlag.style.left);
-        const startY = parseFloat(startFlag.style.top);
-        const endX = parseFloat(endFlag.style.left);
-        const endY = parseFloat(endFlag.style.top);
+          const startX = parseFloat(startFlag.style.left);
+          const startY = parseFloat(startFlag.style.top);
+          const endX = parseFloat(endFlag.style.left);
+          const endY = parseFloat(endFlag.style.top);
 
-        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-        line.setAttribute("x1", startX + startFlag.offsetWidth / 2);
-        line.setAttribute("y1", startY + startFlag.offsetHeight / 2);
-        line.setAttribute("x2", endX + endFlag.offsetWidth / 2);
-        line.setAttribute("y2", endY + endFlag.offsetHeight / 2);
-        line.setAttribute("stroke", "#5294ff");
-        line.setAttribute("stroke-width", "4");
+          const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          line.setAttribute("x1", startX + startFlag.offsetWidth / 2);
+          line.setAttribute("y1", startY + startFlag.offsetHeight / 2);
+          line.setAttribute("x2", endX + endFlag.offsetWidth / 2);
+          line.setAttribute("y2", endY + endFlag.offsetHeight / 2);
+          line.setAttribute("stroke", "#5294ff");
+          line.setAttribute("stroke-width", "4");
 
-        svg.appendChild(line);
+          svg.appendChild(line);
+          addArrowsAlongLine(svg,
+            startX + startFlag.offsetWidth / 2,
+            startY + startFlag.offsetHeight / 2,
+            endX + endFlag.offsetWidth / 2,
+            endY + endFlag.offsetHeight / 2
+          );
 
-        startFlag.style.visibility = "visible";
-        endFlag.style.visibility = "visible";
-        wrapper.appendChild(svg);
+          if ((flag_array[i].includes("_d")) || (flag_array[i].includes("_e"))) {
+            startFlag.style.visibility = "visible";
+          }
+          if ((flag_array[i+1].includes("_d")) || (flag_array[i+1].includes("_e"))) {
+            endFlag.style.visibility = "visible";
+          }
+          wrapper.appendChild(svg);
+        }
     }
 }
+
+function addArrowsAlongLine(svg, x1, y1, x2, y2) {
+    const ARROW_SPACING = 40;
+
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const length = Math.hypot(dx, dy);
+    const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+    const steps = Math.floor(length / ARROW_SPACING);
+
+    for (let i = 1; i < steps; i++) {
+        const px = x1 + (dx * (i / steps));
+        const py = y1 + (dy * (i / steps));
+
+        const arrow = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+        arrow.setAttribute("points", "0,-6 12,0 0,6");
+        arrow.setAttribute("fill", "#5294ff");
+        arrow.setAttribute("transform", `translate(${px},${py}) rotate(${angle})`);
+
+        svg.appendChild(arrow);
+    }
+}
+
 /*
 function showPath(flag_array){
 
@@ -661,3 +718,4 @@ function closeNodeReport() {
     secondDarkScreen.style.display = 'none';
 
 }
+

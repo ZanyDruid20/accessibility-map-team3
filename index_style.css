@@ -666,6 +666,7 @@ body.admin-login::after {
     color: black;
     text-decoration: none;
     margin: 20px;
+    margin-bottom: 0px;
     cursor: pointer;
 }
 
@@ -674,7 +675,7 @@ body.admin-login::after {
 }
 
 .back-arrow {
-    width: 100px;  /* adjust size as needed */
+    width: 6.5%; 
     height: auto;
     margin-right: 14px;
 }
@@ -1040,3 +1041,231 @@ textarea {
   align-items: center;
   justify-content: center;
 }
+
+.report_view_container {
+
+  margin-top: 4%;
+  margin-left: 1%;
+  display: flex;
+  border: 1px solid rgb(255, 0, 0);
+  height: 70%;
+
+}
+
+.back_button_placement {
+
+  margin-top: 1%;
+  margin-left: 1%;
+  border: 1px solid rgb(255, 0, 0);
+
+}
+
+.side_bar_reports {
+
+  width: 20%;
+  height: 100%;
+  background-color: rgb(250, 250, 250);
+  border-radius: 25px;
+  box-shadow: 1px 5px 10px gray;
+  justify-content: center;
+
+}
+
+.report_bar_label {
+
+  position: sticky;
+  margin-top: 5px;
+  height: 15%;
+  width: 70%;
+  background-color: rgb(238, 176, 41);
+  border-radius: 25px;
+  text-align: center;
+  line-height: 120px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  color: black;
+  box-shadow: 1px 5px 10px gray;
+  margin-left: 15%;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.reports_list {
+
+  direction: rtl;
+  overflow-y: scroll;
+  width: 100%;
+  height: 75%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 10px;
+  scrollbar-color: #BABABA transparent;
+  scrollbar-width: thin;
+  padding-right: 10px;
+  box-sizing: border-box;
+
+}
+
+.report_item {
+
+  min-height: 80px;
+  width: 70%;
+  background-color: rgb(202, 199, 199);
+  border-radius: 25px;
+  border: 2px solid black;
+  box-shadow: 1px 5px 10px gray;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 550;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  color: black;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.report_item:hover:not(.selected) {
+
+  cursor: pointer;
+  background-color: rgb(228, 228, 228);
+  border: 5px solid rgb(238, 176, 41);
+
+}
+
+.report_item.selected {
+  /* background-color: rgb(228, 228, 228); */
+  background-color: rgb(255, 234, 201);
+  border: 5px solid rgb(238, 176, 41);
+}
+
+.reports_list > .report_item {
+  direction: ltr;
+}
+
+.reports_list::-webkit-scrollbar {
+  width: 10px;
+}
+.reports_list::-webkit-scrollbar-thumb {
+  background-color: #BABABA;
+  border-radius: 6px;
+}
+.reports_list::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+
+
+.report_message_view {
+
+  width: 100%;
+  border: 1px solid rgb(21, 255, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.center_report {
+
+  width: 60%;
+  height: 85%;
+  border: 1px solid rgb(255, 0, 221);
+  background-color: rgb(230, 230, 230);
+  border-radius: 25px;
+  box-shadow: 1px 5px 10px gray;
+
+}
+
+.report_title_container {
+
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  border: 1px solid rgb(115, 255, 0);
+  padding: 20px;
+
+}
+
+.report_title {
+
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  font-size: 36px; 
+  width: 50%;
+  border: 2px solid black;
+  background-color: rgb(238, 176, 41);
+  color: black;
+  border-radius: 25px;
+  font-weight: bold;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  box-shadow: 1px 5px 10px gray;
+
+}
+
+.report_body_container {
+
+  border: 1px solid rgb(255, 0, 0);
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  height: 75%;
+
+}
+
+.report_body {
+
+  width: 85%;
+  height: 80%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 25px;
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+
+}
+
+.report_message {
+
+  font-size: 20px;
+  width: 95%;
+  height: 95%;
+  border: 1px solid rgb(255, 0, 0);
+  word-wrap: break-word;
+  overflow: auto;
+
+}
+
+.resolve_button_container {
+
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+
+}
+
+.resolve_button {
+
+  background-color: rgb(31, 224, 31);
+  border-radius: 25px;
+  height: 60px;
+  width: 140px;
+  font-size: 24px;
+  color: black;
+  box-shadow: 1px 5px 10px gray;
+  font-weight: bold;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+
+}
+
+
