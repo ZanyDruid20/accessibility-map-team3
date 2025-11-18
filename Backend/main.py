@@ -4,6 +4,8 @@ from database import get_db_pool
 from astar import a_star
 import asyncio
 from models import ReportCreate
+from Login import router as login_router  # type: ignore
+from Threshold import router as threshold_router
 
 app = FastAPI()
 db_pool = None
@@ -15,6 +17,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# include routers from other modules
+app.include_router(login_router, prefix="/auth", tags=["Authentication"])
+app.include_router(threshold_router, prefix="/main", tags=["Main Page"])
 
 @app.on_event("startup")
 async def startup():
@@ -301,7 +307,7 @@ async def toggle_node_status(node: str = Query(...)):
                 async with conn.cursor() as cur:
                     await cur.execute("""
                         UPDATE Nodes
-                        SET on_off = NOT on_off
+                        SET on_off = NOT on_off, threshold = 0
                         WHERE door_id = %s
                     """, (node))
                     await conn.commit()
@@ -343,4 +349,3 @@ async def toggle_node_status(node: str = Query(...)):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Database error: {e}")
-
