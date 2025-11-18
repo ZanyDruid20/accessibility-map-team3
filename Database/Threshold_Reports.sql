@@ -1,7 +1,0 @@
-USE campus_map;
-
-CREATE TABLE IF NOT EXISTS Reports (
-    report_id INT AUTO_INCREMENT PRIMARY KEY,
-    report_text TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
