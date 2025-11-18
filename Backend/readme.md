@@ -62,6 +62,34 @@ The following is a description of the backend used in this project and how to se
 - {"message": f"Report {report_id} marked resolved"}
 - The report is marked resolved in the database and won't be displayed with the /reports command
 
+### @app.post("/nodes/toggle")
+1. Purpose:
+- Allows the admin to turn off or on a specific node, ressetting threshold to 0, changing its avaiablitlity for path finding
+2. Parameters:
+- node (str): a string with the unique id of the node (ex: aoklib_d1)
+3. Output:
+- {"message": f"Node: {node} on_off changed and threshold reset to 0"}
+- The node's on_off is changed to its opposite and its threshold is now 0
+
+### @router.post("/login")
+1. Purpose:
+- Allows an admin user to login
+2. Parameters:
+- LoginRequest (json file): A json file consisteing of the username and password
+- Format: { "username": "string", "password": "string" }
+3. Output:
+- If admin exist in database: {"success": True, "message": "Login successful"}
+- If admin does not exist: {"detail": "Invalid username or password"}
+NOTE: Create new admin users by running create_admin.py
+
+### @router.put("/update_threshold")
+1. Purpose:
+- Allows users to report a node as broken, adding one to the threshold count. Once threshold is greater than 3, the node will be turned off and not considered for path finding
+2. Parameters:
+- node_id (str): a string with the unique id of the node (ex: aoklib_d1)
+3. Output:
+- {"success": True, "node_id": node_id, "new_threshold": new_threshold, "on_off_status": on_off }
+
 
 
 
