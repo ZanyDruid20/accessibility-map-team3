@@ -46,7 +46,7 @@ NOTE: /path/to/ should be whereever in your computer you downloaded the .sql fil
     (NOTE: This should be whereever in your computer you downloaded the .sql file)
 8. You should get indicators of success printed on your console output (if not uhh.. contact me: Kaila)
 
-Note: If you run into issues you can type "DROP DATABASE campus_map;" to delete the whole database and start over (start with number 2.4 since there is no need to reinstall mariadbor log back in)
+Note: If you run into issues you can type "DROP DATABASE campus_map;" to delete the whole database and start over (start with number 2.4 since there is no need to reinstall mariadb or log back in)
 
 ## THE DATABASE DESCRIPTION
 
@@ -138,6 +138,7 @@ Defines the connections between two nodes, enabling pathfinding or route analysi
 2. DESCRIBE table_name; (describes attributes of your chosen table)
 3. SELECT * FROM table_name; (outputs everything inserted into your chosen table)
 4. SELECT * FROM table_name WHERE attribute_name LIKE 'example'; (outputs everything in your chosen table that matches the where condition )
+
 
 
 
