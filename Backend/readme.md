@@ -73,13 +73,13 @@ The following is a description of the backend used in this project and how to se
 
 ### @router.post("/login")
 1. Purpose:
-- Allows an admin user to login
+    - Allows an admin user to login
 2. Parameters:
-- LoginRequest (json file): A json file consisteing of the username and password
-- Format: { "username": "string", "password": "string" }
+    - LoginRequest (json file): A json file consisteing of the username and password
+    - Format: { "username": "string", "password": "string" }
 3. Output:
-- If admin exist in database: {"success": True, "message": "Login successful"}
-- If admin does not exist: {"detail": "Invalid username or password"}
+    - If admin exist in database: {"success": True, "message": "Login successful"}
+    - If admin does not exist: {"detail": "Invalid username or password"}
 NOTE: Create new admin users by running create_admin.py
 
 ### @router.put("/update_threshold")
@@ -89,6 +89,7 @@ NOTE: Create new admin users by running create_admin.py
 - node_id (str): a string with the unique id of the node (ex: aoklib_d1)
 3. Output:
 - {"success": True, "node_id": node_id, "new_threshold": new_threshold, "on_off_status": on_off }
+
 
 
 
