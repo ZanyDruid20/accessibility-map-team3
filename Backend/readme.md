@@ -18,7 +18,7 @@ The following is a description of the backend used in this project and how to se
 1. Navigate to the folder holding all relevant files in your terminal
 2. run 'uvicorn main:app --reload'
 3. Open your browser and run your request
-    - ex: http://127.0.0.1:8000/shortest-path?start_building=A&end_building=B
+    - ex: http://127.0.0.1:8000/docs
     - NOTE: shortest-path is the only request that exists right now; replace A and B with the buildings you wish to navigate to and from
 5. If you run into issues contact me (Kaila)
 
@@ -89,6 +89,7 @@ The following is a description of the backend used in this project and how to se
     - node_id (str): a string with the unique id of the node (ex: aoklib_d1)
 3. Output:
     - {"success": True, "node_id": node_id, "new_threshold": new_threshold, "on_off_status": on_off }
+
 
 
 
