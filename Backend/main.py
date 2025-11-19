@@ -349,3 +349,31 @@ async def toggle_node_status(node: str = Query(...)):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Database error: {e}")
+
+@app.get("/nodes/off")
+async def get_off_nodes():
+    try:
+        async with db_pool.acquire() as conn:
+            async with conn.cursor() as cur:
+
+                await cur.execute("""
+                    SELECT door_id, elevator_id, intersection_id
+                    FROM Nodes
+                    WHERE on_off = 0
+                """)
+                rows = await cur.fetchall()
+
+                results = []
+
+                for row in rows:
+                    if row[0] is not None:
+                        results.append(row[0])
+                    elif row[1] is not None:
+                        results.append(row[1])
+                    elif row[2] is not None:
+                        results.append(row[2])
+
+                return {"off_nodes": results}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {e}")
