@@ -1,5 +1,3 @@
-// index_script.js
-
 // List of valid building names and alternate names
 const buildings = {
     "admin": ["administration building", "admin", "admin building", "administration"],
@@ -118,14 +116,12 @@ document.addEventListener("DOMContentLoaded", function() {
             if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            // Convert the Response object into usable JSON
             return response.json();
           })
           .then(data => {
             console.log("Received data from backend:", data);
             console.log(data.path[0])
             console.log(data.total_time_sec)
-            // 👇 now you can use 'data' however you want
             showPath(data.path)
           })
           .catch(error => {
@@ -144,7 +140,6 @@ let isPanning = false;
 let startX, startY;
 let currentPopUp = '';
 let popUpStatus = '';
-//let flag_array = ['PAHB_FLAG', 'pahb_d1', 'greenint_2', 'greenint_3', 'purpleint_7', 'aoklib_d2', 'purpleint_2', 'purpleint_1',  'pinkint_9', 'pinkint_5', 'uc_d9', 'blueint_13', 'blueint_6', 'blueint_5', 'mathpsych_d1', 'MATHPSYCH_FLAG'];
 
 function showPath(flag_array) {
 
@@ -249,80 +244,6 @@ function addArrowsAlongLine(svg, x1, y1, x2, y2) {
     }
 }
 
-/*
-function showPath(flag_array){
-
-    for(let i = 0; i < (flag_array.length - 1); i++){
-
-        const createSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        createSVG.style.position = "absolute";
-        createSVG.style.width = "100%";
-        createSVG.style.height = "100%";
-        svg.style.pointerEvents = "none";
-
-        const startFlag = document.getElementById(flag_array[i]);
-        const endFlag = document.getElementById(flag_array[i+1]);
-        const startName = startFlag.id;
-        const endName = endFlag.id;
-        const startXCoord = startFlag.style.left;
-        const startYCoord = startFlag.style.top;
-        const endXCoord = endFlag.style.left;
-        const endYCoord = endFlag.style.top;
-        console.log("Start Node: " + startName + " (" + startXCoord, startYCoord + ") End Node: " + endName + " (" + endXCoord, endYCoord + ")");
-        startFlag.style.visibility = 'visible';
-        endFlag.style.visibility = 'visible';
-
-        const createLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
-        //createLine.setAttribute("x1", startX + startFlag.offsetWidth / 2);
-        //createLine.setAttribute("y1", startY + startFlag.offsetHeight / 2);
-        //createLine.setAttribute("x2", endX + endFlag.offsetWidth / 2);
-        //createLine.setAttribute("y2", endY + endFlag.offsetHeight / 2);
-
-        createLine.setAttribute("x1", startXCoord);
-        createLine.setAttribute("y1", startYCoord);
-        createLine.setAttribute("x2", endXCoord);
-        createLine.setAttribute("y2", endYCoord);
-        createSVG.appendChild(createLine);
-
-        container.appendChild(createSVG);
-
-    }
-
-}
-*/
-// // Handle mouse drag (panning)
-// container.addEventListener('mousedown', e => {
-// isPanning = true;
-// startX = e.clientX - posX;
-// startY = e.clientY - posY;
-// container.style.cursor = 'grabbing';
-// });
-
-// container.addEventListener('mouseup', () => {
-// isPanning = false;
-// container.style.cursor = 'grab';
-// });
-
-// container.addEventListener('mousemove', e => {
-// if (!isPanning) return;
-// posX = e.clientX - startX;
-// posY = e.clientY - startY;
-// updateTransform();
-// });
-// // Handle scroll wheel zoom
-// container.addEventListener('wheel', e => {
-// e.preventDefault();
-//     const zoomIntensity = 0.1;
-//     const delta = e.deltaY < 0 ? 1 : -1;
-//     scale += delta * zoomIntensity;
-//     scale = Math.min(Math.max(0.5, scale), 3);
-//     updateTransform();
-// });
-
-// function updateTransform() {
-//     wrapper.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
-// }
-
 // Handle mouse drag (panning)
 container.addEventListener('mousedown', e => {
   isPanning = true;
@@ -365,7 +286,6 @@ function updateTransform() {
 }
 
 function showPopUp(bubble) {
-  console.log("HI");
   if (currentPopUp == bubble){
     TurnPopUpOff(bubble);
     return;
@@ -459,8 +379,6 @@ function createNodeBubble(x, y, name) {
   }
 }
 
-/**Real Time Navigation Code*/
-
 async function requestLocationOnce() {
   if (!('permissions' in navigator) || !('geolocation' in navigator)) {
     console.error('Geolocation not supported');
@@ -514,87 +432,6 @@ function stopWatchingLocation() {
   }
 }
 
-//METHOD 2 (Updates on regular intervals)
-
-/*
-let intervalId = null;
-
-function startRepeatingLocation() {
-  intervalId = setInterval(getLocation, 3000); // every 5 seconds
-}
-
-function stopRepeatingLocation() {
-  clearInterval(intervalId);
-  console.log('Stopped repeating location');
-}
-
-function getLocation(){
-    if ('geolocation' in navigator){ //&& status.status === 'granted') {
-        console.log("HI");
-        navigator.geolocation.getCurrentPosition(
-            (pos) => {
-            const { latitude, longitude, accuracy } = pos.coords;
-            console.log('Location:', latitude, longitude, 'accuracy (m):', accuracy);
-            // Send to backend:
-            //fetch('/api/location', {
-            //  method: 'POST',
-            //  headers: { 'Content-Type': 'application/json' },
-            //  body: JSON.stringify({ latitude, longitude, accuracy, timestamp: pos.timestamp })
-            //});
-            }//,
-        // (err) => {
-        //   console.error('Geolocation error', err);
-        //// handle different error.code values (1=permission denied, 2=position unavailable, 3=timeout)
-        // },
-        //  { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-        );
-    } else {
-        console.error('Geolocation not supported');
-    }
-}
-*/
-
-/*
-const watchId = navigator.geolocation.watchPosition(
-  (pos) => {
-    // called on each update
-    console.log(pos.coords);
-  },
-  (err) => console.error(err),
-  { enableHighAccuracy: true, maximumAge: 2000, timeout: 10000 }
-);
-
-navigator.geolocation.clearWatch(watchId);
-*/
-
-//EXAMPLE OF FETCHING A BACKEND REQUEST
-
-/*
-function addToCart(box_id, series_cover, series_price){
-
-    const series_box = {
-        name: box_id,
-        cover: series_cover,
-        price: series_price
-    };
-
-    fetch("http://localhost:8000/AddToShoppingCart", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(series_box)
-    })
-
-    .then(response => response.json())
-    .then(data => {
-        console.log("Server Response:", data);
-
-    })
-}
-
-*/
-
 function turnOnUIPopUp(name){
 
     const uiBox = document.getElementById(name);
@@ -624,7 +461,7 @@ function turnOnUIReportPopUp(name){
 
     if (name === 'chooseNodeReport'){
         const nodeMap = document.getElementById("report-map-wrapper")
-        nodeMap.innerHTML='<object type="text/html" data="report_map.html" ></object>';
+        // nodeMap.innerHTML='<object type="text/html" data="report_map.html" ></object>';
     }
 
 }
@@ -699,39 +536,34 @@ if (report_website_form) {
     report_website_form.addEventListener('submit', (event) => {
         event.preventDefault(); // prevent page reload
 
-        // Get the textarea value
-        const input = document.querySelector('#myInput');
-        if (input) {
-            const message = input.value;
-            console.log(message);
-            // POST REQUEST GOES HERE
-        }
-    });
-}
+    const message = document.querySelector('#myInput').value;
+
+    fetch("http://localhost:8000/report?report=" + encodeURIComponent(message), {
+      method: "POST"
+    })
+
+    document.querySelector('#myInput').value = "";
+
+});
 
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
-  /*loop through a collection of all HTML elements:*/
   z = document.getElementsByTagName("*");
   for (i = 0; i < z.length; i++) {
     elmnt = z[i];
-    /*search for elements with a certain atrribute:*/
     file = elmnt.getAttribute("w3-include-html");
     if (file) {
-      /*make an HTTP request using the attribute value as the file name:*/
       xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
           if (this.status == 200) {elmnt.innerHTML = this.responseText;}
           if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-          /*remove the attribute, and call this function once more:*/
           elmnt.removeAttribute("w3-include-html");
           includeHTML();
         }
       }      
       xhttp.open("GET", file, true);
       xhttp.send();
-      /*exit the function:*/
       return;
     }
   }
@@ -810,10 +642,11 @@ function sendNodeReport(name, nodeName) {
 
     reportButton.onclick = () => {
         const id = reportButton.dataset.nodeName;
-        console.log("Reporting node:", id);
         uiBox.style.display = 'none';
         secondDarkScreen.style.display = 'none';
-        //INSERT PUT REQUEST HERE
+        fetch(`http://localhost:8000/main/update_threshold?node_id=${encodeURIComponent(id)}`, {
+            method: "PUT"
+        })
     };
 
 }

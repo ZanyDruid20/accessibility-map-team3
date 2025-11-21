@@ -614,7 +614,7 @@
                 <form class="report_website_form">
                     <textarea id='myInput' rows="11" wrap="soft" maxlength="500" class="report_website_message"></textarea>
                     <br>
-                    <input type="submit" value="Submit" class="report_website_submit">
+                    <input type="submit" value="Submit" class="report_website_submit" onclick="turnOnUIPopUp('makeReportUI')">
                 </form>
             </div>
             <div id="chooseNodeReport" class="report_options_style" style="display: none; width: 40%; height: 70%;">
@@ -630,43 +630,43 @@
                             <img id="map" onclick="showPopUp('map'); createNodeBubble(0, 0, 'map');" src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/567405479_17902397412273898_6017296793961984612_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzc0NTA5OTA2MzkwMjMzOTUzNQ%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyNjZ4MTAwMS5zZHIuQzMifQ%3D%3D&_nc_ohc=mjr92tSU3RcQ7kNvwG_PrUI&_nc_oc=AdnsggHu4gOVNBcfQa45Zo1C-lW53oNxjGIpwbsjBX_XQ8OjMFG8ykV9iWHthIecNHc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_gid=CgmASCq9Gj3Fmce7dRLNzw&oh=00_Afjwk73MVCQzYkXjtvFnWYM34icyNNcLAtiN59pPGoD3SQ&oe=691F0126" alt="Map">
 
                             <i id="PAHB_FLAG" class="material-icons" style="visibility: hidden; top: 455px; left: 90px; position: absolute;">flag_circle</i>
-                            <div id="PAHB_E1" class="circle_three" style="top:460px; left:90px;" onclick="sendNodeReport('reportNodeOptions', 'PAHB_E1')"></div>
+                            <div id="pahb_e1" class="circle_three" style="top:460px; left:90px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'pahb_e1')"></div>
                             <i id="FINEARTS_FLAG" class="material-icons" style="visibility: hidden; top: 400px; left: 290px; position: absolute;">flag_circle</i>
-                            <div id="FINEARTS_E1" class="circle_three" style="top:405px; left:310px;" onclick="sendNodeReport('reportNodeOptions', 'FINEARTS_E1')"></div>
+                            <div id="finearts_e1" class="circle_three" style="top:405px; left:310px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'finearts_e1')"></div>
                             <i id="ENG_FLAG" class="material-icons" style="visibility: hidden; top: 500px; left: 280px; position: absolute;">flag_circle</i>
-                            <div id="ENG_E1" class="circle_three" style="top:505px; left:290px;" onclick="sendNodeReport('reportNodeOptions', 'ENG_E1')"></div>
+                            <div id="eng_e1" class="circle_three" style="top:505px; left:290px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'eng_e1')"></div>
                             <i id="ITE_FLAG" class="material-icons" style="visibility: hidden; top: 610px; left: 285px; position: absolute;">flag_circle</i>
-                            <div id="ITE_E1" class="circle_three" style="top:620px; left:290px;" onclick="sendNodeReport('reportNodeOptions', 'ITE_E1')"></div>
+                            <div id="ite_e1" class="circle_three" style="top:620px; left:290px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'ite_e1')"></div>
                             <i id="MEYERHOFF_FLAG" class="material-icons" style="visibility: hidden; top: 400px; left: 390px; position: absolute;">flag_circle</i>
-                            <div id="MEYER_E1" class="circle_three" style="top:407px; left:375px;" onclick="sendNodeReport('reportNodeOptions', 'MEYER_E1')"></div>
+                            <div id="meyer_e1" class="circle_three" style="top:407px; left:375px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'mayer_e1')"></div>
                             <i id="UC_FLAG" class="material-icons" style="visibility: hidden; top: 500px; left: 370px; position: absolute;">flag_circle</i>
-                            <div id="UC_E1" class="circle_three" style="top:505px; left:380px;" onclick="sendNodeReport('reportNodeOptions', 'UC_E1')"></div>
+                            <div id="uc_e1" class="circle_three" style="top:505px; left:380px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'uc_e1')"></div>
                             <i id="SHERMAN_FLAG" class="material-icons" style="visibility: hidden; top: 600px; left: 390px; position: absolute;">flag_circle</i>
                             
                             <i id="ADMIN_FLAG" class="material-icons" style="visibility: hidden; top: 690px; left: 410px; position: absolute;">flag_circle</i>
-                            <div id="ADMIN_E1" class="circle_three" style="top:700px; left:420px;" onclick="sendNodeReport('reportNodeOptions', 'ADMIN_E1')"></div>
+                            <div id="ADMIN_e1" class="circle_three" style="top:700px; left:420px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'admin_e1')"></div>
                             <i id="MATHPSYCH_FLAG" class="material-icons" style="visibility: hidden; top: 500px; left: 470px; position: absolute;">flag_circle</i>
-                            <div id="mathpsych_E1" class="circle_three" style="top:510px; left:475px;" onclick="sendNodeReport('reportNodeOptions', 'mathpsych_E1')"></div>
+                            <div id="mathpsych_e1" class="circle_three" style="top:510px; left:475px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'mathpsych_e1')"></div>
                             <i id="SONDHEIM_FLAG" class="material-icons" style="visibility: hidden; top: 605px; left: 465px; position: absolute;">flag_circle</i>
-                            <div id="sond_E1" class="circle_three" style="top:615px; left:475px;" onclick="sendNodeReport('reportNodeOptions', 'sond_E1')"></div>
+                            <div id="sond_e1" class="circle_three" style="top:615px; left:475px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'sond_e1')"></div>
                             <i id="BIOLOGICALSCI_FLAG" class="material-icons" style="visibility: hidden; top: 380px; left: 465px; position: absolute;">flag_circle</i>
-                            <div id="biosci_E1" class="circle_three" style="top:385px; left:470px;" onclick="sendNodeReport('reportNodeOptions', 'biosci_E1')"></div>
+                            <div id="biosci_e1" class="circle_three" style="top:385px; left:470px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'biosci_e1')"></div>
                             <i id="LECTUREHALL_FLAG" class="material-icons" style="visibility: hidden; top: 377px; left: 505px; position: absolute;">flag_circle</i>
-                            <div id="sam_E" class="circle_three" style="top:382px; left:510px;" onclick="sendNodeReport('reportNodeOptions', 'sam_E')"></div>
+                            <!-- <div id="biosci_e1" class="circle_three" style="top:382px; left:510px;" onclick="sendNodeReport('reportNodeOptions', 'sam_E')"></div> -->
                             <i id="RAC_FLAG" class="material-icons" style="visibility: hidden; top: 680px; left: 535px; position: absolute;">flag_circle</i>
-                            <div id="RAC_E1" class="circle_three" style="top:685px; left:540px;" onclick="sendNodeReport('reportNodeOptions', 'RAC_E1')"></div>
+                            <div id="rac_e1" class="circle_three" style="top:685px; left:540px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'rac_e1')"></div>
                             <i id="LIBRARY_FLAG" class="material-icons" style="visibility: hidden; top: 110px; left: 435px; position: absolute;">flag_circle</i>
-                            <div id="AOKLib_E1" class="circle_three" style="top:110px; left:435px;" onclick="sendNodeReport('reportNodeOptions', 'AOKLib_E1')"></div>
+                            <div id="aoklib_e1" class="circle_three" style="top:110px; left:435px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'aoklib_e1')"></div>
                             <i id="WELLBEING_FLAG" class="material-icons" style="visibility: hidden; top: 86px; left: 770px; position: absolute;">flag_circle</i>
-                            <div id="CWB_E1" class="circle_three" style="top:96px; left:775px;" onclick="sendNodeReport('reportNodeOptions', 'CWB_E1')"></div>
+                            <div id="cwb_e1" class="circle_three" style="top:96px; left:775px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'cwb_e1')"></div>
                             <i id="PUBLICPOLICY_FLAG" class="material-icons" style="visibility: hidden; top: 218px; left: 785px; position: absolute;">flag_circle</i>
-                            <div id="PUBPOL_E1" class="circle_three" style="top:222px; left:785px;" onclick="sendNodeReport('reportNodeOptions', 'PUBPOL_E1')"></div>
+                            <div id="pubpol_e1" class="circle_three" style="top:222px; left:785px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'pubpol_e1')"></div>
                             <i id="PHYSICS_FLAG" class="material-icons" style="visibility: hidden; top: 340px; left: 759px; position: absolute;">flag_circle</i>
-                            <div id="PHYSICS_E1" class="circle_three" style="top:340px; left:764px;" onclick="sendNodeReport('reportNodeOptions', 'PHYSICS_E1')"></div>
+                            <div id="pshyics_e1" class="circle_three" style="top:340px; left:764px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'physics_e1')"></div>
                             <i id="ILSB_FLAG" class="material-icons" style="visibility: hidden; top: 460px; left: 655px; position: absolute;">flag_circle</i>
-                            <div id="ilsb_E1" class="circle_three" style="top:465px; left:660px;" onclick="sendNodeReport('reportNodeOptions', 'ilsb_E1')"></div>
+                            <div id="ilsb_e1" class="circle_three" style="top:465px; left:660px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'ilsb_e1')"></div>
                             <i id="COMMONS_FLAG" class="material-icons" style="visibility: hidden; top: 315px; left: 600px; position: absolute;">flag_circle</i>
-                            <div id="Comm_E1" class="circle_three" style="top:320px; left:605px;" onclick="sendNodeReport('reportNodeOptions', 'Comm_E1')"></div>
+                            <div id="comm_E1" class="circle_three" style="top:320px; left:605px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'comm_e1')"></div>
                             <i id="TRUEGRITS_FLAG" class="material-icons" style="visibility: hidden; top: 50px; left: 900px; position: absolute;">flag_circle</i>
                             
                             <!--Nodes-->
