@@ -42,6 +42,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const form = document.querySelector("form");
     const startInput = document.getElementById("start_dest");
     const endInput = document.getElementById("end_destination");
+    const startFloorInput = document.getElementById("start_floor");
+    const endFloorInput = document.getElementById("end_floor");
+
 
     form.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -62,6 +65,17 @@ document.addEventListener("DOMContentLoaded", function() {
         if (startCanonical && endCanonical && startCanonical === endCanonical) {
             errors.push("Starting and ending locations cannot be the same building.");
         }
+        
+        // Floor logic
+        const validFloors = ["1","2","3","4","5","6","7","M","L","G","B"];
+        const startFloor = startFloorInput.value.trim().toUpperCase();
+        const endFloor = endFloorInput.value.trim().toUpperCase();
+
+        if (!startFloor) errors.push("Starting floor is required.");
+        else if (!validFloors.includes(startFloor)) errors.push(`"${startFloor}" is not a valid floor.`);
+
+        if (!endFloor) errors.push("Ending floor is required.");
+        else if (!validFloors.includes(endFloor)) errors.push(`"${endFloor}" is not a valid floor.`);
 
         if (errors.length > 0) {
             alert(errors.join("\n"));
@@ -72,8 +86,23 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("Start:", startCanonical);
         console.log("End:", endCanonical);
         
+        // For index_steps.js
+        // Set global variables so index_steps.js can access them
+        window.startCanonical = startCanonical;
+        window.endCanonical = endCanonical;
+
+        window.startFloor = startFloor;
+        window.endFloor = endFloor;
+
+
+        // Call the route instruction loader in index_steps.js
+        if (typeof loadRouteInstructions === "function") {
+            loadRouteInstructions();
+        }
+
+
         // TODO: Connect to backend
-        const url = `http://localhost:8000/shortest-path?start_building=${encodeURIComponent(start)}&end_building=${encodeURIComponent(end)}`;
+        const url = `http://localhost:8000/shortest-path?start_building=${encodeURIComponent(startCanonical)}&start_floor=${encodeURIComponent(startFloor)}&end_building=${encodeURIComponent(endCanonical)}&end_floor=${encodeURIComponent(endFloor)}`;
 
         // fetch(url, {
         //   method: "GET", // or "GET", depending on your backend route
@@ -388,6 +417,7 @@ mapImage.addEventListener('click', (event) => {
   console.log(`X: ${x}, Y: ${y}`);
 });
 
+
 function createNodeBubble(x, y, name) {
   //God the structure of this function is ugly
   //This handles the info bubble for the nodes so that I don't have to create a div bubble for each node (no way omg)
@@ -599,6 +629,15 @@ function turnOnUIReportPopUp(name){
 
 }
 
+function turnOffUIPopUp(name) {
+    const uiBox = document.getElementById(name);
+    const dark_box = document.getElementById('aboutUsDarkScreen');
+
+    uiBox.style.display = 'none';
+    dark_box.style.display = 'none';
+}
+
+
 const dark_screen = document.querySelector('.dark_screen');
 
 dark_screen.addEventListener('click', function (e) {
@@ -612,37 +651,63 @@ dark_screen.addEventListener('click', function (e) {
   }
 });
 
-document.querySelector(".report_button_ui_route").addEventListener('mouseenter', () => {
-    console.log('hitting');
-    document.querySelector("#regular_message").innerText = 'Report an unavailable pathway/door/node/elevator';
-});
+const reportBtn = document.querySelector(".report_button_ui_route");
 
-document.querySelector(".report_button_ui_route").addEventListener('mouseleave', () => {
-    document.querySelector("#regular_message").innerText = 'A route report or a website bug/error report?';
-});
+if (reportBtn) {
+    reportBtn.addEventListener('mouseenter', () => {
+        console.log('hitting');
+        const msg = document.querySelector("#regular_message");
+        if (msg) {
+            msg.innerText = 'Report an unavailable pathway/door/node/elevator';
+        }
+    });
+}
 
-document.querySelector(".report_button_ui_website").addEventListener('mouseenter', () => {
-    console.log('hitting');
-    document.querySelector("#regular_message").innerText = 'Report an error with the website itself';
-});
+const routeBtn = document.querySelector(".report_button_ui_route");
+if (routeBtn) {
+    routeBtn.addEventListener('mouseleave', () => {
+        const msg = document.querySelector("#regular_message");
+        if (msg) {
+            msg.innerText = 'A route report or a website bug/error report?';
+        }
+    });
+}
 
-document.querySelector(".report_button_ui_website").addEventListener('mouseleave', () => {
-    document.querySelector("#regular_message").innerText = 'A route report or a website bug/error report?';
-});
+const websiteBtn = document.querySelector(".report_button_ui_website");
+if (websiteBtn) {
+    websiteBtn.addEventListener('mouseenter', () => {
+        console.log('hitting');
+        const msg = document.querySelector("#regular_message");
+        if (msg) {
+            msg.innerText = 'Report an error with the website itself';
+        }
+    });
+
+    // Guard for .report_button_ui_website (mouseleave)
+    websiteBtn.addEventListener('mouseleave', () => {
+        const msg = document.querySelector("#regular_message");
+        if (msg) {
+            msg.innerText = 'A route report or a website bug/error report?';
+        }
+    });
+}
 
 const report_website_form = document.querySelector('.report_website_form');
 
 // Add a submit event listener
-report_website_form.addEventListener('submit', (event) => {
-    event.preventDefault(); // prevent page reload
+if (report_website_form) {
+    report_website_form.addEventListener('submit', (event) => {
+        event.preventDefault(); // prevent page reload
 
-    // Get the textarea value
-    const message = document.querySelector('#myInput').value;
-
-    // Log or use the value
-    console.log(message);
-    //POST REQUEST GOES HERE
-});
+        // Get the textarea value
+        const input = document.querySelector('#myInput');
+        if (input) {
+            const message = input.value;
+            console.log(message);
+            // POST REQUEST GOES HERE
+        }
+    });
+}
 
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
@@ -684,40 +749,42 @@ const containerTwo = document.getElementById('popup-map-container'); // outer co
 const wrapperTwo = document.getElementById('popup-map-wrapper'); // inner map element (image or map div)
 
 // Handle mouse drag (panning)
-containerTwo.addEventListener('mousedown', e => {
-  isPanningTwo = true;
-  startXTwo = e.clientX - posXTwo;
-  startYTwo = e.clientY - posYTwo;
-  containerTwo.style.cursor = 'grabbing';
-});
+if (containerTwo) {
+    containerTwo.addEventListener('mousedown', e => {
+        isPanningTwo = true;
+        startXTwo = e.clientX - posXTwo;
+        startYTwo = e.clientY - posYTwo;
+        containerTwo.style.cursor = 'grabbing';
+    });
 
-containerTwo.addEventListener('mouseup', () => {
-  isPanningTwo = false;
-  containerTwo.style.cursor = 'grab';
-});
+    containerTwo.addEventListener('mouseup', () => {
+    isPanningTwo = false;
+    containerTwo.style.cursor = 'grab';
+    });
 
-containerTwo.addEventListener('mouseleave', () => {
-  // stop dragging if mouse leaves container
-  isPanningTwo = false;
-  containerTwo.style.cursor = 'grab';
-});
+    containerTwo.addEventListener('mouseleave', () => {
+    // stop dragging if mouse leaves container
+    isPanningTwo = false;
+    containerTwo.style.cursor = 'grab';
+    });
 
-containerTwo.addEventListener('mousemove', e => {
-  if (!isPanningTwo) return;
-  posXTwo = e.clientX - startXTwo;
-  posYTwo = e.clientY - startYTwo;
-  updateTransformTwo();
-});
+    containerTwo.addEventListener('mousemove', e => {
+    if (!isPanningTwo) return;
+    posXTwo = e.clientX - startXTwo;
+    posYTwo = e.clientY - startYTwo;
+    updateTransformTwo();
+    });
 
-// Handle scroll wheel zoom for popup map
-containerTwo.addEventListener('wheel', e => {
-  e.preventDefault();
-  const zoomIntensity = 0.1;
-  const delta = e.deltaY < 0 ? 1 : -1;
-  scaleTwo += delta * zoomIntensity;
-  scaleTwo = Math.min(Math.max(0.5, scaleTwo), 3); // limit zoom range
-  updateTransformTwo();
-});
+    // Handle scroll wheel zoom for popup map
+    containerTwo.addEventListener('wheel', e => {
+    e.preventDefault();
+    const zoomIntensity = 0.1;
+    const delta = e.deltaY < 0 ? 1 : -1;
+    scaleTwo += delta * zoomIntensity;
+    scaleTwo = Math.min(Math.max(0.5, scaleTwo), 3); // limit zoom range
+    updateTransformTwo();
+  });
+}
 
 function updateTransformTwo() {
   wrapperTwo.style.transform = `translate(${posXTwo}px, ${posYTwo}px) scale(${scaleTwo})`;
@@ -760,3 +827,87 @@ function closeNodeReport() {
 
 }
 
+// admin.html js
+function createNodeBubble2(x, y, nodeId) {
+    // Save nodeId globally for toggle function
+    window.currentNodeId = nodeId;
+
+    // Update popup title
+    const title = document.getElementById("nodeTitle");
+    title.textContent = "Node ID: " + nodeId;
+
+    // Determine current node state
+    const nodeEl = document.getElementById(nodeId);
+    const isOff = nodeEl.classList.contains("node-off");
+
+    // Update button text
+    const toggleBtn = document.getElementById("toggleNodeBtn");
+    toggleBtn.textContent = isOff ? "Turn ON Node" : "Turn OFF Node";
+    // Remove both classes first
+    toggleBtn.classList.remove("on-state", "off-state");
+
+    // Add appropriate class
+    toggleBtn.classList.add(isOff ? "on-state" : "off-state");
+
+
+    // Assign what happens when the toggle button is clicked
+    toggleBtn.onclick = function () {
+        toggleNode(nodeId);
+    };
+
+    // Open UI
+    turnOnUIPopUp("nodeUI");
+}
+
+function toggleNode(nodeId) {
+    const nodeEl = document.getElementById(nodeId);
+    const isOff = nodeEl.classList.contains("node-off");
+
+    fetch(`http://localhost:8000/nodes/toggle?node=${nodeId}`, {
+        method: "POST"
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log("Backend updated:", data);
+
+        // Update color only on success
+        if (isOff) {
+            nodeEl.classList.remove("node-off");
+        } else {
+            nodeEl.classList.add("node-off");
+        }
+    })
+    .catch(err => {
+        console.error("Error updating node:", err);
+    });
+
+    turnOffUIPopUp("nodeUI");
+}
+
+function loadOffNodes() {
+    fetch("http://localhost:8000/nodes/off")
+        .then(res => res.json())
+        .then(data => {
+            console.log("OFF nodes from backend:", data.off_nodes);
+
+            const offNodes = data.off_nodes;
+
+            offNodes.forEach(nodeId => {
+                const el = document.getElementById(nodeId);
+                if (el) {
+                    el.classList.add("node-off");
+                }
+            });
+
+        })
+        .catch(err => {
+            console.error("Failed to load off nodes:", err);
+        });
+}
+
+
+
+// load the off nodes
+window.onload = function () {
+    loadOffNodes();
+};
