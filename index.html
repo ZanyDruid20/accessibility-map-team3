@@ -10,37 +10,56 @@
             <div class="title">Accessibility Project</div>
         </div>
 
-        <div class = "input_line">
-            <div class="filler"></div>
-            <div class="input_boxes">
-                <form>
-                    <label for="start">Start: </label>
-                    <input type="text" id="start_dest" name="starting_dest" placeholder="Enter starting place....">
-                    
-                    <label for="end">End: </label>
-                    <input type="text" id="end_destination" name="end_dest" placeholder="Enter destination....">
+        <div class="input_line">
+    <div class="filler"></div>
+    
+    <div class="input_boxes"> 
+        <form>
 
+            <!-- Start / End Locations -->
+            <label for="start_dest">Start:</label>
+            <input type="text" id="start_dest" name="starting_dest" placeholder="Enter starting place....">
+
+            <label for="end_destination">End:</label>
+            <input type="text" id="end_destination" name="end_dest" placeholder="Enter destination....">
+
+            <!-- FLOOR INPUTS IN A ROW -->
+            <div class="floor_row">
+                <div class="floor_pair">
+                    <label for="start_floor">Starting Floor:</label>
+                    <input type="text" id="start_floor" name="start_floor" class="floor_input">
+                </div>
+
+                <div class="floor_pair">
+                    <label for="end_floor">Ending Floor:</label>
+                    <input type="text" id="end_floor" name="end_floor" class="floor_input">
+                </div>
+
+                <div class="submit_wrapper">
                     <input type="submit" value="Submit" class="destination_submit">
-                </form>
-                <div>
                 </div>
             </div>
-            <div class="report_button">
-                <button class="report_style" onclick="turnOnUIPopUp('reportOptionsUI')">Bug Report</button>
-            </div>     
-        </div>
+
+        </form>
+    </div>
+
+
+    <div class="report_button">
+        <button class="report_style" onclick="turnOnUIPopUp('reportOptionsUI')">Bug Report</button>
+    </div>
+</div>
 
         <div class = "center_line">
 
             <div class="instructions">
                 <div class="instruction_label">Instructions:</div>
-                <div class="instruction_list">Steps goes here</div>
+                <div class="instruction_list">...Enter start and end destinations</div>
             </div>
 
             <div class="map">
                 <div id="map-container">
                     <div id="map-wrapper">
-                        <img id="map" onclick="showPopUp('map'); createNodeBubble(0, 0, 'map');" src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/567405479_17902397412273898_6017296793961984612_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzc0NTA5OTA2MzkwMjMzOTUzNQ%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyNjZ4MTAwMS5zZHIuQzMifQ%3D%3D&_nc_ohc=mjr92tSU3RcQ7kNvwG_PrUI&_nc_oc=AdnsggHu4gOVNBcfQa45Zo1C-lW53oNxjGIpwbsjBX_XQ8OjMFG8ykV9iWHthIecNHc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_gid=lhB1D5Hq758HSeBK16hicQ&oh=00_Afgr4IYHkVEnOjrXECEWWy0paYRQMtuh9cIrmXEAR9k04Q&oe=69216BE6" alt="Map">
+                        <img id="map" onclick="showPopUp('map'); createNodeBubble(0, 0, 'map');" src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/567405479_17902397412273898_6017296793961984612_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzc0NTA5OTA2MzkwMjMzOTUzNQ%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyNjZ4MTAwMS5zZHIuQzMifQ%3D%3D&_nc_ohc=mjr92tSU3RcQ7kNvwG_PrUI&_nc_oc=AdnsggHu4gOVNBcfQa45Zo1C-lW53oNxjGIpwbsjBX_XQ8OjMFG8ykV9iWHthIecNHc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_gid=CgmASCq9Gj3Fmce7dRLNzw&oh=00_Afjwk73MVCQzYkXjtvFnWYM34icyNNcLAtiN59pPGoD3SQ&oe=691F0126" alt="Map">
 
                         <!-- Elements attached to the map -->
                         <button id="PAHB" style="top: 420px; left: 25px; position: absolute; width: 150px; height:100px; opacity:0.2;" onclick="showPopUp('PAHB_info')">PAHB</button>
@@ -467,7 +486,7 @@
                         <div id="cwb_e1" class="circle_three" style="top:96px; left:775px;" onclick="createNodeBubble(775, 96, 'cwb_e1')"></div>
                         <div id="pubpol_e1" class="circle_three" style="top:222px; left:785px;" onclick="createNodeBubble(785, 222, 'pubpol_e1')"></div>
                         <div id="physics_e1" class="circle_three" style="top:340px; left:764px;" onclick="createNodeBubble(764, 340, 'physics_e1')"></div>
-                        <div id="ilsb_d3" class="circle_three" style="top:465px; left:660px;" onclick="createNodeBubble(660, 465, 'ilsb_d3')"></div>
+                        <div id="ilsb_e1" class="circle_three" style="top:465px; left:660px;" onclick="createNodeBubble(660, 465, 'ilsb_e1')"></div>
                         <div id="comm_e1" class="circle_three" style="top:320px; left:605px;" onclick="createNodeBubble(605, 320, 'comm_e1')"></div>
                         
                         <!--Curved Pathways that I manually put in-->
@@ -608,7 +627,7 @@
                 <div class="map" style="width: 90%; height: 80%">
                     <div id="popup-map-container" style="overflow:hidden; cursor:grab;">
                         <div id="popup-map-wrapper">
-                            <img id="map" onclick="showPopUp('map'); createNodeBubble(0, 0, 'map');" src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/567405479_17902397412273898_6017296793961984612_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzc0NTA5OTA2MzkwMjMzOTUzNQ%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyNjZ4MTAwMS5zZHIuQzMifQ%3D%3D&_nc_ohc=6_giXRHBBsYQ7kNvwFHkFYL&_nc_oc=Adn3qoQtxrEifbw731aNJcG2ITsTL_y-UOMFmScyOvC28xLZ42svDztU7CA5fXc5kw0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_gid=BGUmV5CCzTf1-6KhCRFcWA&oh=00_Afe64Si-tX1vt6Jck9oXpcTnRYpiJ34hEI8Sk0UeHnPklg&oe=69018FA6" alt="Map">
+                            <img id="map" onclick="showPopUp('map'); createNodeBubble(0, 0, 'map');" src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/567405479_17902397412273898_6017296793961984612_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzc0NTA5OTA2MzkwMjMzOTUzNQ%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyNjZ4MTAwMS5zZHIuQzMifQ%3D%3D&_nc_ohc=mjr92tSU3RcQ7kNvwG_PrUI&_nc_oc=AdnsggHu4gOVNBcfQa45Zo1C-lW53oNxjGIpwbsjBX_XQ8OjMFG8ykV9iWHthIecNHc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_gid=CgmASCq9Gj3Fmce7dRLNzw&oh=00_Afjwk73MVCQzYkXjtvFnWYM34icyNNcLAtiN59pPGoD3SQ&oe=691F0126" alt="Map">
 
                             <i id="PAHB_FLAG" class="material-icons" style="visibility: hidden; top: 455px; left: 90px; position: absolute;">flag_circle</i>
                             <div id="PAHB_E1" class="circle_three" style="top:460px; left:90px;" onclick="sendNodeReport('reportNodeOptions', 'PAHB_E1')"></div>
@@ -645,7 +664,7 @@
                             <i id="PHYSICS_FLAG" class="material-icons" style="visibility: hidden; top: 340px; left: 759px; position: absolute;">flag_circle</i>
                             <div id="PHYSICS_E1" class="circle_three" style="top:340px; left:764px;" onclick="sendNodeReport('reportNodeOptions', 'PHYSICS_E1')"></div>
                             <i id="ILSB_FLAG" class="material-icons" style="visibility: hidden; top: 460px; left: 655px; position: absolute;">flag_circle</i>
-                            <div id="ilsb_D3" class="circle_three" style="top:465px; left:660px;" onclick="sendNodeReport('reportNodeOptions', 'ilsb_D3')"></div>
+                            <div id="ilsb_E1" class="circle_three" style="top:465px; left:660px;" onclick="sendNodeReport('reportNodeOptions', 'ilsb_E1')"></div>
                             <i id="COMMONS_FLAG" class="material-icons" style="visibility: hidden; top: 315px; left: 600px; position: absolute;">flag_circle</i>
                             <div id="Comm_E1" class="circle_three" style="top:320px; left:605px;" onclick="sendNodeReport('reportNodeOptions', 'Comm_E1')"></div>
                             <i id="TRUEGRITS_FLAG" class="material-icons" style="visibility: hidden; top: 50px; left: 900px; position: absolute;">flag_circle</i>

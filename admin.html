@@ -1,0 +1,642 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index_style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+    <body>
+        <div class = "top_banner">
+            <div class="umbc_logo"></div>
+            <div class="title">Accessibility Map Admin Page</div>
+        </div>
+
+        <div class = "input_line">
+            <div class="filler"></div>
+                <div class="input_boxes"> 
+                    <form>
+
+                        <!-- Start / End Locations -->
+                        <label for="start_dest">Start:</label>
+                        <input type="text" id="start_dest" name="starting_dest" placeholder="Enter starting place....">
+
+                        <label for="end_destination">End:</label>
+                        <input type="text" id="end_destination" name="end_dest" placeholder="Enter destination....">
+
+                        <!-- FLOOR INPUTS IN A ROW -->
+                        <div class="floor_row">
+                            <div class="floor_pair">
+                                <label for="start_floor">Starting Floor:</label>
+                                <input type="text" id="start_floor" name="start_floor" class="floor_input">
+                            </div>
+
+                            <div class="floor_pair">
+                                <label for="end_floor">Ending Floor:</label>
+                                <input type="text" id="end_floor" name="end_floor" class="floor_input">
+                            </div>
+
+                            <div class="submit_wrapper">
+                                <input type="submit" value="Submit" class="destination_submit">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            <div class="view_report_button">
+                <button class="view_report_style" onclick="window.location.href='reportView.html'">
+                    Access Reports
+                </button>
+
+            </div>     
+        </div>
+
+        <div class = "center_line">
+
+            <div class="instructions">
+                <div class="instruction_label">Instructions:</div>
+                <div class="instruction_list">...Enter start and end destinations</div>
+            </div>
+
+            <div class="map">
+                <div id="map-container">
+                    <div id="map-wrapper">
+                        <img id="map" onclick="showPopUp('map'); createNodeBubble(0, 0, 'map');" src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/567405479_17902397412273898_6017296793961984612_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzc0NTA5OTA2MzkwMjMzOTUzNQ%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEyNjZ4MTAwMS5zZHIuQzMifQ%3D%3D&_nc_ohc=mjr92tSU3RcQ7kNvwG_PrUI&_nc_oc=AdnsggHu4gOVNBcfQa45Zo1C-lW53oNxjGIpwbsjBX_XQ8OjMFG8ykV9iWHthIecNHc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_gid=CgmASCq9Gj3Fmce7dRLNzw&oh=00_Afjwk73MVCQzYkXjtvFnWYM34icyNNcLAtiN59pPGoD3SQ&oe=691F0126" alt="Map">
+
+                        <!-- Elements attached to the map -->
+                        <button id="PAHB" style="top: 420px; left: 25px; position: absolute; width: 150px; height:100px; opacity:0.2;" onclick="showPopUp('PAHB_info')">PAHB</button>
+                        <div id="PAHB_info" style="top: 300px; left: 25px;" onclick="showPopUp('PAHB_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Performing Arts and Humanities (PAHB)
+                        </div>
+                        <div>
+                            Building of Performing Arts and Humanities
+                        </div>
+                        <img src="https://theatre.umbc.edu/wp-content/uploads/sites/140/2014/01/PAHB-entrance.jpg">
+                        </div>
+                        <i id="PAHB_FLAG" class="material-icons" style="visibility: hidden; top: 455px; left: 90px; position: absolute;">flag_circle</i>
+
+                        <button id="FINEARTS" style="top: 370px; left: 255px; position: absolute; width: 75px; height:90px; opacity:0.2;" onclick="showPopUp('FINEARTS_info')">FINEARTS</button>
+                        <div id="FINEARTS_info" style="top: 270px; left: 215px;" onclick="showPopUp('FINEARTS_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Fine Arts (FINEARTS)
+                        </div>
+                        <div>
+                            Building of Fine Arts
+                        </div>
+                        <img src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHFKdW_ULVH76dv8dtGbDEMZxqFW_roS6E5I-Izdg3f9EMekYc7pMLZK1NpA8TZ_nYqQglFmJC8hSO9hMEkD8eknvtGDy6r-07rQ2LpoqrPRT9Un8v9Fyb52XYFfZz3CPoBhwN=s680-w680-h510-rw">
+                        </div>
+                        <i id="FINEARTS_FLAG" class="material-icons" style="visibility: hidden; top: 400px; left: 290px; position: absolute;">flag_circle</i>
+
+                        <button id="ENG" style="top: 475px; left: 255px; position: absolute; width: 75px; height:85px; opacity:0.2;" onclick="showPopUp('ENG_info')">ENG</button>
+                        <div id="ENG_info" style="top: 370px; left: 215px;" onclick="showPopUp('ENG_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Engineering (ENG)
+                        </div>
+                        <div>
+                            Building of Engineering
+                        </div>
+                        <img src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4no0fg73LH40ExIOT_RWEwxDfuSXhIjm_5QIAC-IbSNg93uDT0oML-LnBSaz67ra48Vjg446EIb3EyLo-noKewOu3C1ZdRa23qZ0WMHhSY9lOKF4W6Iz4RFghb-StN0_aE4XAQr5=s680-w680-h510-rw">
+                        </div>
+                        <i id="ENG_FLAG" class="material-icons" style="visibility: hidden; top: 500px; left: 280px; position: absolute;">flag_circle</i>
+
+                        <button id="ITE" style="top: 585px; left: 255px; position: absolute; width: 80px; height:90px; opacity:0.2;" onclick="showPopUp('ITE_info')">ITE</button>
+                        <div id="ITE_info" style="top: 470px; left: 215px;" onclick="showPopUp('ITE_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Information Technology and Engineering (ITE)
+                        </div>
+                        <div>
+                            Building of Information Technology and Engineering
+                        </div>
+                        <img src="https://umbc.edu/wp-content/uploads/2016/02/ITE-Building.jpg">
+                        </div>
+                        <i id="ITE_FLAG" class="material-icons" style="visibility: hidden; top: 610px; left: 285px; position: absolute;">flag_circle</i>
+                        
+                        <button id="MEYERHOFF" style="top: 368px; left: 360px; position: absolute; width: 80px; height:95px; opacity:0.2;" onclick="showPopUp('MEYERHOFF_info')">MEYERHOFF</button>
+                        <div id="MEYERHOFF_info" style="top: 260px; left: 320px;" onclick="showPopUp('MEYERHOFF_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Meyerhoff Chemistry (CHEM)
+                        </div>
+                        <div>
+                            Building of Chemistry
+                        </div>
+                        <img src="https://www.hmdb.org/Photos5/509/Photo509694.jpg?28202024000PM">
+                        </div>
+                        <i id="MEYERHOFF_FLAG" class="material-icons" style="visibility: hidden; top: 400px; left: 390px; position: absolute;">flag_circle</i>
+                        
+                        <button id="UC" style="top: 470px; left: 357px; position: absolute; width: 65px; height:90px; opacity:0.2;" onclick="showPopUp('UC_info')">UC</button>
+                        <div id="UC_info" style="top: 368px; left: 320px;" onclick="showPopUp('UC_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            University Center (UC)
+                        </div>
+                        <div>
+                            University Center Building
+                        </div>
+                        <img src="https://explore.baltimoreheritage.org/files/fullsize/65e308f1cedac000a7eb5bc152481106.jpg">
+                        </div>
+                        <i id="UC_FLAG" class="material-icons" style="visibility: hidden; top: 500px; left: 370px; position: absolute;">flag_circle</i>
+                        
+                        <button id="SHERMAN" style="top: 575px; left: 360px; position: absolute; width: 80px; height:90px; opacity:0.2;" onclick="showPopUp('SHERMAN_info')">SHERMAN</button>
+                        <div id="SHERMAN_info" style="top: 468px; left: 320px;" onclick="showPopUp('SHERMAN_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Shermall Hall (SHER)
+                        </div>
+                        <div>
+                            Sherman Hall Building (Construction)
+                        </div>
+                        <img src="https://fm.umbc.edu/wp-content/uploads/sites/357/2023/05/North-facade-Sondheim-bridge.jpg">
+                        </div>
+                        <i id="SHERMAN_FLAG" class="material-icons" style="visibility: hidden; top: 600px; left: 390px; position: absolute;">flag_circle</i>
+                        
+                        <button id="ADMIN" style="top: 685px; left: 402px; position: absolute; width: 40px; height:40px; opacity:0.2;" onclick="showPopUp('ADMIN_info')">ADMIN</button>
+                        <div id="ADMIN_info" style="top: 550px; left: 350px;" onclick="showPopUp('ADMIN_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Adminstration Building (ADMIN)
+                        </div>
+                        <div>
+                            Building of Adminstration
+                        </div>
+                        <img src="https://umbc.edu/wp-content/uploads/2022/02/Spring-Campus19-55681.jpg">
+                        </div>
+                        <i id="ADMIN_FLAG" class="material-icons" style="visibility: hidden; top: 690px; left: 410px; position: absolute;">flag_circle</i>
+                        
+                        <button id="MATHPSYCH" style="top: 472px; left: 468px; position: absolute; width: 25px; height:90px; opacity:0.2;" onclick="showPopUp('MATHPSYCH_info')">MATHPSYCH</button>
+                        <div id="MATHPSYCH_info" style="top: 370px; left: 410px;" onclick="showPopUp('MATHPSYCH_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Math and Psychology Building (Math/Psychology)
+                        </div>
+                        <div>
+                            Building of Math and Psychology
+                        </div>
+                        <img src="https://assets.isu.pub/document-structure/230322164807-1301dd63a0834341be083e7b304f0ecf/v1/9977827cd1bb098f8e3084089bba6373.jpeg">
+                        </div>
+                        <i id="MATHPSYCH_FLAG" class="material-icons" style="visibility: hidden; top: 500px; left: 470px; position: absolute;">flag_circle</i>
+                        
+                        <button id="SONDHEIM" style="top: 577px; left: 463px; position: absolute; width: 30px; height:85px; opacity:0.2;" onclick="showPopUp('SONDHEIM_info')">SONDHEIM</button>
+                        <div id="SONDHEIM_info" style="top: 450px; left: 410px;" onclick="showPopUp('SONDHEIM_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Janet & Walker Sondheim Hall (Janet & Walker Sondheim Hall)
+                        </div>
+                        <div>
+                            Building of Janet & Walker Sondheim Hall
+                        </div>
+                        <img src="https://retriever.umbc.edu/wp-content/uploads/2020/11/Sondheim_Alex-McKenzie.jpg">
+                        </div>
+                        <i id="SONDHEIM_FLAG" class="material-icons" style="visibility: hidden; top: 605px; left: 465px; position: absolute;">flag_circle</i>
+                        
+                        <button id="BIOLOGICALSCI" style="top: 308px; left: 463px; position: absolute; width: 30px; height:150px; opacity:0.2;" onclick="showPopUp('BIOLOGICALSCI_info')">BIOLOGICALSCI</button>
+                        <div id="BIOLOGICALSCI_info" style="top: 230px; left: 410px;" onclick="showPopUp('BIOLOGICALSCI_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Biological Sciences 
+                        </div>
+                        <div>
+                            Building of Biological Sciences (Biological Sciences)
+                        </div>
+                        <img src="https://campusencounters.wordpress.com/wp-content/uploads/2014/01/umbc-bio-sci-bldg.jpg">
+                        </div>
+                        <i id="BIOLOGICALSCI_FLAG" class="material-icons" style="visibility: hidden; top: 380px; left: 465px; position: absolute;">flag_circle</i>
+                        
+                        <button id="LECTUREHALLONE" style="top: 375px; left: 505px; position: absolute; width: 25px; height:30px; opacity:0.2;" onclick="showPopUp('LECTUREHALL_info')">LECTUREHALLONE</button>
+                        <div id="LECTUREHALL_info" style="top: 235px; left: 445px;" onclick="showPopUp('LECTUREHALL_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Lecture Hall 1 (Lecture Hall 1)
+                        </div>
+                        <div>
+                            Lecture Hall 1 Building
+                        </div>
+                        <img src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4npySU4dcgeFGRTK30MiEeOfE-t9gqJifNTgdVkPv_v1mgENRKSZstocfbyfXAQ-n-pgyAXF1QLmjJvuJeaIFzS8JJD2P0dBDp6wiSzlCc6e_D0a3Tb6fsK__lHBtBoW0w_vrgau=s680-w680-h510-rw">
+                        </div>
+                        <i id="LECTUREHALL_FLAG" class="material-icons" style="visibility: hidden; top: 377px; left: 505px; position: absolute;">flag_circle</i>
+                        
+                        <button id="RAC" style="top: 612px; left: 520px; position: absolute; width: 62px; height:155px; opacity:0.2;" onclick="showPopUp('RAC_info')">RAC</button>
+                        <div id="RAC_info" style="top: 540px; left: 475px;" onclick="showPopUp('RAC_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Retriever Activity Center (RAC)
+                        </div>
+                        <div>
+                            Fitness Center
+                        </div>
+                        <img src="https://recreation.umbc.edu/wp-content/uploads/sites/351/2022/08/275049752_3177566122525317_603741436135020329_n-1024x683.jpg">
+                        </div>
+                        <i id="RAC_FLAG" class="material-icons" style="visibility: hidden; top: 680px; left: 535px; position: absolute;">flag_circle</i>
+                        
+                        <button id="LIBRARY" style="top: 60px; left: 380px; position: absolute; width: 120px; height:150px; opacity:0.2;" onclick="showPopUp('LIBRARY_info')">LIBRARY</button>
+                        <div id="LIBRARY_info" style="top: 5px; left: 365px;" onclick="showPopUp('LIBRARY_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Albin O. Kuhn Library & Gallery (Library)
+                        </div>
+                        <div>
+                            Library Building
+                        </div>
+                        <img src="https://assets1-my.umbc.edu/system/shared/thumbnails/news/000/068/205/6973786dc9c1de518c1a62446353dcbf/xxlarge.jpg?1495050701">
+                        </div>
+                        <i id="LIBRARY_FLAG" class="material-icons" style="visibility: hidden; top: 110px; left: 435px; position: absolute;">flag_circle</i>
+                        
+                        <button id="WELLBEING" style="top: 80px; left: 747px; position: absolute; width: 63px; height:40px; opacity:0.2;" onclick="showPopUp('WELLBEING_info')">WELLBEING</button>
+                        <div id="WELLBEING_info" style="top: 110px; left: 700px;" onclick="showPopUp('WELLBEING_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Center For Well-Being (Well-Being)
+                        </div>
+                        <div>
+                            Well-Being Center
+                        </div>
+                        <img src="https://studentaffairs.umbc.edu/wp-content/uploads/sites/680/2022/01/Center-for-Well-Being21-0185-300x200.jpg">
+                        </div>
+                        <i id="WELLBEING_FLAG" class="material-icons" style="visibility: hidden; top: 86px; left: 770px; position: absolute;">flag_circle</i>
+                        
+                        <button id="PUBLICPOLICY" style="top: 205px; left: 750px; position: absolute; width: 85px; height:40px; opacity:0.2;" onclick="showPopUp('PUP_info')">PUBLICPOLICY</button>
+                        <div id="PUP_info" style="top: 225px; left: 715px;" onclick="showPopUp('PUP_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Public Policy Building (PUP)
+                        </div>
+                        <div>
+                            Building of Public Policy
+                        </div>
+                        <img src="https://umbc.edu/wp-content/uploads/2016/08/Public-Policy-building-e1471375087633.jpg">
+                        </div>
+                        <i id="PUBLICPOLICY_FLAG" class="material-icons" style="visibility: hidden; top: 218px; left: 785px; position: absolute;">flag_circle</i>
+                        
+                        <button id="PHYSICS" style="top: 315px; left: 755px; position: absolute; width: 50px; height:75px; opacity:0.2;" onclick="showPopUp('PHYSICS_info')">PHYSICS</button>
+                        <div id="PHYSICS_info" style="top: 200px; left: 700px;" onclick="showPopUp('PHYSICS_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Physics Building (PHYS)
+                        </div>
+                        <div>
+                            Building of Physics
+                        </div>
+                        <img src="https://www.designcollective.com/files/projects/gallery/151_95_science_building_1_physics_n8.jpg">
+                        </div>
+                        <i id="PHYSICS_FLAG" class="material-icons" style="visibility: hidden; top: 340px; left: 759px; position: absolute;">flag_circle</i>
+                        
+                        <button id="ILSB" style="top: 445px; left: 625px; position: absolute; width: 85px; height:65px; opacity:0.2;" onclick="showPopUp('ILSB_info')">ILSB</button>
+                        <div id="ILSB_info" style="top: 320px; left: 595px;" onclick="showPopUp('ILSB_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            Interdisciplinary Life Science Building (ILSB)
+                        </div>
+                        <div>
+                            Building of Life Science
+                        </div>
+                        <img src="https://ilsb.umbc.edu/wp-content/uploads/sites/546/2021/07/20190708_164531-300x205.jpg">
+                        </div>
+                        <i id="ILSB_FLAG" class="material-icons" style="visibility: hidden; top: 460px; left: 655px; position: absolute;">flag_circle</i>
+                        
+                        <button id="COMMONS" style="top: 308px; left: 518px; position: absolute; width: 120px; height:65px; opacity:0.2;" onclick="showPopUp('COMMONS_info')">COMMONS</button>
+                        <div id="COMMONS_info" style="top: 180px; left: 500px;" onclick="showPopUp('COMMONS_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            University Commons (Commons)
+                        </div>
+                        <div>
+                            Commons Building
+                        </div>
+                        <img src="https://www.designcollective.com/files/projects/gallery/823_98_umbc_the_comons_n183_largeformat.jpg">
+                        </div>
+                        <i id="COMMONS_FLAG" class="material-icons" style="visibility: hidden; top: 315px; left: 600px; position: absolute;">flag_circle</i>
+                        
+                        <button id="TRUEGRITS" style="top: 5px; left: 895px; position: absolute; width: 35px; height:120px; opacity:0.2;" onclick="showPopUp('TRUEGRITS_info')">TRUEGRITS</button>
+                        <div id="TRUEGRITS_info" style="top: 50px; left: 840px;" onclick="showPopUp('TRUEGRITS_info')" class="building_info">
+                        <div style="margin-top: 15px;">
+                            True Grit's
+                        </div>
+                        <div>
+                            True Grit's Dining Hall
+                        </div>
+                        <img src="https://retriever.umbc.edu/wp-content/uploads/DSC_929611.jpg">
+                        </div>
+                        <i id="TRUEGRITS_FLAG" class="material-icons" style="visibility: hidden; top: 50px; left: 900px; position: absolute;">flag_circle</i>
+                        <button onclick="showPath(flag_array)">HELLO</button>
+                        <button onclick="requestLocationOnce()">GET LOCATION</button>
+
+                        <!--Nodes-->
+                        <!--Green-->
+                        <!-- Green -->
+                        <div id="greenint_1" class="circle" style="top:392px; left:155px; visibility: visible;" onclick="createNodeBubble2(155, 392, 'greenint_1')"></div>
+                        <div id="pahb_d13" class="circle" style="top:442px; left:155px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(155, 442, 'pahb_d13')"></div>
+                        <div id="greenint_2" class="circle" style="top:442px; left:190px; visibility: visible;" onclick="createNodeBubble2(190, 442, 'greenint_2')"></div>
+                        <div id="pahb_d1" class="circle" style="top:460px; left:190px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(190, 460, 'pahb_d1')"></div>
+                        <div id="greenint_10" class="circle" style="top:460px; left:228px; visibility: visible;" onclick="createNodeBubble2(228, 460, 'greenint_10')"></div>
+                        <div id="greenint_3" class="circle" style="top:391px; left:228px; visibility: visible;" onclick="createNodeBubble2(228, 391, 'greenint_3')"></div>
+                        <div id="greenint_4" class="circle" style="top:391px; left:246px; visibility: visible;" onclick="createNodeBubble2(246, 391, 'greenint_4')"></div>
+                        <div id="greenint_5" class="circle" style="top:357px; left:246px; visibility: visible;" onclick="createNodeBubble2(246, 357, 'greenint_5')"></div>
+                        <div id="greenint_6" class="circle" style="top:357px; left:195px; visibility: visible;" onclick="createNodeBubble2(195, 357, 'greenint_6')"></div>
+                        <div id="greenint_7" class="circle" style="top:357px; left:170px; visibility: visible;" onclick="createNodeBubble2(170, 357, 'greenint_7')"></div>
+                        <div id="greenint_8" class="circle" style="top:330px; left:246px; visibility: visible;" onclick="createNodeBubble2(246, 330, 'greenint_8')"></div>
+                        <div id="greenint_11" class="circle" style="top:460px; left:248px; visibility: visible;" onclick="createNodeBubble2(248, 460, 'greenint_11')"></div>
+                        <div id="greenint_12" class="circle" style="top:423px; left:248px; visibility: visible;" onclick="createNodeBubble2(248, 423, 'greenint_12')"></div>
+                        <div id="greenint_13" class="circle" style="top:520px; left:211px; visibility: visible;" onclick="createNodeBubble2(211, 520, 'greenint_13')"></div>
+                        <div id="greenint_14" class="circle" style="top:565px; left:225px; visibility: visible;" onclick="createNodeBubble2(225, 565, 'greenint_14')"></div>
+                        <div id="greenint_16" class="circle" style="top:586px; left:344px; visibility: visible;" onclick="createNodeBubble2(347, 586, 'greenint_16')"></div>
+                        <div id="greenint_17" class="circle" style="top:514px; left:344px; visibility: visible;" onclick="createNodeBubble2(344, 514, 'greenint_17')"></div>
+                        <div id="greenint_18" class="circle" style="top:432px; left:344px; visibility: visible;" onclick="createNodeBubble2(344, 432, 'greenint_18')"></div>
+                        <div id="greenint_19" class="circle" style="top:372px; left:344px; visibility: visible;" onclick="createNodeBubble2(344, 372, 'greenint_19')"></div>
+                        <div id="greenint_20" class="circle" style="top:565px; left:246px; visibility: visible;" onclick="createNodeBubble2(246, 565, 'greenint_20')"></div>
+                        <div id="greenint_21" class="circle" style="top:388px; left:344px; visibility: visible;" onclick="createNodeBubble2(344, 388, 'greenint_21')"></div>
+                        <div id="finearts_d10" class="circle" style="top:423px; left:284px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(284, 423, 'finearts_d10')"></div>
+                        <div id="finearts_d6" class="circle" style="top:452px; left:296px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(296, 452, 'finearts_d6')"></div>
+                        <div id="finearts_d2" class="circle" style="top:432px; left:326px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(326, 432, 'finearts_d2')"></div>
+                        <div id="finearts_d3" class="circle" style="top:388px; left:326px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(326, 388, 'finearts_d3')"></div>
+                        <div id="eng_d3" class="circle" style="top:466px; left:285px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(285, 466, 'eng_d3')"></div>
+                        <div id="eng_d6" class="circle" style="top:515px; left:248px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(248, 515, 'eng_d6')"></div>
+                        <div id="eng_d1" class="circle" style="top:514px; left:328px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(328, 514, 'eng_d1')"></div>
+                        <div id="ite_d8" class="circle" style="top:583px; left:248px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(248, 583, 'ite_d8')"></div>
+                        <div id="ite_d1" class="circle" style="top:586px; left:330px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(330, 586, 'ite_d1')"></div>
+                        <div id="uc_d1" class="circle" style="top:514px; left:355px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(355, 514, 'uc_d1')"></div>
+                        <div id="meyer_d6" class="circle" style="top:432px; left:355px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(355, 432, 'meyer_d6')"></div>
+                        <div id="meyer_d5" class="circle" style="top:372px; left:355px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(355, 372, 'meyer_d5')"></div>
+
+                        <!--Blue-->
+                        <div id="blueint_1" class="circle" style="top:380px; left:445px; visibility: visible;" onclick="createNodeBubble2(445, 380, 'blueint_1')"></div>
+                        <div id="blueint_2" class="circle" style="top:410px; left:445px; visibility: visible;" onclick="createNodeBubble2(445, 410, 'blueint_2')"></div>
+                        <div id="blueint_3" class="circle" style="top:445px; left:445px; visibility: visible;" onclick="createNodeBubble2(445, 445, 'blueint_3')"></div>
+                        <div id="blueint_4" class="circle" style="top:460px; left:445px; visibility: visible;" onclick="createNodeBubble2(445, 460, 'blueint_4')"></div>
+                        <div id="blueint_5" class="circle" style="top:475.5px; left:445px; visibility: visible;" onclick="createNodeBubble2(445, 475.5, 'blueint_5')"></div>
+                        <div id="blueint_6" class="circle" style="top:486px; left:445px; visibility: visible;" onclick="createNodeBubble2(445, 486, 'blueint_6')"></div>
+                        <div id="blueint_7" class="circle" style="top:538px; left:429px; visibility: visible;" onclick="createNodeBubble2(429, 538, 'blueint_7')"></div>
+                        <div id="blueint_8" class="circle" style="top:560px; left:438px; visibility: visible;" onclick="createNodeBubble2(438, 560, 'blueint_8')"></div>
+                        <div id="blueint_9" class="circle" style="top:560px; left:445px; visibility: visible;" onclick="createNodeBubble2(445, 560, 'blueint_9')"></div>
+                        <div id="blueint_10" class="circle" style="top:580px; left:445px; visibility: visible;" onclick="createNodeBubble2(445, 580, 'blueint_10')"></div>
+                        <div id="blueint_11" class="circle" style="top:651px; left:445px; visibility: visible;" onclick="createNodeBubble2(445, 651, 'blueint_11')"></div>
+                        <div id="blueint_12" class="circle" style="top:777px; left:445px; visibility: visible;" onclick="createNodeBubble2(445, 777, 'blueint_12')"></div>
+                        <div id="blueint_13" class="circle" style="top:486px; left:418px; visibility: visible;" onclick="createNodeBubble2(418, 486, 'blueint_13')"></div>
+                        <div id="meyer_d1" class="circle" style="top:380px; left:432px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(432, 380, 'meyer_d1')"></div>
+                        <div id="meyer_d2" class="circle" style="top:410px; left:432px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(432, 410, 'meyer_d2')"></div>
+                        <div id="meyer_d3" class="circle" style="top:445px; left:432px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(432, 445, 'meyer_d3')"></div>
+                        <div id="biosci_d1" class="circle" style="top:451px; left:460px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(460, 451, 'biosci_d1')"></div>
+                        <div id="mathpsych_d1" class="circle" style="top:475.5px; left:460px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(460, 475.5, 'mathpsych_d1')"></div>
+                        <div id="uc_d9" class="circle" style="top:486px; left:395px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(395, 486, 'uc_d9')"></div>
+                        <div id="uc_d11" class="circle" style="top:538px; left:418px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(418, 538, 'uc_d11')"></div>
+                        <div id="mathpsych_d2" class="circle" style="top:551px; left:464px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(464, 551, 'mathpsych_d2')"></div>
+                        <div id="sond_d1" class="circle" style="top:580px; left:460px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(460, 580, 'sond_d1')"></div>
+                        <div id="sher_d1" class="circle" style="top:580px; left:432px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(432, 580, 'sher_d1')"></div>
+                        <div id="sond_d2" class="circle" style="top:651px; left:460px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(460, 651, 'sond_d2')"></div>
+                        <div id="sher_d2" class="circle" style="top:651px; left:432px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(432, 651, 'sher_d2')"></div>
+                        <div id="admin_d1" class="circle" style="top:708px; left:432px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(432, 708, 'admin_d1')"></div>
+                        
+                        <!--Add your parts here-->
+                        <!--Purple-->
+                        <div id="purpleint_1" class="circle" style="top:284px; left:449px; visibility: visible;" onclick="createNodeBubble2(449, 284, 'purpleint_1')"></div>
+                        <div id="purpleint_2" class="circle" style="top:292px; left:501px; visibility: visible;" onclick="createNodeBubble2(501, 292, 'purpleint_2')"></div>
+                        <div id="purpleint_5" class="circle" style="top:304px; left:448px; visibility: visible;" onclick="createNodeBubble2(448, 304, 'purpleint_5')"></div>
+                        <div id="purpleint_6" class="circle" style="top:304px; left:501px; visibility: visible;" onclick="createNodeBubble2(501, 304, 'purpleint_6')"></div>
+                        <div id="purpleint_3" class="circle" style="top:292px; left:586px; visibility: visible;" onclick="createNodeBubble2(586, 292, 'purpleint_3')"></div>
+                        <div id="purpleint_30" class="circle" style="top:292px; left:633px; visibility: visible;" onclick="createNodeBubble2(633, 292, 'purpleint_30')"></div>
+                        <div id="purpleint_7" class="circle" style="top:343px; left:448px; visibility: visible;" onclick="createNodeBubble2(448, 340, 'purpleint_7')"></div>
+                        <div id="purpleint_12" class="circle" style="top:356px; left:463px; visibility: visible;" onclick="createNodeBubble2(463, 356, 'purpleint_12')"></div>
+                        <div id="biosci_d2" class="circle" style="top:375px; left:460px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(460, 375, 'biosci_d2')"></div>
+                        <div id="biosci_d4" class="circle" style="top:343px; left:462px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(462, 343, 'biosci_d4')"></div>
+                        <div id="purpleint_8" class="circle" style="top:356px; left:501px; visibility: visible;" onclick="createNodeBubble2(501, 356, 'purpleint_8')"></div>
+                        <div id="purpleint_9" class="circle" style="top:356px; left:521px; visibility: visible;" onclick="createNodeBubble2(521, 356, 'purpleint_9')"></div>
+                        <div id="purpleint_10" class="circle" style="top:356px; left:588px; visibility: visible;" onclick="createNodeBubble2(588, 356, 'purpleint_10')"></div>
+                        <div id="comm_d5" class="circle" style="top:334px; left:521px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(521, 334, 'comm_d5')"></div>
+                        <div id="comm_d6" class="circle" style="top:334px; left:588px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(588, 334, 'comm_d6')"></div>
+                        <div id="comm_d4" class="circle" style="top:299px; left:600px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(600, 299, 'comm_d4')"></div>
+                        <div id="comm_d3" class="circle" style="top:299px; left:625px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(625, 299, 'comm_d3')"></div>
+                        <div id="comm_d1" class="circle" style="top:405px; left:603px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(603, 405, 'comm_d1')"></div>
+                        <div id="comm_d2" class="circle" style="top:405px; left:617px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(617, 405, 'comm_d2')"></div>
+                        <div id="purpleint_4" class="circle" style="top:308px; left:642px; visibility: visible;" onclick="createNodeBubble2(642, 308, 'purpleint_4')"></div>
+                        <div id="biosci_d3" class="circle" style="top:367px; left:481px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(481, 367, 'biosci_d3')"></div>
+                        <div id="purpleint_11" class="circle" style="top:367px; left:501px; visibility: visible;" onclick="createNodeBubble2(501, 367, 'purpleint_11')"></div>
+                        <div id="purpleint_13" class="circle" style="top:431px; left:508px; visibility: visible;" onclick="createNodeBubble2(508, 431, 'purpleint_13')"></div>
+                        <div id="purpleint_14" class="circle" style="top:431px; left:526px; visibility: visible;" onclick="createNodeBubble2(526, 431, 'purpleint_14')"></div>
+                        <div id="purpleint_15" class="circle" style="top:431px; left:584px; visibility: visible;" onclick="createNodeBubble2(584, 431, 'purpleint_15')"></div>
+                        <div id="purpleint_16" class="circle" style="top:440px; left:603px; visibility: visible;" onclick="createNodeBubble2(603, 440, 'purpleint_16')"></div>
+                        <div id="purpleint_35" class="circle" style="top:419px; left:526px; visibility: visible;" onclick="createNodeBubble2(526, 419, 'purpleint_35')"></div>
+                        <div id="purpleint_36" class="circle" style="top:410px; left:518px; visibility: visible;" onclick="createNodeBubble2(518, 410, 'purpleint_36')"></div>
+                        <div id="lechall_d1" class="circle" style="top:404px; left:527px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(527, 404, 'lechall_d1')"></div>
+                        <div id="purpleint_23" class="circle" style="top:462px; left:513px; visibility: visible;" onclick="createNodeBubble2(513, 462, 'purpleint_23')"></div>
+                        <div id="purpleint_24" class="circle" style="top:462px; left:574px; visibility: visible;" onclick="createNodeBubble2(574, 462, 'purpleint_24')"></div>
+                        <div id="purpleint_25" class="circle" style="top:463px; left:603px; visibility: visible;" onclick="createNodeBubble2(603, 463, 'purpleint_25')"></div>
+                        <div id="purpleint_26" class="circle" style="top:516px; left:518px; visibility: visible;" onclick="createNodeBubble2(518, 516, 'purpleint_26')"></div>
+                        <div id="purpleint_27" class="circle" style="top:516px; left:603px; visibility: visible;" onclick="createNodeBubble2(603, 516, 'purpleint_27')"></div>
+                        <div id="purpleint_28" class="circle" style="top:543px; left:512px; visibility: visible;" onclick="createNodeBubble2(512, 543, 'purpleint_28')"></div>
+                        <div id="purpleint_29" class="circle" style="top:560px; left:496px; visibility: visible;" onclick="createNodeBubble2(496, 560, 'purpleint_29')"></div>
+                        <div id="ilsb_d1" class="circle" style="top:467px; left:621px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(621, 467, 'ilsb_d1')"></div>
+                        <div id="purpleint_17" class="circle" style="top:427px; left:686px; visibility: visible;" onclick="createNodeBubble2(686, 427, 'purpleint_17')"></div>
+                        <div id="purpleint_18" class="circle" style="top:431px; left:705px; visibility: visible;" onclick="createNodeBubble2(705, 431, 'purpleint_18')"></div>
+                        <div id="purpleint_19" class="circle" style="top:421px; left:724px; visibility: visible;" onclick="createNodeBubble2(724, 421, 'purpleint_19')"></div>
+                        <div id="purpleint_20" class="circle" style="top:403px; left:739px; visibility: visible;" onclick="createNodeBubble2(739, 403, 'purpleint_20')"></div>
+                        <div id="purpleint_21" class="circle" style="top:381px; left:722px; visibility: visible;" onclick="createNodeBubble2(722, 381, 'purpleint_21')"></div>
+                        <div id="ilsb_d2" class="circle" style="top:444px; left:690px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(690, 444, 'ilsb_d2')"></div>
+                        <div id="purpleint_31" class="circle" style="top:777px; left:603px; visibility: visible;" onclick="createNodeBubble2(603, 777, 'purpleint_31')"></div>
+                        <div id="purpleint_32" class="circle" style="top:777px; left:473px; visibility: visible;" onclick="createNodeBubble2(473, 777, 'purpleint_32')"></div>
+                        <div id="purpleint_33" class="circle" style="top:755px; left:445px; visibility: visible;" onclick="createNodeBubble2(445, 775, 'purpleint_33')"></div>
+
+                        <!--Pink-->
+                        <div id="aoklib_d2" class="circle" style="top:167px; left:366px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(366, 167, 'aoklib_d2')"></div> 
+                        <div id="aoklib_d3" class="circle" style="top:197px; left:421px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(421, 197, 'aoklib_d3')"></div>
+                        <div id="pinkint_35" class="circle" style="top:225px; left:448px; visibility: visible;" onclick="createNodeBubble2(448, 225, 'pinkint_35')"></div>
+                        <div id="pinkint_34" class="circle" style="top:197px; left:498px; visibility: visible;" onclick="createNodeBubble2(498, 197, 'pinkint_34')"></div>
+                        <div id="pinkint_40" class="circle" style="top:214px; left:517px; visibility: visible;" onclick="createNodeBubble2(517, 214, 'pinkint_40')"></div>
+                        <div id="pinkint_33" class="circle" style="top:231px; left:535px; visibility: visible;" onclick="createNodeBubble2(535, 231, 'pinkint_33')"></div>
+                        <div id="pinkint_32" class="circle" style="top:197px; left:538px; visibility: visible;" onclick="createNodeBubble2(538, 197, 'pinkint_32')"></div>
+                        <div id="pinkint_31" class="circle" style="top:62px; left:541px; visibility: visible;" onclick="createNodeBubble2(541, 62, 'pinkint_31')"></div>
+                        <div id="pinkint_30" class="circle" style="top:295px; left:705px; visibility: visible;" onclick="createNodeBubble2(705, 295, 'pinkint_30')"></div>
+                        <div id="physics_d3" class="circle" style="top:388px; left:757px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(757, 388, 'physics_d3')"></div>
+                        <div id="pinkint_24" class="circle" style="top:368px; left:725px; visibility: visible;" onclick="createNodeBubble2(725, 368, 'pinkint_24')"></div>
+                        <div id="pinkint_20" class="circle" style="top:295px; left:771px; visibility: visible;" onclick="createNodeBubble2(771, 295, 'pinkint_20')"></div>
+                        <div id="physics_d1" class="circle" style="top:311px; left:763px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(763, 311, 'physics_d1')"></div>
+                        <div id="pinkint_21" class="circle" style="top:307px; left:748px; visibility: visible;" onclick="createNodeBubble2(748, 307, 'pinkint_21')"></div>
+                        <div id="pinkint_23" class="circle" style="top:312px; left:725px; visibility: visible;" onclick="createNodeBubble2(725, 312, 'pinkint_23')"></div>
+                        <div id="pinkint_22" class="circle" style="top:295px; left:725px; visibility: visible;" onclick="createNodeBubble2(725, 295, 'pinkint_22')"></div>
+                        <div id="pinkint_28" class="circle" style="top:195px; left:700px; visibility: visible;" onclick="createNodeBubble2(700, 195, 'pinkint_28')"></div>
+                        <div id="pinkint_17" class="circle" style="top:196px; left:730px; visibility: visible;" onclick="createNodeBubble2(730, 196, 'pinkint_17')"></div>
+                        <div id="pinkint_39" class="circle" style="top:196px; left:785px; visibility: visible;" onclick="createNodeBubble2(785, 196, 'pinkint_39')"></div>
+                        <div id="pinkint_11" class="circle" style="top:196px; left:857px; visibility: visible;" onclick="createNodeBubble2(857, 196, 'pinkint_11')"></div>
+                        <div id="pubpol_d2" class="circle" style="top:213px; left:785px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(785, 213, 'pubpol_d2')"></div>
+                        <div id="pinkint__29" class="circle" style="top:240px; left:657px; visibility: visible;" onclick="createNodeBubble2(657, 240, 'pinkint_29')"></div>
+                        <div id="pinkint_36" class="circle" style="top:232px; left:725px; visibility: visible;" onclick="createNodeBubble2(725, 232, 'pinkint_36')"></div>
+                        <div id="pubpol_d1" class="circle" style="top:231px; left:751px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(751, 231, 'pubpol_d1')"></div>
+                        <div id="pinkint_18" class="circle" style="top:254px; left:725px; visibility: visible;" onclick="createNodeBubble2(725, 254, 'pinkint_18')"></div>
+                        <div id="pinkint_19" class="circle" style="top:254px; left:855px; visibility: visible;" onclick="createNodeBubble2(855, 254, 'pinkint_19')"></div>
+                        <div id="pinkint_27" class="circle" style="top:58px; left:709px; visibility: visible;" onclick="createNodeBubble2(709, 58, 'pinkint_27')"></div>
+                        <div id="pinkint_14" class="circle" style="top:58px; left:727px; visibility: visible;" onclick="createNodeBubble2(727, 58, 'pinkint_14')"></div>   
+                        <div id="pinkint_38" class="circle" style="top:58px; left:776px; visibility: visible;" onclick="createNodeBubble2(776, 58, 'pinkint_38')"></div>      
+                        <div id="pinkint_13" class="circle" style="top:58px; left:857px; visibility: visible;" onclick="createNodeBubble2(857, 58, 'pinkint_13')"></div>
+                        <div id="pinkint_15" class="circle" style="top:93px; left:729px; visibility: visible;" onclick="createNodeBubble2(729, 93, 'pinkint_15')"></div>
+                        <div id="cwb_d1" class="circle" style="top:93px; left:743px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(743, 93, 'cwb_d1')"></div>
+                        <div id="cwb_d2" class="circle" style="top:79px; left:779px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(779, 79, 'cwb_d2')"></div>
+                        <div id="pinkint_12" class="circle" style="top:104px; left:858px; visibility: visible;" onclick="createNodeBubble2(858, 104, 'pinkint_12')"></div>
+                        <div id="pinkint_16" class="circle" style="top:173px; left:733px; visibility: visible;" onclick="createNodeBubble2(733, 173, 'pinkint_16')"></div>
+                        <div id="pinkint_10" class="circle" style="top:173px; left:857px; visibility: visible;" onclick="createNodeBubble2(857, 173, 'pinkint_10')"></div>
+                        <div id="pinkint_1" class="circle" style="top:3px; left:932px; visibility: visible;" onclick="createNodeBubble2(932, 3, 'pinkint_1')"></div>
+                        <div id="pinkint_2" class="circle" style="top:36px; left:972px; visibility: visible;" onclick="createNodeBubble2(972, 36, 'pinkint_2')"></div>
+                        <div id="pinkint_3" class="circle" style="top:40px; left:986px; visibility: visible;" onclick="createNodeBubble2(986, 40, 'pinkint_3')"></div>
+                        <div id="dhall_d1" class="circle" style="top:44px; left:933px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(933, 44, 'dhall_d1')"></div>
+                        <div id="pinkint_37" class="circle" style="top:42px; left:962px; visibility: visible;" onclick="createNodeBubble2(962, 42, 'pinkint_37')"></div>
+                        <div id="pinkint_4" class="circle" style="top:53px; left:972px; visibility: visible;" onclick="createNodeBubble2(972, 53, 'pinkint_4')"></div>
+                        <div id="dhall_d3" class="circle" style="top:99px; left:869px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(869, 99, 'dhall_d3')"></div>
+                        <div id="dhall_d2" class="circle" style="top:121px; left:909px; visibility: visible; background-color: blue;" onclick="createNodeBubble2(909, 121, 'dhall_d2')"></div>
+                        <div id="pinkint_5" class="circle" style="top:112px; left:961px; visibility: visible;" onclick="createNodeBubble2(961, 112, 'pinkint_5')"></div>
+                        <div id="pinkint_9" class="circle" style="top:142px; left:909px; visibility: visible;" onclick="createNodeBubble2(909, 142, 'pinkint_9')"></div>
+                        <div id="pinkint_8" class="circle" style="top:154px; left:949px; visibility: visible; " onclick="createNodeBubble2(949, 154, 'pinkint_8')"></div>
+                        <div id="pinkint_6" class="circle" style="top:142px; left:965px; visibility: visible; " onclick="createNodeBubble2(965, 142, 'pinkint_6')"></div>
+                        <div id="pinkint_7" class="circle" style="top:173px; left:963px; visibility: visible;" onclick="createNodeBubble2(963, 173, 'pinkint_7')"></div>
+
+                        <!-- Elevator nodes -->
+                        <div id="pahb_e1" class="circle_three" style="top:460px; left:90px; visibility: visible;" onclick="createNodeBubble2(90, 460, 'pahb_e1')"></div>
+                        <div id="finearts_e1" class="circle_three" style="top:405px; left:310px; visibility: visible;" onclick="createNodeBubble2(310, 405, 'finearts_e1')"></div>
+                        <div id="eng_e1" class="circle_three" style="top:505px; left:290px; visibility: visible;" onclick="createNodeBubble2(290, 505, 'eng_e1')"></div>
+                        <div id="ite_e1" class="circle_three" style="top:620px; left:290px; visibility: visible;" onclick="createNodeBubble2(290, 620, 'ite_e1')"></div>
+                        <div id="meyer_e1" class="circle_three" style="top:407px; left:375px; visibility: visible;" onclick="createNodeBubble2(375, 407, 'meyer_e1')"></div>
+                        <div id="uc_e1" class="circle_three" style="top:505px; left:380px; visibility: visible;" onclick="createNodeBubble2(380, 505, 'uc_e1')"></div>
+                        
+                        <div id="admin_e1" class="circle_three" style="top:700px; left:420px; visibility: visible;" onclick="createNodeBubble2(420, 700, 'admin_e1')"></div>
+                        <div id="mathpsych_e1" class="circle_three" style="top:510px; left:475px; visibility: visible;" onclick="createNodeBubble2(475, 510, 'mathpsych_e1')"></div>
+                        <div id="sond_e1" class="circle_three" style="top:615px; left:475px; visibility: visible;" onclick="createNodeBubble2(475, 615, 'sond_e1')"></div>
+                        <div id="biosci_e1" class="circle_three" style="top:385px; left:470px; visibility: visible;" onclick="createNodeBubble2(470, 385, 'biosci_e1')"></div>
+                        <div id="sam_e" class="circle_three" style="top:382px; left:510px; visibility: visible;" onclick="createNodeBubble2(510, 382, 'sam_e')"></div>
+                        <div id="rac_e1" class="circle_three" style="top:685px; left:540px; visibility: visible;" onclick="createNodeBubble2(540, 685, 'rac_e1')"></div>
+                        <div id="aoklib_e1" class="circle_three" style="top:110px; left:435px; visibility: visible;" onclick="createNodeBubble2(435, 110, 'aoklib_e1')"></div>
+                        <div id="cwb_e1" class="circle_three" style="top:96px; left:775px; visibility: visible;" onclick="createNodeBubble2(775, 96, 'cwb_e1')"></div>
+                        <div id="pubpol_e1" class="circle_three" style="top:222px; left:785px; visibility: visible;" onclick="createNodeBubble2(785, 222, 'pubpol_e1')"></div>
+                        <div id="physics_e1" class="circle_three" style="top:340px; left:764px; visibility: visible;" onclick="createNodeBubble2(764, 340, 'physics_e1')"></div>
+                        <div id="ilsb_e1" class="circle_three" style="top:465px; left:660px; visibility: visible;" onclick="createNodeBubble2(660, 465, 'ilsb_e1')"></div>
+                        <div id="comm_e1" class="circle_three" style="top:320px; left:605px; visibility: visible;" onclick="createNodeBubble2(605, 320, 'comm_e1')"></div>
+                        
+                        <!--Curved Pathways that I manually put in-->
+                        <svg id="curved_path1" class="curved_paths" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                            <path d="M 371 171 C 315 240, 392 175, 385 252 C 435 280, 365 375, 452 348" stroke="#5294ff" stroke-width="4" fill="transparent"/>
+                        </svg>
+                        <svg id="curved_path2" class="curved_paths" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                            <path d="M 195 448 C 190 432, 218 391, 232 396" stroke="#5294ff" stroke-width="4" fill="transparent"/>
+                        </svg>
+                        <svg id="curved_path3" class="curved_paths" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                            <path d="M 454 289 C 459 280, 491 280, 507 298" stroke="#5294ff" stroke-width="4" fill="transparent"/>
+                        </svg>
+                        <svg id="curved_path4" class="curved_paths" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                            <path d="M 861 178 C 867 163, 899 136, 915 147" stroke="#5294ff" stroke-width="4" fill="transparent"/>
+                        </svg>
+                        <svg id="curved_path5" class="curved_paths" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                            <path d="M 915 147 C 930 147, 961 130, 967 116" stroke="#5294ff" stroke-width="4" fill="transparent"/>
+                        </svg>
+                        <svg id="curved_path6" class="curved_paths" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                            <path d="M 915 147 C 880 147, 858 90, 863 111" stroke="#5294ff" stroke-width="4" fill="transparent"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="directory">
+                <div class="directory_label">Directory:</div>
+                <div class="directory_list">
+                    <div class="directory_list_style">
+                        <div class="directory_entry" style="margin-top: 15px;" onclick="showPopUp('ADMIN_info')">1. Administration Building</div>
+                        <div class="directory_entry" onclick="showPopUp('BIOLOGICALSCI_info')">2. Biological Sciences Building</div>
+                        <div class="directory_entry" onclick="showPopUp('WELLBEING_info')">3. Center for Well-Being</div>
+                        <div class="directory_entry" onclick="showPopUp('COMMONS_info')">4. The Commons</div>
+                        <div class="directory_entry" onclick="showPopUp('ENG_info')">5. Engineering Building</div>
+                        <div class="directory_entry" onclick="showPopUp('FINEARTS_info')">6. Fine Arts Building</div>
+                        <div class="directory_entry" onclick="showPopUp('ITE_info')">7. Information Technology/Engineering Building (ITE)</div>
+                        <div class="directory_entry" onclick="showPopUp('ILSB_info')">8. Interdisciplinary Life Sciences Building</div>
+                        <div class="directory_entry" onclick="showPopUp('LIBRARY_info')">9. Library & Gallery, Albin O. Kuhn</div>
+                        <div class="directory_entry" onclick="showPopUp('MATHPSYCH_info')">10. Mathematics & Psychology Building</div>
+                        <div class="directory_entry" onclick="showPopUp('MEYERHOFF_info')">11. Meyerhoff Chemistry Building</div>
+                        <div class="directory_entry" onclick="showPopUp('PAHB_info')">12. Performing Arts & Humanities Building</div>
+                        <div class="directory_entry" onclick="showPopUp('PHYSICS_info')">13. Physics Building</div>
+                        <div class="directory_entry" onclick="showPopUp('PUP_info')">14. Public Policy Building</div>
+                        <div class="directory_entry" onclick="showPopUp('RAC_info')">15. Retriever Activites Center (RAC)</div>
+                        <div class="directory_entry" onclick="showPopUp('SHERMAN_info')">16. Sherman Hall</div>
+                        <div class="directory_entry" onclick="showPopUp('SONDHEIM_info')">17. Sondheim Hall</div>
+                        <div class="directory_entry" onclick="showPopUp('TRUEGRITS_info')">18. True Grit's (Dining)</div>
+                        <div class="directory_entry" onclick="showPopUp('UC_info')">19. University Center</div>
+                        <div class="directory_entry" style="margin-top: 8px; margin-bottom: 15px;" onclick="showPopUp('LECTUREHALL_info')">20. Lecture Hall 1</div>
+                    </div>
+                </div>
+            </div>
+
+        <div class = "bottom_banner">
+            <div class="bottom_stuff">
+                <div class="bottom_banner_links">
+                    <div class="link" onclick="turnOnUIPopUp('aboutUsUI')">
+                        About Us
+                    </div>
+                    <div class="link" onclick="turnOnUIPopUp('contactUI')">
+                        Contact
+                    </div>
+                    <div class="link" onclick="turnOnUIPopUp('logoutUI')">
+                        Logout
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="aboutUsDarkScreen" class="dark_screen">
+            <div id="aboutUsUI" class="about_us_style" style="display: none;">
+                <div class="UI_exit_button" onclick="turnOnUIPopUp('aboutUsUI')">&times;</div>
+                <h2 style="font-weight: bold; padding-top: 20px">&#129454; About Us &#129454;</h2>
+                <br>
+                <div class="UI_body">
+                    <p>
+                        This is a student made Accessibility Routing Application for our very own UMBC Campus! 
+                        <br>
+                        Brought to you by: Andrew Lam, Furnom Dam, Kaila Hoskins, and Sanaa Thomas
+                    </p>
+                    <br>
+                    <p>
+                        Our goal was to create an application that is able to help students, 
+                        faculty, or any person of any status to be able to navigate 
+                        their way across campus! With this, we wanted to focus specifically 
+                        on accessible routes on campus, which can be difficult to find since 
+                        our campus is built on the side of a hill, but they exists! We hope 
+                        that our application is able to provide you a quick and accessible way 
+                        to your destination! Go Retrievers! :)
+                    </p>
+                </div>
+            </div>
+            <div id="contactUI" class="contact_style" style="display: none;">
+                <div class="UI_exit_button" onclick="turnOnUIPopUp('contactUI')">&times;</div>
+                <h2 style="font-weight: bold; padding-top: 20px">&#129454; Contact &#129454;</h2>
+                <br>
+                <div class="UI_body">
+                    <p>
+                        Email of someone goes here
+                        <br>
+                        example@umbc.edu
+                    </p>
+                    <p>
+                        Incase an accessible door operator is malfunctioning
+                        <br>
+                        Call 410-455-2550
+                    </p>
+                </div>
+            </div>
+            <div id="logoutUI" class="contact_style" style="display: none;">
+                <div class="UI_exit_button" onclick="turnOnUIPopUp('logoutUI')">&times;</div>
+                <h2 style="font-weight: bold; padding-top: 20px">Are you sure you want to logout?</h2>
+                <br>
+                <div class="UI_body">
+                    <p>
+                        <button class="logout_btn" onclick="window.location.href='index.html'">
+                            Logout
+                        </button>
+
+                        <button class="cancel_btn" onclick="turnOffUIPopUp('logoutUI')">
+                            Cancel
+                        </button>
+
+                    </p>
+                </div>
+            </div>
+            <div id="nodeUI" class="contact_style" style="display: none;">
+    <div class="UI_exit_button" onclick="turnOffUIPopUp('nodeUI')">&times;</div>
+
+    <h2 id="nodeTitle" style="font-weight: bold; padding-top: 20px">
+        Node ID:
+    </h2>
+
+    <br>
+
+    <div class="UI_body">
+        <button id="toggleNodeBtn">Toggle</button>
+    </div>
+</div>
+
+            
+        
+            
+            
+        </div>
+
+    <!--<script src="index_script.js"></script>-->
+        <script src="index_script.js"></script>
+    <!--<script src="index_steps.js"></script>-->
+        <script src="index_steps.js"></script>
+    </body>
+</html>
