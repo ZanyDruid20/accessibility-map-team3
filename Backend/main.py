@@ -1,11 +1,11 @@
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from database import get_db_pool
-from astar import a_star
+from Backend.database import get_db_pool
+from Backend.astar import a_star
 import asyncio
-from models import ReportCreate
-from Login import router as login_router  # type: ignore
-from Threshold import router as threshold_router
+from Backend.models import ReportCreate
+from Backend.Login import router as login_router  # type: ignore
+from Backend.Threshold import router as threshold_router
 
 app = FastAPI()
 db_pool = None
@@ -377,3 +377,4 @@ async def get_off_nodes():
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Database error: {e}")
+
