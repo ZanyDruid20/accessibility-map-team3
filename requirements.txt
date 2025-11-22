@@ -6,3 +6,5 @@ aiomysql
 mysql-connector-python
 
 asyncio
+cryptography
+
