@@ -6,7 +6,7 @@ document.getElementById("adminLoginForm").addEventListener("submit", function(ev
 
     console.log(username, password);
 
-    const response = fetch("http://accessibility-map-team3-production.up.railway.app/auth/login", {
+    const response = fetch("https://accessibility-map-team3-production.up.railway.app/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
