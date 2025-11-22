@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     let reportData = [];
 
-    fetch("http://localhost:8000/reports", {
+    fetch("https://accessibility-map-team3-production.up.railway.app/reports", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -69,14 +69,14 @@ const resolveBtn = document.getElementById("resolve_report_button");
 resolveBtn.addEventListener("click", function () {
     const reportId = selectedId;
 
-    fetch(`http://localhost:8000/reports/${reportId}/resolve`, {
+    fetch(`https://accessibility-map-team3-production.up.railway.app/reports/${reportId}/resolve`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         }
     })
 
-    fetch("http://localhost:8000/reports", {
+    fetch("https://accessibility-map-team3-production.up.railway.app/reports", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
