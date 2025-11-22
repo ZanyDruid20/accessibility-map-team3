@@ -17,7 +17,6 @@ function renderInstructions(route) {
         stepDiv.classList.add("report_item");
 
         stepDiv.addEventListener("click", () => {
-            console.log(selectedId);
             if (selectedReport && selectedReport !== stepDiv) {
                 selectedReport.classList.remove("selected");
             }
@@ -59,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .then(data => {
         reportData = data.reports;
-        console.log(reportData);
         renderInstructions(reportData);
 
     });

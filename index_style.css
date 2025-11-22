@@ -1,4 +1,3 @@
-/* Getting rid of whitespace around banner */
 html, body {
   margin: 0;
   padding: 0;
@@ -23,6 +22,11 @@ html, body {
   background-size: contain;
   background-repeat: no-repeat;
   margin-left: 0.5%;
+  z-index: 500;
+}
+
+.umbc_logo:hover {
+  cursor: pointer;
 }
 
 .title {
@@ -53,7 +57,7 @@ html, body {
 
 .filler {
 
-    margin-left: 17%;
+  margin-left: 17%;
 
 }
 
@@ -73,7 +77,6 @@ html, body {
   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Put floor boxes + submit in one horizontal line */
 .floor_row {
   display: flex;
   align-items: center;
@@ -82,91 +85,84 @@ html, body {
   
 }
 
-/* Lay out label + input side-by-side */
 .floor_pair {
   display: flex;
   margin-top: -35px;
-  flex-direction: row; /* <-- ensures label + input are on same line */
+  flex-direction: row;
   align-items: center;
-  gap: 8px; /* space between label and input */
-  white-space: nowrap; /* prevents label from breaking into multiple lines */
+  gap: 8px;
+  white-space: nowrap;
 }
 
-/* Override global input width */
 .floor_input {
-  width: 70px !important;   /* small fixed width */
+  width: 70px !important;
   padding: 6px 8px;
   height: 35px; 
 }
 
 .submit_wrapper {
   display: flex;
-  align-items: flex-start;   /* aligns submit button to top of the row */
+  align-items: flex-start;
 }
-
-/* Your large start/end inputs can stay as they are */
 
 input[type=text], select {
     
-    width: 35%;
-    padding: 12px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-left: 20px;
-    margin-right: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  width: 35%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* input[type=submit] { */
 .destination_submit {
 
-    width: 100px;
-    background-color: rgb(238, 176, 41);
-    color: black;
-    padding: 10px 12px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-left: 1%;
-    border: 2px solid black;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-    top: -15px;
-
-    
+  width: 100px;
+  background-color: rgb(238, 176, 41);
+  color: black;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 1%;
+  border: 2px solid black;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  top: -15px;
 
 }
 
 input[type=submit]:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* darker shadow on hover */
-  text-decoration: underline; /* underline on hover  */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  text-decoration: underline;
 }
 
 .report_button {
 
-    margin-right: 5%;
-    width: 10%;
+  margin-right: 5%;
+  width: 10%;
 
 }
 
 .report_style {
 
-    margin-top: 5px;
-    width: 140px;
-    height: 45px;
-    border-radius: 40px;
-    font-size: 17px;
-    font-weight: bold;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
-    background-color: rgb(255, 62, 62);
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+  width: 140px;
+  height: 45px;
+  border-radius: 40px;
+  font-size: 17px;
+  font-weight: bold;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  background-color: rgb(255, 62, 62);
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
 }
 
@@ -180,51 +176,51 @@ input[type=submit]:hover {
 
 .center_line {
 
-    margin-top: 63px;
-    width: 100%;
-    height: 55%;
-    display: flex;
-    justify-content: space-between;
+  margin-top: 63px;
+  width: 100%;
+  height: 55%;
+  display: flex;
+  justify-content: space-between;
 
 }
 
 .instructions {
 
-    width: 20%;
-    height: 100%;
-    background-color: rgb(250, 250, 250);
-    border-radius: 25px;
-    box-shadow: 1px 5px 10px gray;
-    justify-content: center;
+  width: 20%;
+  height: 100%;
+  background-color: rgb(250, 250, 250);
+  border-radius: 25px;
+  box-shadow: 1px 5px 10px gray;
+  justify-content: center;
 
 }
 
 
 .instruction_label {
-    position: sticky;
-    margin-top: 5px;
-    height: 20%;
-    width: 70%;
-    background-color: rgb(238, 176, 41);
-    border-radius: 25px;
-    text-align: center;
-    line-height: 120px;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
-    color: black;
-    box-shadow: 1px 5px 10px gray;
-    margin-left: 15%;
-    border: 2px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: sticky;
+  margin-top: 5px;
+  height: 20%;
+  width: 70%;
+  background-color: rgb(238, 176, 41);
+  border-radius: 25px;
+  text-align: center;
+  line-height: 120px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  color: black;
+  box-shadow: 1px 5px 10px gray;
+  margin-left: 15%;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
    
 }
 
 
 .instruction_list {
-  direction: rtl; /* scrollbar on left */
+  direction: rtl;
   overflow-y: scroll;
   width: 100%;
   height: 75%;
@@ -275,51 +271,47 @@ input[type=submit]:hover {
   color: black;
   box-sizing: border-box;
   display: flex;
-  align-items: center;   /* vertically center */
-  justify-content: center;  /* horizontally center */
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
 
 .map {
 
-    width: 40%;
-    height: 100%;
-    background-color: rgb(202, 199, 199);
-    border-radius: 25px;
-    box-shadow: 1px 5px 10px gray;
-    justify-content: center;
-    display: inline-block;
-    border: 2px solid black;
-    overflow: hidden;
+  width: 40%;
+  height: 100%;
+  background-color: rgb(202, 199, 199);
+  border-radius: 25px;
+  box-shadow: 1px 5px 10px gray;
+  justify-content: center;
+  display: inline-block;
+  border: 2px solid black;
+  overflow: hidden;
 
 }
 
 .map_visual {
 
-    
-    background-image: url("https://english.umbc.edu/wp-content/uploads/sites/242/2014/09/campus_map.jpg");
-    
-    height: 80%;
-    width: 80%;
-    background-repeat: no-repeat;
-    border: 2px solid rgb(43, 70, 219);
-    justify-content: center;
-    display: flex;
+  background-image: url("https://english.umbc.edu/wp-content/uploads/sites/242/2014/09/campus_map.jpg");
+  height: 80%;
+  width: 80%;
+  background-repeat: no-repeat;
+  border: 2px solid rgb(43, 70, 219);
+  justify-content: center;
+  display: flex;
 
 }
 
 .directory {
 
-    
-    right: 0;
-    width: 20%;
-    height: 100%;
-    background-color: rgb(250, 250, 250);
-    border-radius: 25px;
-    box-shadow: 1px 5px 10px gray;
-    justify-content: center;
- 
+  right: 0;
+  width: 20%;
+  height: 100%;
+  background-color: rgb(250, 250, 250);
+  border-radius: 25px;
+  box-shadow: 1px 5px 10px gray;
+  justify-content: center;
 
 }
 
@@ -327,23 +319,23 @@ input[type=submit]:hover {
 
 .directory_label {
 
-    margin-top: 5px;
-    height: 20%;
-    width: 70%;
-    background-color: rgb(238, 176, 41);
-    border-radius: 25px;
-    text-align: center;
-    line-height: 120px;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
-    color: black;
-    box-shadow: 1px 5px 10px gray;
-    margin-left: 15%;
-    border: 2px solid black;
-    display: flex; 
-    align-items: center;
-    justify-content: center;
+  margin-top: 5px;
+  height: 20%;
+  width: 70%;
+  background-color: rgb(238, 176, 41);
+  border-radius: 25px;
+  text-align: center;
+  line-height: 120px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  color: black;
+  box-shadow: 1px 5px 10px gray;
+  margin-left: 15%;
+  border: 2px solid black;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
 
 }
 
@@ -408,39 +400,39 @@ input[type=submit]:hover {
 
 .bottom_banner {
 
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 8%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 8%;
 
 }
 
 .bottom_stuff {
 
-    width: 45%;
-    height: 100%;
-    background-color: rgb(0, 0, 0);
-    margin: 0 auto;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    display: flex;
-    justify-content: center;
+  width: 45%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  margin: 0 auto;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  display: flex;
+  justify-content: center;
 
 }
 
 .bottom_banner_links {
 
-    width: 100%;
-    height: 100%;
-    color:rgb(255, 178, 62);
-    display: flex;
-    justify-content:space-evenly;
-    align-items: center;     /* vertical centering */
-    gap: 40px;
-    line-height: 120px;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    font-weight: bold;
+  width: 100%;
+  height: 100%;
+  color:rgb(255, 178, 62);
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  gap: 40px;
+  line-height: 120px;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: bold;
 
 }
 
@@ -451,11 +443,9 @@ input[type=submit]:hover {
 
 .link:hover {
 
-    text-decoration: underline;
+  text-decoration: underline;
 
 }
-
-/*ADDED*/
 
 body {
   margin: 0;
@@ -470,7 +460,6 @@ body {
   position: relative;
 }
 
-/* The wrapper that scales + moves */
 #map-wrapper {
   transform-origin: center center;
   transition: transform 0.1s ease-out;
@@ -517,7 +506,6 @@ body {
   height: auto;
 }
 
-/* Example markers/nodes */
 .marker {
   position: absolute;
   width: 30px;
@@ -571,7 +559,6 @@ body {
   border-radius: 45px;
   background-color: red;
   position: absolute;
-  /*Will be made hidden on actual map*/
   visibility: hidden;
   border: 1px solid rgb(0, 0, 0);
 
@@ -591,7 +578,6 @@ body {
   border-radius: 45px;
   background-color: red;
   position: absolute;
-  /*Will be made hidden on actual map*/
   visibility: hidden;
   border: 1px solid rgb(0, 0, 0);
 
@@ -611,7 +597,6 @@ body {
   border-radius: 45px;
   background-color: rgb(90, 255, 84);
   position: absolute;
-  /*Will be made hidden on actual map*/
   visibility: hidden;
   border: 1px solid rgb(0, 0, 0);
 
@@ -641,94 +626,89 @@ body {
 }
 
 .bottom_banner_links a {
-    color: rgb(255, 178, 62);   /* UMBC gold */
-    text-decoration: none;
-    cursor: pointer;
+  color: rgb(255, 178, 62);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .bottom_banner_links a:hover {
-    color: rgb(255, 178, 62);   /* keep same color on hover */
-    text-decoration: underline; /* optional: remove if you don't want underline */
+  color: rgb(255, 178, 62);
+  text-decoration: underline;
 }
 
-/* =======================
-   Admin Login Page Styling
-   ======================= */
-
 body.admin-login {
-    position: relative;
-    margin: 0;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden; 
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
+  position: relative;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; 
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 body.admin-login::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;  
-    bottom: 0;  
-    background-image: url("https://explore.baltimoreheritage.org/files/fullsize/95c0bf0857c907713759ed4b9fbeb0a0.jpg");
-    background-size: cover;
-    background-position: center 25%; 
-    background-repeat: no-repeat;
-    transform: scaleX(-1);
-    z-index: -1;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;  
+  bottom: 0;  
+  background-image: url("https://explore.baltimoreheritage.org/files/fullsize/95c0bf0857c907713759ed4b9fbeb0a0.jpg");
+  background-size: cover;
+  background-position: center 25%; 
+  background-repeat: no-repeat;
+  transform: scaleX(-1);
+  z-index: -1;
 }
 
 body.admin-login::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 60vw;            /* how much of the page it covers */
-    height: 100vh;
-    background: rgba(0,0,0,0.78); /* semi-transparent black */
-    transform: skewX(-12deg) translateX(250px);    /* angle */
-    transform-origin: right;     /* pivot from the right edge */
-    z-index: -1;                 /* behind login form */
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 60vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.78);
+  transform: skewX(-12deg) translateX(250px);
+  transform-origin: right;
+  z-index: -1;
 }
 
 
 /* Back Button */
 .back-button {
-    display: inline-flex; 
-    align-items: center;
-    font-size: 30px;
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-    margin: 20px;
-    margin-bottom: 0px;
-    cursor: pointer;
+  display: inline-flex; 
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  margin: 20px;
+  margin-bottom: 0px;
+  cursor: pointer;
 }
 
 .back-button:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .back-arrow {
-    width: 6.5%; 
-    height: auto;
-    margin-right: 14px;
+  width: 6.5%; 
+  height: auto;
+  margin-right: 14px;
 }
 
-/* Login page specific overrides */
-body.admin-login * { box-sizing: border-box; } /* safe global for login page */
+body.admin-login * { box-sizing: border-box; }
 
 .login-container {
   position: fixed;
   top: 50%;
-  right: 10.9%;             /* move horizontally toward the shield */
-  transform: translateY(-50%); /* vertically center */
+  right: 10.9%;
+  transform: translateY(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
   height: auto;
-  z-index: 3; /* ensure it's above the overlay and background */
+  z-index: 3;
 }
 
 
@@ -736,10 +716,9 @@ body.admin-login * { box-sizing: border-box; } /* safe global for login page */
   text-align: center;
   font-size: 26px;
   font-weight: bold;
-  margin: 0 0 12px 0; /* space below the title */
+  margin: 0 0 12px 0;
 }
 
-/* form wrapper */
 #adminLoginForm {
   display: flex;
   flex-direction: column;
@@ -748,30 +727,27 @@ body.admin-login * { box-sizing: border-box; } /* safe global for login page */
   min-height: 300px;
   width: 570px; 
   padding: 24px;
-  background: rgba(255,255,255,0.85); /* subtle panel so inputs are visible on background */
+  background: rgba(255,255,255,0.85);
   border-radius: 8px;
   border: 2.5px solid black;
 }
 
-/* Each row holds label + input side-by-side */
 #adminLoginForm .input-row {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* Fix label width so inputs align perfectly */
 #adminLoginForm .input-row label {
-  flex: 0 0 120px;       /* fixed label width */
+  flex: 0 0 120px;
   text-align: right;
   font-weight: bold;
   font-size: 22px;
 }
 
-/* Force inputs to be exactly same width and ignore other global input rules */
 #adminLoginForm .input-row input {
-  flex: 1 1 auto;        /* fill remaining space */
-  width: 100%;           /* consistent sizing */
+  flex: 1 1 auto;
+  width: 100%;
   padding: 10px;
   font-size: 18px;
   border: 2px solid black;
@@ -781,13 +757,11 @@ body.admin-login * { box-sizing: border-box; } /* safe global for login page */
   display: block;
 }
 
-/* Ensure password and username get the same computed width */
 #adminLoginForm .input-row input[type="text"],
 #adminLoginForm .input-row input[type="password"] {
   min-width: 0; 
 }
 
-/* Button centered and sized */
 #adminLoginForm .input-row button {
   width: 160px;
   padding: 10px 18px;
@@ -798,71 +772,66 @@ body.admin-login * { box-sizing: border-box; } /* safe global for login page */
   background-color: black;
   color: white;
   cursor: pointer;
-  margin: 0 auto; /* center the button row */
+  margin: 0 auto;
 }
-
 
 #adminLoginForm .input-row button:hover { background-color: #333; }
 
 .umbc-shield {
-    position: fixed;
-    top: 50%;
-    right: 10%; 
-    transform: translateY(-50%); /* vertically centers it */
-    height: 700px; /* adjust as needed */
-    z-index: 2; /* above the black overlay */
-    pointer-events: none; 
+  position: fixed;
+  top: 50%;
+  right: 10%; 
+  transform: translateY(-50%);
+  height: 700px;
+  z-index: 2;
+  pointer-events: none; 
 }
 
-/* Login Button styling */
 #adminLoginForm > button {
-    width: 140px;           
-    padding: 8px 16px;      
-    font-size: 20px;       
-    font-weight: bold;
-    border-radius: 20px;
-    border: none;
-    background-color: rgb(253, 181, 21); 
-    color: black;               /* text color */
-    cursor: pointer;
-    margin: 20px auto 0 auto;          /* center the button */
-    display: block;             
+  width: 140px;           
+  padding: 8px 16px;      
+  font-size: 20px;       
+  font-weight: bold;
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(253, 181, 21); 
+  color: black;
+  cursor: pointer;
+  margin: 20px auto 0 auto;
+  display: block;             
 }
 
-/* Hover effect */
 #adminLoginForm > button:hover {
-    background-color: #e0a500;  /* slightly darker on hover */
+  background-color: #e0a500;
 }
 
 .left-banner {
-    position: fixed;
-    top: 45%;
-    left: 0;
-    transform: translateY(-50%);
-    background-color: black;
-    color: rgb(253, 181, 21);
-    font-weight: bold;
-    font-size: 35px;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
+  position: fixed;
+  top: 45%;
+  left: 0;
+  transform: translateY(-50%);
+  background-color: black;
+  color: rgb(253, 181, 21);
+  font-weight: bold;
+  font-size: 35px;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 
-    /* Adjust width and height */
-    width: 590px;       /* set the horizontal size of the banner */
-    height: 80px;      /* set vertical size */
+  width: 590px;
+  height: 80px;
 
 
-    padding: 20px;      
+  padding: 20px;      
 
-    border-radius: 0 8px 8px 0;
-    z-index: 3;
-    text-align: center;
+  border-radius: 0 8px 8px 0;
+  z-index: 3;
+  text-align: center;
 
-    display: flex;      /* for vertical centering of text */
-    justify-content: center; 
-    align-items: center;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
 
-    box-shadow: 6px 8px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 6px 8px 20px rgba(0, 0, 0, 0.5);
 
-    
 }
 
 .dark_screen {
@@ -893,17 +862,9 @@ body.admin-login * { box-sizing: border-box; } /* safe global for login page */
 
 .contact_style {
 
-  /* display: none;
-  width: 40%;
-  height: 30%;
-  background-color: beige;
-  border: 1px solid rgb(255, 0, 0);
-  opacity: 1;
-  text-align: center; */
   display: none;
   width: 40%;
   height: 37%;
-  /* height: auto; */
   background-color: beige;
   border: 1px solid rgb(255, 0, 0);
   text-align: center;
@@ -1083,7 +1044,6 @@ textarea {
   margin-top: 4%;
   margin-left: 1%;
   display: flex;
-  border: 1px solid rgb(255, 0, 0);
   height: 70%;
 
 }
@@ -1092,7 +1052,6 @@ textarea {
 
   margin-top: 1%;
   margin-left: 1%;
-  border: 1px solid rgb(255, 0, 0);
 
 }
 
@@ -1179,7 +1138,6 @@ textarea {
 }
 
 .report_item.selected {
-  /* background-color: rgb(228, 228, 228); */
   background-color: rgb(255, 234, 201);
   border: 5px solid rgb(238, 176, 41);
 }
@@ -1204,7 +1162,6 @@ textarea {
 .report_message_view {
 
   width: 100%;
-  border: 1px solid rgb(21, 255, 0);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1215,7 +1172,6 @@ textarea {
 
   width: 60%;
   height: 85%;
-  border: 1px solid rgb(255, 0, 221);
   background-color: rgb(230, 230, 230);
   border-radius: 25px;
   box-shadow: 1px 5px 10px gray;
@@ -1227,7 +1183,6 @@ textarea {
   display: flex; 
   justify-content: center; 
   align-items: center;
-  border: 1px solid rgb(115, 255, 0);
   padding: 20px;
 
 }
@@ -1251,7 +1206,6 @@ textarea {
 
 .report_body_container {
 
-  border: 1px solid rgb(255, 0, 0);
   display: flex; 
   justify-content: center; 
   align-items: center;
@@ -1276,7 +1230,6 @@ textarea {
   font-size: 20px;
   width: 95%;
   height: 95%;
-  border: 1px solid rgb(255, 0, 0);
   word-wrap: break-word;
   overflow: auto;
 
@@ -1292,7 +1245,7 @@ textarea {
 
 .resolve_button {
 
-  background-color: rgb(31, 224, 31);
+  background-color: rgb(0, 221, 55);
   border-radius: 25px;
   height: 60px;
   width: 140px;
@@ -1308,17 +1261,17 @@ textarea {
 /* admin.html specific styling */
 .view_report_style {
 
-    margin-top: 6px;
-    margin-right: 37px;
-    width: 200px;
-    height: 45px;
-    border-radius: 40px;
-    font-size: 17px;
-    font-weight: bold;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
-    background-color: rgb(238, 176, 41);
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 6px;
+  margin-right: 37px;
+  width: 200px;
+  height: 45px;
+  border-radius: 40px;
+  font-size: 17px;
+  font-weight: bold;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  background-color: rgb(238, 176, 41);
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
 }
 
@@ -1330,42 +1283,41 @@ textarea {
 }
 
 .logout_btn {
-    background-color: green;
-    color: white;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-right: 30px;
+  background-color: green;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 30px;
 }
 
 .logout_btn:hover {
-    background-color: #0b5e0b;
+  background-color: #0b5e0b;
 }
 
 .cancel_btn {
-    background-color: red;
-    color: white;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-left: 30px; /* spacing */
+  background-color: red;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 30px;
 }
 
 .cancel_btn:hover {
-    background-color: #a30000;
+  background-color: #a30000;
 }
 
 .node-off {
-    background-color: darkred !important;
-    border-color: black !important;
-    opacity: 0.9;
+  background-color: darkred !important;
+  border-color: black !important;
+  opacity: 0.9;
 }
 
-/* Default button style */
 #toggleNodeBtn {
   padding: 10px 20px;
   font-size: 25px;
@@ -1376,12 +1328,10 @@ textarea {
   cursor: pointer;
 }
 
-/* Green for ON */
 .on-state {
   background-color: green;
 }
 
-/* Red for OFF */
 .off-state {
   background-color: red;
 }

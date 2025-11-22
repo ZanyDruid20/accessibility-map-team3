@@ -6,7 +6,7 @@
     </head>
     <body>
         <div class = "top_banner">
-            <div class="umbc_logo"></div>
+            <div class="umbc_logo" onclick="window.location.href='index.html'"></div>
             <div class="title">Accessibility Project</div>
         </div>
 
@@ -301,7 +301,6 @@
                         <img src="https://retriever.umbc.edu/wp-content/uploads/DSC_929611.jpg">
                         </div>
                         <i id="TRUEGRITS_FLAG" class="material-icons" style="visibility: hidden; top: 50px; left: 900px; position: absolute;">flag_circle</i>
-                        <button onclick="showPath(flag_array)">HELLO</button>
                         <button onclick="requestLocationOnce()">GET LOCATION</button>
 
                         <!--Nodes-->
@@ -474,8 +473,7 @@
                         <div id="eng_e1" class="circle_three" style="top:505px; left:290px;" onclick="createNodeBubble(290, 505, 'eng_e1')"></div>
                         <div id="ite_e1" class="circle_three" style="top:620px; left:290px;" onclick="createNodeBubble(290, 620, 'ite_e1')"></div>
                         <div id="meyer_e1" class="circle_three" style="top:407px; left:375px;" onclick="createNodeBubble(375, 407, 'meyer_e1')"></div>
-                        <div id="uc_e1" class="circle_three" style="top:505px; left:380px;" onclick="createNodeBubble(380, 505, 'uc_e1')"></div>
-                        
+                        <div id="uc_e1" class="circle_three" style="top:505px; left:380px;" onclick="createNodeBubble(380, 505, 'uc_e1')"></div>                       
                         <div id="admin_e1" class="circle_three" style="top:700px; left:420px;" onclick="createNodeBubble(420, 700, 'admin_e1')"></div>
                         <div id="mathpsych_e1" class="circle_three" style="top:510px; left:475px;" onclick="createNodeBubble(475, 510, 'mathpsych_e1')"></div>
                         <div id="sond_e1" class="circle_three" style="top:615px; left:475px;" onclick="createNodeBubble(475, 615, 'sond_e1')"></div>
@@ -652,7 +650,6 @@
                             <i id="BIOLOGICALSCI_FLAG" class="material-icons" style="visibility: hidden; top: 380px; left: 465px; position: absolute;">flag_circle</i>
                             <div id="biosci_e1" class="circle_three" style="top:385px; left:470px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'biosci_e1')"></div>
                             <i id="LECTUREHALL_FLAG" class="material-icons" style="visibility: hidden; top: 377px; left: 505px; position: absolute;">flag_circle</i>
-                            <!-- <div id="biosci_e1" class="circle_three" style="top:382px; left:510px;" onclick="sendNodeReport('reportNodeOptions', 'sam_E')"></div> -->
                             <i id="RAC_FLAG" class="material-icons" style="visibility: hidden; top: 680px; left: 535px; position: absolute;">flag_circle</i>
                             <div id="rac_e1" class="circle_three" style="top:685px; left:540px; visibility: visible;" onclick="sendNodeReport('reportNodeOptions', 'rac_e1')"></div>
                             <i id="LIBRARY_FLAG" class="material-icons" style="visibility: hidden; top: 110px; left: 435px; position: absolute;">flag_circle</i>
@@ -849,9 +846,7 @@
             </div>
         </div>
 
-    <!--<script src="index_script.js"></script>-->
         <script src="index_script.js"></script>
-    <!--<script src="index_steps.js"></script>-->
         <script src="index_steps.js"></script>
     </body>
 </html>

@@ -6,7 +6,7 @@
     </head>
     <body>
         <div class = "top_banner">
-            <div class="umbc_logo"></div>
+            <div class="umbc_logo" onclick="window.location.href='admin.html'"></div>
             <div class="title">Accessibility Map Admin Page</div>
         </div>
 
@@ -41,7 +41,7 @@
 
                     </form>
                 </div>
-            <div class="view_report_button">
+            <div class="view_report_button" style="margin-right: 5%">
                 <button class="view_report_style" onclick="window.location.href='reportView.html'">
                     Access Reports
                 </button>
@@ -301,7 +301,6 @@
                         <img src="https://retriever.umbc.edu/wp-content/uploads/DSC_929611.jpg">
                         </div>
                         <i id="TRUEGRITS_FLAG" class="material-icons" style="visibility: hidden; top: 50px; left: 900px; position: absolute;">flag_circle</i>
-                        <button onclick="showPath(flag_array)">HELLO</button>
                         <button onclick="requestLocationOnce()">GET LOCATION</button>
 
                         <!--Nodes-->
@@ -481,7 +480,6 @@
                         <div id="mathpsych_e1" class="circle_three" style="top:510px; left:475px; visibility: visible;" onclick="createNodeBubble2(475, 510, 'mathpsych_e1')"></div>
                         <div id="sond_e1" class="circle_three" style="top:615px; left:475px; visibility: visible;" onclick="createNodeBubble2(475, 615, 'sond_e1')"></div>
                         <div id="biosci_e1" class="circle_three" style="top:385px; left:470px; visibility: visible;" onclick="createNodeBubble2(470, 385, 'biosci_e1')"></div>
-                        <div id="sam_e" class="circle_three" style="top:382px; left:510px; visibility: visible;" onclick="createNodeBubble2(510, 382, 'sam_e')"></div>
                         <div id="rac_e1" class="circle_three" style="top:685px; left:540px; visibility: visible;" onclick="createNodeBubble2(540, 685, 'rac_e1')"></div>
                         <div id="aoklib_e1" class="circle_three" style="top:110px; left:435px; visibility: visible;" onclick="createNodeBubble2(435, 110, 'aoklib_e1')"></div>
                         <div id="cwb_e1" class="circle_three" style="top:96px; left:775px; visibility: visible;" onclick="createNodeBubble2(775, 96, 'cwb_e1')"></div>
@@ -597,7 +595,7 @@
                     </p>
                 </div>
             </div>
-            <div id="logoutUI" class="contact_style" style="display: none;">
+            <div id="logoutUI" class="contact_style" style="display: none; height: 25%">
                 <div class="UI_exit_button" onclick="turnOnUIPopUp('logoutUI')">&times;</div>
                 <h2 style="font-weight: bold; padding-top: 20px">Are you sure you want to logout?</h2>
                 <br>
@@ -614,29 +612,23 @@
                     </p>
                 </div>
             </div>
-            <div id="nodeUI" class="contact_style" style="display: none;">
-    <div class="UI_exit_button" onclick="turnOffUIPopUp('nodeUI')">&times;</div>
+            <div id="nodeUI" class="contact_style" style="display: none; height: 25%">
+                <div class="UI_exit_button" onclick="turnOffUIPopUp('nodeUI')">&times;</div>
 
-    <h2 id="nodeTitle" style="font-weight: bold; padding-top: 20px">
-        Node ID:
-    </h2>
+                <h2 id="nodeTitle" style="font-weight: bold; padding-top: 20px">
+                    Node ID:
+                </h2>
 
-    <br>
+                <br>
 
-    <div class="UI_body">
-        <button id="toggleNodeBtn">Toggle</button>
-    </div>
-</div>
-
-            
-        
-            
-            
+                <div class="UI_body">
+                    <button id="toggleNodeBtn">Toggle</button>
+                </div>
+            </div> 
         </div>
 
-    <!--<script src="index_script.js"></script>-->
         <script src="index_script.js"></script>
-    <!--<script src="index_steps.js"></script>-->
         <script src="index_steps.js"></script>
+
     </body>
 </html>

@@ -20,7 +20,7 @@ document.getElementById("adminLoginForm").addEventListener("submit", function(ev
     })
     .then(function (data) {
         if (data) {
-            window.location.href = "reportView.html";
+            window.location.href = "admin.html";
         }
     })
 });

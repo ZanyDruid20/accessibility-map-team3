@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to render instructions
 // Function to render instructions
-function renderInstructions(route) {
+function renderInstructions(route, finalFloor) {
     instructionListDiv.innerHTML = "";
 
     route.forEach((node, index) => {
@@ -46,7 +46,11 @@ function renderInstructions(route) {
         else if (lowerNode.includes("_e")) {
             const nextNode = route[index + 1];
             const nextFloor = nextNode ? nextNode.split("-")[1] : "?";
-            readableText = `Step ${index + 1}: Take elevator to floor ${nextFloor}`;
+            if (nextFloor != "?") {
+                readableText = `Step ${index + 1}: Take elevator to floor ${nextFloor}`;
+            } else {
+                readableText = `Step ${index + 1}: Take elevator to floor ${finalFloor}`;
+            }
         }
 
 
@@ -84,7 +88,7 @@ function renderInstructions(route) {
             .then(data => {
                 console.log("Fetched route:", data);
                 if (data.path && data.path.length > 0) {
-                    renderInstructions(data.path);
+                    renderInstructions(data.path, endFloor);
                 } else {
                     instructionListDiv.innerHTML = "No route found.";
                 }

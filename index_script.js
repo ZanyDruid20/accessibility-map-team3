@@ -21,12 +21,10 @@ const buildings = {
     "uc": ["university center", "uc"]
 };
 
-// Normalize input for comparison
 function normalize(input) {
     return input.toLowerCase().replace(/\s/g, "");
 }
 
-// Get the canonical building name if valid (to help with same location validation), otherwise null
 function getCanonicalBuildingName(input) {
     const normInput = normalize(input);
     for (const [mainName, aliases] of Object.entries(buildings)) {
@@ -59,12 +57,10 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!end) errors.push("Ending location is required.");
         else if (!endCanonical) errors.push(`"${end}" is not a valid building.`);
 
-        // Check if both map to the same canonical building
         if (startCanonical && endCanonical && startCanonical === endCanonical) {
             errors.push("Starting and ending locations cannot be the same building.");
         }
         
-        // Floor logic
         const validFloors = ["1","2","3","4","5","6","7","M","L","G","B"];
         const startFloor = startFloorInput.value.trim().toUpperCase();
         const endFloor = endFloorInput.value.trim().toUpperCase();
@@ -79,37 +75,18 @@ document.addEventListener("DOMContentLoaded", function() {
             alert(errors.join("\n"));
             return false;
         }
-
-        // Log to console for now. 
-        console.log("Start:", startCanonical);
-        console.log("End:", endCanonical);
         
-        // For index_steps.js
-        // Set global variables so index_steps.js can access them
         window.startCanonical = startCanonical;
         window.endCanonical = endCanonical;
 
         window.startFloor = startFloor;
         window.endFloor = endFloor;
 
-
-        // Call the route instruction loader in index_steps.js
         if (typeof loadRouteInstructions === "function") {
             loadRouteInstructions();
         }
 
-
-        // TODO: Connect to backend
         const url = `http://localhost:8000/shortest-path?start_building=${encodeURIComponent(startCanonical)}&start_floor=${encodeURIComponent(startFloor)}&end_building=${encodeURIComponent(endCanonical)}&end_floor=${encodeURIComponent(endFloor)}`;
-
-        // fetch(url, {
-        //   method: "GET", // or "GET", depending on your backend route
-        //   // headers: {
-        //   //   "Content-Type": "application/json",
-        //   // },
-        // })
-
-        // .then(data => {console.warn(data)})
 
         fetch(url)
           .then(response => {
@@ -119,13 +96,11 @@ document.addEventListener("DOMContentLoaded", function() {
             return response.json();
           })
           .then(data => {
-            console.log("Received data from backend:", data);
-            console.log(data.path[0])
-            console.log(data.total_time_sec)
             showPath(data.path)
           })
           .catch(error => {
             console.error("Fetch error:", error);
+            alert("No routes available.")
           });
 
         });
@@ -134,17 +109,16 @@ document.addEventListener("DOMContentLoaded", function() {
 const container = document.getElementById('map-container');
 const wrapper = document.getElementById('map-wrapper');
 
-let scale = 1;
-let posX = 0, posY = 0;
-let isPanning = false;
-let startX, startY;
-let currentPopUp = '';
-let popUpStatus = '';
+function normalizeId(id) {
+    if (id.includes("-")) {
+        return id.slice(0, -2);
+    }
+    return id;
+}
 
 function showPath(flag_array) {
 
     let svg = document.getElementById("path-lines");
-    console.log("YADA");
     if (!svg) {
         svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         svg.setAttribute("id", "path-lines");
@@ -160,30 +134,32 @@ function showPath(flag_array) {
     svg.innerHTML = "";
 
     for (let i = 0; i < flag_array.length - 1; i++) {
+        flag_array[i] = normalizeId(flag_array[i]);
+        flag_array[i+1] = normalizeId(flag_array[i+1]);
         const startFlag = document.getElementById(flag_array[i]);
         const endFlag = document.getElementById(flag_array[i + 1]);
         if ((flag_array[i] == "purpleint_7" && flag_array[i + 1] == "aoklib_d2") || (flag_array[i] == "aoklib_d2" && flag_array[i + 1] == "purpleint_7")){
-          console.log("YADA");
+
           const curvedPath = document.getElementById("curved_path1");
           curvedPath.style.visibility = "visible";
         } else if ((flag_array[i] == "greenint_2" && flag_array[i + 1] == "greenint_3") || (flag_array[i] == "greenint_3" && flag_array[i + 1] == "greenint_2")){
-          console.log("YADA");
+
           const curvedPath = document.getElementById("curved_path2");
           curvedPath.style.visibility = "visible";
         } else if ((flag_array[i] == "purpleint_2" && flag_array[i + 1] == "purpleint_1") || (flag_array[i] == "purpleint_1" && flag_array[i + 1] == "purpleint_2")){
-          console.log("YADA");
+
           const curvedPath = document.getElementById("curved_path3");
           curvedPath.style.visibility = "visible";
         } else if ((flag_array[i] == "pinkint_10" && flag_array[i + 1] == "pinkint_9") || (flag_array[i] == "pinkint_9" && flag_array[i + 1] == "pinkint_10")){
-          console.log("YADA");
+
           const curvedPath = document.getElementById("curved_path4");
           curvedPath.style.visibility = "visible";
         } else if ((flag_array[i] == "pinkint_5" && flag_array[i + 1] == "pinkint_9") || (flag_array[i] == "pinkint_9" && flag_array[i + 1] == "pinkint_5")){
-          console.log("YADA");
+
           const curvedPath = document.getElementById("curved_path5");
           curvedPath.style.visibility = "visible";
         } else if ((flag_array[i] == "pinkint_12" && flag_array[i + 1] == "pinkint_9") || (flag_array[i] == "pinkint_9" && flag_array[i + 1] == "pinkint_12")){
-          console.log("YADA");
+
           const curvedPath = document.getElementById("curved_path6");
           curvedPath.style.visibility = "visible";
         } else {
@@ -216,9 +192,9 @@ function showPath(flag_array) {
           if ((flag_array[i+1].includes("_d")) || (flag_array[i+1].includes("_e"))) {
             endFlag.style.visibility = "visible";
           }
-          wrapper.appendChild(svg);
         }
     }
+    wrapper.appendChild(svg);
 }
 
 function addArrowsAlongLine(svg, x1, y1, x2, y2) {
@@ -244,7 +220,15 @@ function addArrowsAlongLine(svg, x1, y1, x2, y2) {
     }
 }
 
-// Handle mouse drag (panning)
+let scale = 1;
+let posX = 0, posY = 0;
+let isPanning = false;
+let startX, startY;
+let currentPopUp = '';
+let popUpStatus = '';
+
+container.addEventListener("dragstart", e => e.preventDefault());
+
 container.addEventListener('mousedown', e => {
   isPanning = true;
   startX = e.clientX - posX;
@@ -252,26 +236,24 @@ container.addEventListener('mousedown', e => {
   container.style.cursor = 'grabbing';
 });
 
-// Stop panning if mouse is released *anywhere*
 window.addEventListener('mouseup', () => {
   isPanning = false;
   container.style.cursor = 'grab';
 });
 
-// Stop panning if mouse leaves the container
 container.addEventListener('mouseleave', () => {
   isPanning = false;
   container.style.cursor = 'grab';
 });
 
 container.addEventListener('mousemove', e => {
+  e.preventDefault();
   if (!isPanning) return;
   posX = e.clientX - startX;
   posY = e.clientY - startY;
   updateTransform();
 });
 
-//Handle scroll wheel zoom
 container.addEventListener('wheel', e => {
     e.preventDefault();
     const zoomIntensity = 0.1;
@@ -290,7 +272,7 @@ function showPopUp(bubble) {
     TurnPopUpOff(bubble);
     return;
   }else if(bubble == 'map' && currentPopUp != ''){
-    console.log("MAP SELECTED");
+
     TurnPopUpOff(currentPopUp);
     return;
   }else if(bubble == 'map' && currentPopUp == ''){
@@ -300,14 +282,14 @@ function showPopUp(bubble) {
     getBubble.style.visibility = 'visible';
     currentPopUp = bubble;
     popUpStatus = "building";
-    console.log(currentPopUp);
+
   }else{
     TurnPopUpOff(currentPopUp);
     const getBubble = document.getElementById(bubble);
     getBubble.style.visibility = 'visible';
     currentPopUp = bubble;
     popUpStatus = "building";
-    console.log(currentPopUp);
+
   }
 }
 
@@ -325,22 +307,7 @@ function TurnPopUpOff(bubble) {
   }
 }
 
-/*This code is for allowing you to see the x, y coordinate of where your cursor clicked*/
-/*NOTE THOUGH, the coordinates are only accurate from the original map size, like without any zoom. So just refresh the page and DON'T ZOOM IN OR OUT and then the coords will be accurate*/
-const mapImage = document.getElementById('map');
-
-mapImage.addEventListener('click', (event) => {
-  const rect = mapImage.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const y = event.clientY - rect.top;
-
-  console.log(`X: ${x}, Y: ${y}`);
-});
-
-
 function createNodeBubble(x, y, name) {
-  //God the structure of this function is ugly
-  //This handles the info bubble for the nodes so that I don't have to create a div bubble for each node (no way omg)
   if (currentPopUp == '' && popUpStatus == '' && name != 'map'){
     let newDiv = document.createElement('div');
     newDiv.id = 'node_info'
@@ -348,7 +315,7 @@ function createNodeBubble(x, y, name) {
     newDiv.classList.add("node_info");
     let newX = (x - 45) + "px";
     let newY = (y - 30) + "px";
-    console.log(newX, newY);
+
     newDiv.style.top = newY;
     newDiv.style.left = newX;
     wrapper.appendChild(newDiv);
@@ -370,7 +337,7 @@ function createNodeBubble(x, y, name) {
     newDiv.classList.add("node_info");
     let newX = (x - 40) + "px";
     let newY = (y - 30) + "px";
-    console.log(newX, newY);
+
     newDiv.style.top = newY;
     newDiv.style.left = newX;
     wrapper.appendChild(newDiv);
@@ -442,7 +409,6 @@ function turnOnUIPopUp(name){
     }else{
         uiBox.style.display = 'none';
         dark_box.style.display = 'none';
-        console.log('hi')
     }
 
 }
@@ -458,12 +424,6 @@ function turnOnUIReportPopUp(name){
         reportBox.style.display = 'block';
         uiBox.style.display = 'none';
     }
-
-    if (name === 'chooseNodeReport'){
-        const nodeMap = document.getElementById("report-map-wrapper")
-        // nodeMap.innerHTML='<object type="text/html" data="report_map.html" ></object>';
-    }
-
 }
 
 function turnOffUIPopUp(name) {
@@ -479,7 +439,6 @@ const dark_screen = document.querySelector('.dark_screen');
 
 dark_screen.addEventListener('click', function (e) {
   if (e.target === this) {
-    console.log('Container clicked!');
     const childElements = this.children;
     for (const child of childElements){
         child.style.display = 'none';
@@ -492,7 +451,6 @@ const reportBtn = document.querySelector(".report_button_ui_route");
 
 if (reportBtn) {
     reportBtn.addEventListener('mouseenter', () => {
-        console.log('hitting');
         const msg = document.querySelector("#regular_message");
         if (msg) {
             msg.innerText = 'Report an unavailable pathway/door/node/elevator';
@@ -513,14 +471,12 @@ if (routeBtn) {
 const websiteBtn = document.querySelector(".report_button_ui_website");
 if (websiteBtn) {
     websiteBtn.addEventListener('mouseenter', () => {
-        console.log('hitting');
         const msg = document.querySelector("#regular_message");
         if (msg) {
             msg.innerText = 'Report an error with the website itself';
         }
     });
 
-    // Guard for .report_button_ui_website (mouseleave)
     websiteBtn.addEventListener('mouseleave', () => {
         const msg = document.querySelector("#regular_message");
         if (msg) {
@@ -531,10 +487,9 @@ if (websiteBtn) {
 
 const report_website_form = document.querySelector('.report_website_form');
 
-// Add a submit event listener
 if (report_website_form) {
     report_website_form.addEventListener('submit', (event) => {
-        event.preventDefault(); // prevent page reload
+        event.preventDefault();
 
     const message = document.querySelector('#myInput').value;
 
@@ -544,7 +499,8 @@ if (report_website_form) {
 
     document.querySelector('#myInput').value = "";
 
-});
+  })
+};
 
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
@@ -576,12 +532,13 @@ let posXTwo = 0;
 let posYTwo = 0;
 let scaleTwo = 1;
 
-// Reference the popup map container and its inner content
-const containerTwo = document.getElementById('popup-map-container'); // outer container
-const wrapperTwo = document.getElementById('popup-map-wrapper'); // inner map element (image or map div)
+const containerTwo = document.getElementById('popup-map-container');
+const wrapperTwo = document.getElementById('popup-map-wrapper');
 
-// Handle mouse drag (panning)
 if (containerTwo) {
+
+    containerTwo.addEventListener("dragstart", e => e.preventDefault());
+
     containerTwo.addEventListener('mousedown', e => {
         isPanningTwo = true;
         startXTwo = e.clientX - posXTwo;
@@ -590,36 +547,35 @@ if (containerTwo) {
     });
 
     containerTwo.addEventListener('mouseup', () => {
-    isPanningTwo = false;
-    containerTwo.style.cursor = 'grab';
+        isPanningTwo = false;
+        containerTwo.style.cursor = 'grab';
     });
 
     containerTwo.addEventListener('mouseleave', () => {
-    // stop dragging if mouse leaves container
-    isPanningTwo = false;
-    containerTwo.style.cursor = 'grab';
+        isPanningTwo = false;
+        containerTwo.style.cursor = 'grab';
     });
 
     containerTwo.addEventListener('mousemove', e => {
-    if (!isPanningTwo) return;
-    posXTwo = e.clientX - startXTwo;
-    posYTwo = e.clientY - startYTwo;
-    updateTransformTwo();
+        if (!isPanningTwo) return;
+        posXTwo = e.clientX - startXTwo;
+        posYTwo = e.clientY - startYTwo;
+        updateTransformTwo();
     });
 
-    // Handle scroll wheel zoom for popup map
     containerTwo.addEventListener('wheel', e => {
-    e.preventDefault();
-    const zoomIntensity = 0.1;
-    const delta = e.deltaY < 0 ? 1 : -1;
-    scaleTwo += delta * zoomIntensity;
-    scaleTwo = Math.min(Math.max(0.5, scaleTwo), 3); // limit zoom range
-    updateTransformTwo();
-  });
+        e.preventDefault();
+        const zoomIntensity = 0.1;
+        const delta = e.deltaY < 0 ? 1 : -1;
+        scaleTwo += delta * zoomIntensity;
+        scaleTwo = Math.min(Math.max(0.5, scaleTwo), 3);
+        updateTransformTwo();
+    });
 }
 
 function updateTransformTwo() {
-  wrapperTwo.style.transform = `translate(${posXTwo}px, ${posYTwo}px) scale(${scaleTwo})`;
+  wrapperTwo.style.transform =
+    `translate(${posXTwo}px, ${posYTwo}px) scale(${scaleTwo})`;
 }
 
 function sendNodeReport(name, nodeName) {
@@ -662,33 +618,25 @@ function closeNodeReport() {
 
 // admin.html js
 function createNodeBubble2(x, y, nodeId) {
-    // Save nodeId globally for toggle function
+
     window.currentNodeId = nodeId;
 
-    // Update popup title
     const title = document.getElementById("nodeTitle");
     title.textContent = "Node ID: " + nodeId;
 
-    // Determine current node state
     const nodeEl = document.getElementById(nodeId);
     const isOff = nodeEl.classList.contains("node-off");
 
-    // Update button text
     const toggleBtn = document.getElementById("toggleNodeBtn");
     toggleBtn.textContent = isOff ? "Turn ON Node" : "Turn OFF Node";
-    // Remove both classes first
     toggleBtn.classList.remove("on-state", "off-state");
 
-    // Add appropriate class
     toggleBtn.classList.add(isOff ? "on-state" : "off-state");
 
-
-    // Assign what happens when the toggle button is clicked
     toggleBtn.onclick = function () {
         toggleNode(nodeId);
     };
 
-    // Open UI
     turnOnUIPopUp("nodeUI");
 }
 
@@ -703,7 +651,6 @@ function toggleNode(nodeId) {
     .then(data => {
         console.log("Backend updated:", data);
 
-        // Update color only on success
         if (isOff) {
             nodeEl.classList.remove("node-off");
         } else {
@@ -718,29 +665,26 @@ function toggleNode(nodeId) {
 }
 
 function loadOffNodes() {
-    fetch("http://localhost:8000/nodes/off")
-        .then(res => res.json())
-        .then(data => {
-            console.log("OFF nodes from backend:", data.off_nodes);
+fetch("http://localhost:8000/nodes/off")
+  .then(res => res.json())
+  .then(data => {
+    console.log("OFF nodes from backend:", data.off_nodes);
 
-            const offNodes = data.off_nodes;
+    const offNodes = data.off_nodes;
 
-            offNodes.forEach(nodeId => {
-                const el = document.getElementById(nodeId);
-                if (el) {
-                    el.classList.add("node-off");
-                }
-            });
+    offNodes.forEach(nodeId => {
+      const el = document.getElementById(nodeId);
+      if (el) {
+        el.classList.add("node-off");
+      }
+    });
 
-        })
-        .catch(err => {
-            console.error("Failed to load off nodes:", err);
-        });
-}
+  })
+  .catch(err => {
+    console.error("Failed to load off nodes:", err);
+  });
+};
 
-
-
-// load the off nodes
 window.onload = function () {
     loadOffNodes();
 };
