@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
             loadRouteInstructions();
         }
 
-        const url = `http://localhost:8000/shortest-path?start_building=${encodeURIComponent(startCanonical)}&start_floor=${encodeURIComponent(startFloor)}&end_building=${encodeURIComponent(endCanonical)}&end_floor=${encodeURIComponent(endFloor)}`;
+        const url = `https://accessibility-map-team3-production.up.railway.app/shortest-path?start_building=${encodeURIComponent(startCanonical)}&start_floor=${encodeURIComponent(startFloor)}&end_building=${encodeURIComponent(endCanonical)}&end_floor=${encodeURIComponent(endFloor)}`;
 
         fetch(url)
           .then(response => {
@@ -493,7 +493,7 @@ if (report_website_form) {
 
     const message = document.querySelector('#myInput').value;
 
-    fetch("http://localhost:8000/report?report=" + encodeURIComponent(message), {
+    fetch("https://accessibility-map-team3-production.up.railway.app/report?report=" + encodeURIComponent(message), {
       method: "POST"
     })
 
@@ -600,7 +600,7 @@ function sendNodeReport(name, nodeName) {
         const id = reportButton.dataset.nodeName;
         uiBox.style.display = 'none';
         secondDarkScreen.style.display = 'none';
-        fetch(`http://localhost:8000/main/update_threshold?node_id=${encodeURIComponent(id)}`, {
+        fetch(`https://accessibility-map-team3-production.up.railway.app/main/update_threshold?node_id=${encodeURIComponent(id)}`, {
             method: "PUT"
         })
     };
@@ -644,7 +644,7 @@ function toggleNode(nodeId) {
     const nodeEl = document.getElementById(nodeId);
     const isOff = nodeEl.classList.contains("node-off");
 
-    fetch(`http://localhost:8000/nodes/toggle?node=${nodeId}`, {
+    fetch(`https://accessibility-map-team3-production.up.railway.app/nodes/toggle?node=${nodeId}`, {
         method: "POST"
     })
     .then(res => res.json())
@@ -665,7 +665,7 @@ function toggleNode(nodeId) {
 }
 
 function loadOffNodes() {
-fetch("http://localhost:8000/nodes/off")
+fetch("https://accessibility-map-team3-production.up.railway.app/nodes/off")
   .then(res => res.json())
   .then(data => {
     console.log("OFF nodes from backend:", data.off_nodes);
