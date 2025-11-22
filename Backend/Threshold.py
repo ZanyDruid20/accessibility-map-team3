@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel
 import aiomysql # type: ignore
-from database import get_db_pool
+from Backend.database import get_db_pool
 
 router = APIRouter()
 
