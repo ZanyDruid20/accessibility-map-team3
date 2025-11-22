@@ -78,7 +78,7 @@ function renderInstructions(route, finalFloor) {
             return;
         }
 
-        const url = `http://localhost:8000/shortest-path?start_building=${encodeURIComponent(start)}&start_floor=${encodeURIComponent(startFloor)}&end_building=${encodeURIComponent(end)}&end_floor=${encodeURIComponent(endFloor)}`;
+        const url = `https://accessibility-map-team3-production.up.railway.app/shortest-path?start_building=${encodeURIComponent(start)}&start_floor=${encodeURIComponent(startFloor)}&end_building=${encodeURIComponent(end)}&end_floor=${encodeURIComponent(endFloor)}`;
 
         fetch(url)
             .then(response => {
