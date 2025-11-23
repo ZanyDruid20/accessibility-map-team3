@@ -1335,3 +1335,9 @@ textarea {
 .off-state {
   background-color: red;
 }
+
+.collapse_arrow_left {
+  position: absolute;
+  left: 100px;
+  top: 100px;
+}
