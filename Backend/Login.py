@@ -1,4 +1,4 @@
-rom fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 import os
 import aiomysql  # type: ignore
