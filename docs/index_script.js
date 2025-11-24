@@ -10,7 +10,7 @@ const buildings = {
     "lecture hall 1": ["lecture hall 1", "lh1"],
     "aoklib": ["library & gallery, albin o. kuhn", "library", "aok", "aok library"],
     //"mathpsych": ["math and psychology building", "math and psychology", "mathpsych", "math psych", "math&psych"],
-    "mathandpysch": ["math and psychology building", "math and psychology", "math and psych"],
+    "MathandPsych": ["math and psychology building", "math and psychology", "math and psych"],
     "meyer": ["meyerhoff chemistry building", "meyerhoff", "chemistry"],
     "pahb": ["performing arts and humanities building", "performing arts", "humanities", "pahb"],
     "physics": ["physics building", "physics"],
