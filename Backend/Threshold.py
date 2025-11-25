@@ -27,7 +27,7 @@ async def update_threshold(node_id: str = Query(...)):
                         raise HTTPException(status_code=404, detail="Node does not exist")
 
                     new_threshold = node["threshold"] + 1
-                    on_off = 0 if new_threshold > 3 else 1
+                    on_off = 0 if new_threshold >= 3 else 1
 
                     await cur.execute(
                         "UPDATE nodes SET threshold=%s, on_off=%s WHERE door_id=%s",
@@ -53,7 +53,7 @@ async def update_threshold(node_id: str = Query(...)):
                         raise HTTPException(status_code=404, detail="Node does not exist")
 
                     new_threshold = node["threshold"] + 1
-                    on_off = 0 if new_threshold > 3 else 1
+                    on_off = 0 if new_threshold >= 3 else 1
 
                     await cur.execute(
                         "UPDATE nodes SET threshold=%s, on_off=%s WHERE elevator_id=%s",
@@ -79,7 +79,7 @@ async def update_threshold(node_id: str = Query(...)):
                         raise HTTPException(status_code=404, detail="Node does not exist")
 
                     new_threshold = node["threshold"] + 1
-                    on_off = 0 if new_threshold > 3 else 1
+                    on_off = 0 if new_threshold >= 3 else 1
 
                     await cur.execute(
                         "UPDATE nodes SET threshold=%s, on_off=%s WHERE intersection_id=%s",

@@ -17,7 +17,7 @@ const buildings = {
     "meyer": ["meyerhoff chemistry building", "meyerhoff", "chemistry"],
     "pahb": ["performing arts and humanities building", "performing arts", "humanities", "pahb"],
     "physics": ["physics building", "physics"],
-    "puppol": ["public policy building", "public policy", "pb"],
+    "pubpol": ["public policy building", "public policy", "pb"],
     "rac": ["retriever activities center", "rac", "gym"],
     "sondheim": ["sondheim hall", "sondheim"],
     "cwb": ["the center for well-being", "center for well-being", "rih", "wellbeing center"],
