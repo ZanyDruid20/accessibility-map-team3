@@ -1371,3 +1371,7 @@ textarea {
 #map-wrapper {
   touch-action: none;
 }
+
+.main_map {
+  visibility: visible;
+}
