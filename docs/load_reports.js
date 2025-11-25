@@ -6,6 +6,14 @@ function renderInstructions(route) {
     const instructionListDiv = document.querySelector(".reports_list");
     const report_message_enter = document.querySelector(".report_message");
     const report_title = document.querySelector(".report_title");
+    const report_message_container = document.querySelector("report_message_view");
+
+    if (route.length == 0){
+        report_message_container.style.display = "none";
+        return;
+    } else {
+        report_message_container.style.display = "block";
+    }
 
     instructionListDiv.innerHTML = "";
     const steps = [];
