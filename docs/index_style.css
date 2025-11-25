@@ -1380,3 +1380,7 @@ textarea {
 #map-wrapper {
   touch-action: none;
 }
+
+#map-wrapper-main {
+  touch-action: none;
+}
