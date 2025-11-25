@@ -39,9 +39,13 @@ function getCanonicalBuildingName(input) {
 }
 
 function cleanUpMap() {
-  const nodes = document.querySelectorAll(".main_map .circle, .main_map .circle_three, .main_map .curved_paths");
+  const nodes = document.querySelectorAll(".main_map .circle, .main_map .circle_three");
+  const lines = document.querySelectorAll("#map-wrapper .curved_paths");
   nodes.forEach(node => {
     node.style.visibility = "hidden";
+  })
+  lines.forEach(line => {
+    line.style.visibility = "hidden";
   })
 }
 
