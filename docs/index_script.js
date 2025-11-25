@@ -6,11 +6,11 @@ const buildings = {
     "eng": ["engineering building", "engineering"],
     "fine arts": ["fa", "fine arts building", "fine arts"],
     "ite": ["information and technology/engineering building", "it", "ite", "information and technology"],
-    "ilsb": ["interdisciplinary life sciences building", "interdisciplinary life sciences", "ilsb"],
-    "lecture hall 1": ["lecture hall 1", "lh1"],
+    "ilsb": ["interdisciplinary life sciences building", "interdisciplinary life sciences", "ilsb", "life science", "life sciences"],
+    "lecture hall 1": ["lecture hall 1", "lh1", "lecture hall"],
     "aoklib": ["library & gallery, albin o. kuhn", "library", "aok", "aok library"],
     //"mathpsych": ["math and psychology building", "math and psychology", "mathpsych", "math psych", "math&psych"],
-    "MathandPsych": ["math and psychology building", "math and psychology", "math and psych"],
+    "MathandPsych": ["math and psychology building", "math and psychology", "math and psych", "mathpsych", "math psych", "math&psych"],
     "meyer": ["meyerhoff chemistry building", "meyerhoff", "chemistry"],
     "pahb": ["performing arts and humanities building", "performing arts", "humanities", "pahb"],
     "physics": ["physics building", "physics"],
@@ -19,7 +19,7 @@ const buildings = {
     "sondheim": ["sondheim hall", "sondheim"],
     "cwb": ["the center for well-being", "center for well-being", "rih", "wellbeing center"],
     "dhall": ["true grit’s", "dining hall", "true grits"],
-    "uc": ["university center", "uc"]
+    "uc": ["university center", "uc", "starbucks", "chick fil a"]
 };
 
 function normalize(input) {
