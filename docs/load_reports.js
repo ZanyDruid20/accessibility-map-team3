@@ -10,9 +10,8 @@ function renderInstructions(route) {
 
     if (route.length == 0){
         report_message_container.style.display = "none";
-        return;
     } else {
-        report_message_container.style.display = "block";
+        report_message_container.style.removeProperty("display");
     }
 
     instructionListDiv.innerHTML = "";
