@@ -8,7 +8,7 @@ const buildings = {
     "ite": ["information and technology/engineering building", "it", "ite", "information and technology"],
     "ilsb": ["interdisciplinary life sciences building", "interdisciplinary life sciences", "ilsb", "life science", "life sciences"],
     //"lecture hall 1": ["lecture hall 1", "lh1", "lecture hall"],
-    "lechall": ["lecture hall 1", "lh1", "lecturehall1", "lec hall"],
+    "lechall": ["lecture hall 1", "lh1", "lecturehall1", "lec hall", "lec hall 1", "lecturehall1"],
     "aoklib": ["library & gallery, albin o. kuhn", "library", "aok", "aok library"],
     //"mathpsych": ["math and psychology building", "math and psychology", "mathpsych", "math psych", "math&psych"],
     "MathandPsych": ["math and psychology building", "math and psychology", "math and psych", "mathpsych", "math psych", "math&psych"],
