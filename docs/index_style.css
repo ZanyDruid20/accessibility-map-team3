@@ -173,7 +173,6 @@ input[type=submit]:hover {
 
 }
 
-
 .center_line {
 
   margin-top: 63px;
@@ -181,7 +180,19 @@ input[type=submit]:hover {
   height: 55%;
   display: flex;
   justify-content: space-between;
+  /* justify-content: center; */
+  position: relative;
 
+}
+
+.collapsed_center_line {
+  margin-top: 63px;
+  width: 100%;
+  height: 55%;
+  display: flex;
+  /* justify-content: space-between; */
+  justify-content: center;
+  position: relative;
 }
 
 .instructions {
@@ -1336,8 +1347,27 @@ textarea {
   background-color: red;
 }
 
-.collapse_arrow_left {
+.collapse_left_arrow {
   position: absolute;
-  left: 100px;
-  top: 100px;
+  left: 20%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 500;
+}
+
+.collapse_right_arrow {
+  position: absolute;
+  right: 20%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 500;
+}
+
+.collapse_arrow {
+  width: 25px;
+  cursor: pointer;
+}
+
+#map-wrapper {
+  touch-action: none;
 }

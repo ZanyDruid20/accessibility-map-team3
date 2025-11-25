@@ -228,6 +228,8 @@ let startX, startY;
 let currentPopUp = '';
 let popUpStatus = '';
 
+let lastTouchDistance = null;
+
 container.addEventListener("dragstart", e => e.preventDefault());
 
 container.addEventListener('mousedown', e => {
@@ -266,6 +268,64 @@ container.addEventListener('wheel', e => {
 
 function updateTransform() {
   wrapper.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
+}
+
+// Dragging with one finger
+container.addEventListener("touchstart", e => {
+  if (e.touches.length === 1) {
+    const touch = e.touches[0];
+    isPanning = true;
+    startX = touch.clientX - posX;
+    startY = touch.clientY - posY;
+  }
+
+  // Pinch zoom start
+  if (e.touches.length === 2) {
+    lastTouchDistance = getTouchDistance(e.touches);
+  }
+});
+
+container.addEventListener("touchmove", e => {
+  e.preventDefault();
+
+  // Single finger drag
+  if (e.touches.length === 1 && isPanning) {
+    const touch = e.touches[0];
+    posX = touch.clientX - startX;
+    posY = touch.clientY - startY;
+    updateTransform();
+  }
+
+  // Two finger pinch zoom
+  if (e.touches.length === 2) {
+    const newDistance = getTouchDistance(e.touches);
+    if (lastTouchDistance !== null) {
+      const delta = newDistance - lastTouchDistance;
+      scale += delta * 0.002; // adjust zoom sensitivity
+      scale = Math.min(Math.max(0.5, scale), 3);
+      updateTransform();
+    }
+    lastTouchDistance = newDistance;
+  }
+});
+
+container.addEventListener("touchend", e => {
+  if (e.touches.length < 2) {
+    lastTouchDistance = null;
+  }
+  if (e.touches.length === 0) {
+    isPanning = false;
+  }
+});
+
+/* ------------------------------
+   UTILS
+--------------------------------*/
+
+function getTouchDistance(touches) {
+  const dx = touches[0].clientX - touches[1].clientX;
+  const dy = touches[0].clientY - touches[1].clientY;
+  return Math.sqrt(dx * dx + dy * dy);
 }
 
 function showPopUp(bubble) {
@@ -533,6 +593,8 @@ let posXTwo = 0;
 let posYTwo = 0;
 let scaleTwo = 1;
 
+let lastTouchDistanceTwo = null;
+
 const containerTwo = document.getElementById('popup-map-container');
 const wrapperTwo = document.getElementById('popup-map-wrapper');
 
@@ -572,6 +634,61 @@ if (containerTwo) {
         scaleTwo = Math.min(Math.max(0.5, scaleTwo), 3);
         updateTransformTwo();
     });
+    
+    /* --------------------------------------
+       MOBILE TOUCH DRAG + PINCH ZOOM
+    -------------------------------------- */
+
+    containerTwo.addEventListener("touchstart", e => {
+        if (e.touches.length === 1) {
+            const t = e.touches[0];
+            isPanningTwo = true;
+            startXTwo = t.clientX - posXTwo;
+            startYTwo = t.clientY - posYTwo;
+        }
+
+        if (e.touches.length === 2) {
+            lastTouchDistanceTwo = getTouchDistanceTwo(e.touches);
+        }
+    });
+
+    containerTwo.addEventListener("touchmove", e => {
+        e.preventDefault();
+
+        // One-finger drag
+        if (e.touches.length === 1 && isPanningTwo) {
+            const t = e.touches[0];
+            posXTwo = t.clientX - startXTwo;
+            posYTwo = t.clientY - startYTwo;
+            updateTransformTwo();
+        }
+
+        // Two-finger pinch zoom
+        if (e.touches.length === 2) {
+            const newDist = getTouchDistanceTwo(e.touches);
+            if (lastTouchDistanceTwo !== null) {
+                const delta = newDist - lastTouchDistanceTwo;
+                scaleTwo += delta * 0.002; 
+                scaleTwo = Math.min(Math.max(0.5, scaleTwo), 3);
+                updateTransformTwo();
+            }
+            lastTouchDistanceTwo = newDist;
+        }
+    });
+
+    containerTwo.addEventListener("touchend", e => {
+        if (e.touches.length < 2) lastTouchDistanceTwo = null;
+        if (e.touches.length === 0) isPanningTwo = false;
+    });
+}
+
+/* --------------------------------------
+   Utility for pinch distance
+-------------------------------------- */
+function getTouchDistanceTwo(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
 }
 
 function updateTransformTwo() {
@@ -689,3 +806,74 @@ fetch("https://accessibility-map-team3-production.up.railway.app/nodes/off")
 window.onload = function () {
     loadOffNodes();
 };
+
+let collapsed = false;
+
+document.querySelector('.collapse_left_arrow').addEventListener('click', () => {
+  const mainMap = document.getElementById("center_stuff");
+  const instructions = document.getElementById("instruction_sidebar");
+  const directory = document.getElementById("directory_sidebar");
+  const bigMap = document.getElementById("big_map");
+  const leftArrow = document.getElementById("left_collapse_arrow");
+  const rightArrow = document.getElementById("right_collapse_arrow");
+  const leftArrowDiv = document.getElementById("left_arrow_div");
+  const rightArrowDiv = document.getElementById("right_arrow_div");
+  if (collapsed == false){
+    mainMap.classList.remove("center_line");
+    mainMap.classList.add("collapsed_center_line");
+    instructions.style.display = "none";
+    directory.style.display = "none";
+    bigMap.style.width = "60%";
+    leftArrow.src = "https://cdn-icons-png.flaticon.com/512/109/109617.png";
+    rightArrow.src = "https://cdn-icons-png.flaticon.com/512/109/109618.png";
+    leftArrowDiv.style.left = 5;
+    rightArrowDiv.style.right = 5;
+    collapsed = true;
+  } else {
+    mainMap.classList.remove("collapsed_center_line");
+    mainMap.classList.add("center_line");
+    instructions.style.display = "block";
+    directory.style.display = "block";
+    bigMap.style.width = "40%";
+    rightArrow.src = "https://cdn-icons-png.flaticon.com/512/109/109617.png";
+    leftArrow.src = "https://cdn-icons-png.flaticon.com/512/109/109618.png";
+    leftArrowDiv.style.left = "20%";
+    rightArrowDiv.style.right = "20%";
+    collapsed = false;
+  }
+
+});
+
+document.querySelector('.collapse_right_arrow').addEventListener('click', () => {
+  const mainMap = document.getElementById("center_stuff");
+  const instructions = document.getElementById("instruction_sidebar");
+  const directory = document.getElementById("directory_sidebar");
+  const bigMap = document.getElementById("big_map");
+  const leftArrow = document.getElementById("left_collapse_arrow");
+  const rightArrow = document.getElementById("right_collapse_arrow");
+  const leftArrowDiv = document.getElementById("left_arrow_div");
+  const rightArrowDiv = document.getElementById("right_arrow_div");
+  if (collapsed == false){
+    mainMap.classList.remove("center_line");
+    mainMap.classList.add("collapsed_center_line");
+    instructions.style.display = "none";
+    directory.style.display = "none";
+    bigMap.style.width = "60%";
+    leftArrow.src = "https://cdn-icons-png.flaticon.com/512/109/109617.png";
+    rightArrow.src = "https://cdn-icons-png.flaticon.com/512/109/109618.png";
+    leftArrowDiv.style.left = 5;
+    rightArrowDiv.style.right = 5;
+    collapsed = true;
+  } else {
+    mainMap.classList.remove("collapsed_center_line");
+    mainMap.classList.add("center_line");
+    instructions.style.display = "block";
+    directory.style.display = "block";
+    bigMap.style.width = "40%";
+    rightArrow.src = "https://cdn-icons-png.flaticon.com/512/109/109617.png";
+    leftArrow.src = "https://cdn-icons-png.flaticon.com/512/109/109618.png";
+    leftArrowDiv.style.left = "20%";
+    rightArrowDiv.style.right = "20%";
+    collapsed = false;
+  }
+});

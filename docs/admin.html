@@ -49,14 +49,21 @@
             </div>     
         </div>
 
-        <div class = "center_line">
+        <div id="left_arrow_div" class="collapse_left_arrow">
+            <img id="left_collapse_arrow" src="https://cdn-icons-png.flaticon.com/512/109/109618.png" alt="Back" class="collapse_arrow">
+        </div>
+        <div id="right_arrow_div" class="collapse_right_arrow">
+            <img id="right_collapse_arrow" src="https://cdn-icons-png.flaticon.com/512/109/109617.png" alt="Back" class="collapse_arrow">
+        </div>
 
-            <div class="instructions">
+        <div id="center_stuff" class="center_line">
+
+            <div id="instruction_sidebar" class="instructions">
                 <div class="instruction_label">Instructions:</div>
                 <div class="instruction_list">...Enter start and end destinations</div>
             </div>
 
-            <div class="map">
+            <div id="big_map" class="map">
                 <div id="map-container">
                     <div id="map-wrapper">
                         <img id="map" onclick="showPopUp('map'); createNodeBubble(0, 0, 'map');" src="assets/Map.png" alt="Map">
@@ -511,7 +518,7 @@
                 </div>
             </div>
 
-            <div class="directory">
+            <div id="directory_sidebar" class="directory">
                 <div class="directory_label">Directory:</div>
                 <div class="directory_list">
                     <div class="directory_list_style">
