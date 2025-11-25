@@ -480,15 +480,6 @@ body {
   margin-left: 10px;
 }
 
-#map-wrapper-main {
-  transform-origin: center center;
-  transition: transform 0.1s ease-out;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-left: 10px;
-}
-
 #popup-map-container {
   width: 100vw;
   height: 100vh;
@@ -1378,9 +1369,5 @@ textarea {
 }
 
 #map-wrapper {
-  touch-action: none;
-}
-
-#map-wrapper-main {
   touch-action: none;
 }
