@@ -268,13 +268,13 @@ async def toggle_node_status(node: str = Query(...)):
         elif "_e" in node:
             query = """
                 UPDATE nodes
-                SET on_off = NOT on_off
+                SET on_off = NOT on_off, threshold = 0
                 WHERE elevator_id = %s
             """
         else:
             query = """
                 UPDATE nodes
-                SET on_off = NOT on_off
+                SET on_off = NOT on_off, threshold = 0
                 WHERE intersection_id = %s
             """
 

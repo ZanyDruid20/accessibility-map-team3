@@ -66,30 +66,59 @@ document.addEventListener("DOMContentLoaded", function() {
 
 const resolveBtn = document.getElementById("resolve_report_button");
 
-resolveBtn.addEventListener("click", function () {
+resolveBtn.addEventListener("click", async function () {
     const reportId = selectedId;
 
-    fetch(`https://accessibility-map-team3-production.up.railway.app/reports/${reportId}/resolve`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
+    // fetch(`https://accessibility-map-team3-production.up.railway.app/reports/${reportId}/resolve`, {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     }
+    // })
 
-    fetch("https://accessibility-map-team3-production.up.railway.app/reports", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
+    // fetch("https://accessibility-map-team3-production.up.railway.app/reports", {
+    //     method: "GET",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     }
+    // })
+    // .then(response => {
+    //     if (!response.ok) {
+    //         throw new Error("Failed to fetch reports");
+    //     }
+    //     return response.json();
+    // })
+    // .then(data => {
+    //     reportData = data.reports;
+    //     renderInstructions(reportData);
+    // });
+
+    const resolveResponse = await fetch(
+        `https://accessibility-map-team3-production.up.railway.app/reports/${reportId}/resolve`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
         }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Failed to fetch reports");
+    );
+
+    if (!resolveResponse.ok) {
+        console.error("Failed to resolve report");
+        return;
+    }
+
+    // Now fetch the updated list
+    const reportsResponse = await fetch(
+        "https://accessibility-map-team3-production.up.railway.app/reports",
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
         }
-        return response.json();
-    })
-    .then(data => {
-        reportData = data.reports;
-        renderInstructions(reportData);
-    });
+    );
+
+    const data = await reportsResponse.json();
+    renderInstructions(data.reports);
 });

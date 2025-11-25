@@ -799,7 +799,7 @@ function sendNodeReport(name, nodeName) {
 
     const uiBox = document.getElementById(name);
     const secondDarkScreen = document.getElementById("another_dark_screen");
-    const reportButton = document.getElementById("reportNodeButton");
+    // const reportButton = document.getElementById("reportNodeButton");
 
     if (uiBox.style.display == 'none'){
         uiBox.style.display = 'block';
@@ -812,16 +812,68 @@ function sendNodeReport(name, nodeName) {
     }
 
     reportButton.dataset.nodeName = nodeName;
+    // reportButton.onclick = null;
 
-    reportButton.onclick = () => {
-        const id = reportButton.dataset.nodeName;
-        uiBox.style.display = 'none';
-        secondDarkScreen.style.display = 'none';
-        fetch(`https://accessibility-map-team3-production.up.railway.app/main/update_threshold?node_id=${encodeURIComponent(id)}`, {
-            method: "PUT"
-        })
-    };
+    // reportButton.onclick = () => {
+    //     const id = reportButton.dataset.nodeName;
+    //     uiBox.style.display = 'none';
+    //     secondDarkScreen.style.display = 'none';
+    //     fetch(`https://accessibility-map-team3-production.up.railway.app/main/update_threshold?node_id=${encodeURIComponent(id)}`, {
+    //         method: "PUT"
+    //     })
+    // };
 
+    // reportButton.onclick = async () => {
+    //     console.log("Resolving threshold click");
+    //     const id = reportButton.dataset.nodeName;
+
+    //     uiBox.style.display = 'none';
+    //     secondDarkScreen.style.display = 'none';
+
+    //     try {
+    //         const response = await fetch(`https://accessibility-map-team3-production.up.railway.app/main/update_threshold?node_id=${encodeURIComponent(id)}`, {
+    //             method: "PUT"
+    //         });
+
+    //         if (!response.ok) {
+    //             console.error("Failed to update threshold");
+    //             return;
+    //         }
+
+    //         console.log("Threshold update successful!");
+    //     } catch (err) {
+    //         console.error("Network error:", err);
+    //     }
+    // };
+
+}
+
+const reportButton = document.getElementById("reportNodeButton");
+
+if (reportButton) {
+  reportButton.onclick = async () => {
+    console.log("Report button clicked!");
+    const id = reportButton.dataset.nodeName;
+
+    document.getElementById("reportNodeOptions").style.display = 'none';
+    document.getElementById("another_dark_screen").style.display = 'none';
+
+    try {
+      const response = await fetch(
+        `https://accessibility-map-team3-production.up.railway.app/main/update_threshold?node_id=${encodeURIComponent(id)}`,
+        { method: "PUT" }
+      );
+
+      if (!response.ok) {
+        console.error("Failed to update threshold");
+        return;
+      }
+
+      console.log("Threshold update successful!");
+    } catch (err) {
+      console.error("Network error:", err);
+    }
+  };
 }
 
 function closeNodeReport() {
