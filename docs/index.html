@@ -850,7 +850,7 @@
                 </div>
             </div>
             <div id="another_dark_screen" class="dark_screen_layer_two" style="display: none;" onclick="closeNodeReport()">
-                <div id="reportNodeOptions" class="node_report_options_style" style="display: none;">
+                <div id="reportNodeOptions" class="node_report_options_style" style="display: none;" onclick="event.stopPropagation();">
                     <div class="UI_exit_button" onclick="sendNodeReport('reportNodeOptions', 'none')">&times;</div>
                     <h2 style="font-weight: bold; padding-top: 12px">Send report?</h2>
                     <div class="report_buttons">
