@@ -35,6 +35,13 @@ function getCanonicalBuildingName(input) {
     return null;
 }
 
+function cleanUpMap() {
+  const nodes = document.querySelectorAll("#map-wrapper .circle, #map-wrapper .circle_three, #map-wrapper .curved_paths");
+  nodes.forEach(node => {
+    node.style.visibility = "hidden";
+  })
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.querySelector("form");
     const startInput = document.getElementById("start_dest");
@@ -45,6 +52,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     form.addEventListener("submit", function(event) {
         event.preventDefault();
+
+        cleanUpMap();
 
         const start = startInput.value.trim();
         const end = endInput.value.trim();
