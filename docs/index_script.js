@@ -423,7 +423,7 @@ function createNodeBubble(x, y, name) {
   }
 }
 
-async function requestLocationOnce() {
+/* async function requestLocationOnce() {
   if (!('permissions' in navigator) || !('geolocation' in navigator)) {
     console.error('Geolocation not supported');
     return;
@@ -444,11 +444,93 @@ async function requestLocationOnce() {
 
   // Listen for permission changes
   status.onchange = () => console.log('Permission state changed:', status.state);
+} */
+
+// Watch position in real time
+navigator.geolocation.watchPosition(
+    (pos) => {
+        console.log("Lat:", pos.coords.latitude, "Lng:", pos.coords.longitude);
+        updateUserPosition(pos.coords.latitude, pos.coords.longitude);
+    },
+    (err) => console.error("Geolocation error:", err),
+    { enableHighAccuracy: true, maximumAge: 1000, timeout: 5000 }
+);
+
+// Calibration using reference points
+const calibration = [
+  [39.25450628628499, -76.71256349098995, 445, 460],
+  [39.25379710565032, -76.71148053080081, 603, 516],
+  [39.254852262469065, -76.70866560689147, 855, 254],
+  [39.252537333045126, -76.71349374699606, 445, 777],
+  [39.256516086856415, -76.71236291832712, 366, 167]
+];
+
+// Fit affine transform using least squares
+function fitAffine(points) {
+  let sumLat=0, sumLng=0, sumX=0, sumY=0;
+  let sumLat2=0, sumLng2=0, sumLatLng=0;
+  let sumLatX=0, sumLngX=0, sumLatY=0, sumLngY=0;
+  const n = points.length;
+
+  for (const [lat,lng,x,y] of points) {
+    sumLat += lat; sumLng += lng; sumX += x; sumY += y;
+    sumLat2 += lat*lat; sumLng2 += lng*lng; sumLatLng += lat*lng;
+    sumLatX += lat*x; sumLngX += lng*x;
+    sumLatY += lat*y; sumLngY += lng*y;
+  }
+
+  // Solve for x = a*lat + b*lng + c
+  const M = [
+    [sumLat2, sumLatLng, sumLat],
+    [sumLatLng, sumLng2, sumLng],
+    [sumLat, sumLng, n]
+  ];
+  const Vx = [sumLatX, sumLngX, sumX];
+  const Vy = [sumLatY, sumLngY, sumY];
+
+  function solve3(M,V) {
+    // naive Gaussian elimination for 3x3
+    const A = M.map(r=>r.slice());
+    const b = V.slice();
+    for (let i=0;i<3;i++) {
+      let piv = A[i][i];
+      for (let j=i;j<3;j++) A[i][j]/=piv;
+      b[i]/=piv;
+      for (let k=0;k<3;k++) {
+        if (k===i) continue;
+        let f=A[k][i];
+        for (let j=i;j<3;j++) A[k][j]-=f*A[i][j];
+        b[k]-=f*b[i];
+      }
+    }
+    return b;
+  }
+
+  const [a,b,c] = solve3(M,Vx);
+  const [d,e,f] = solve3(M,Vy);
+  return {a,b,c,d,e,f};
+}
+
+const {a,b,c,d,e,f} = fitAffine(calibration);
+
+function gpsToMap(lat,lng) {
+  const x = a*lat + b*lng + c;
+  const y = d*lat + e*lng + f;
+  return {x,y};
+}
+
+function updateUserPosition(lat, lng) {
+  const { x, y } = gpsToMap(lat, lng);
+  console.log("X:", x, "Y:", y);
+  const dot = document.getElementById("user-dot");
+  dot.style.left = `${x}px`;
+  dot.style.top = `${y}px`;
+  dot.style.display = "block";
 }
 
 //METHOD 1 (Updates only when detected movement)
 
-
+/*
 var watchId = null;
 
 function startWatchingLocation() {
@@ -475,6 +557,7 @@ function stopWatchingLocation() {
     watchId = null;
   }
 }
+*/
 
 function turnOnUIPopUp(name){
 
