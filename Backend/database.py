@@ -1,6 +1,8 @@
 import os
 import aiomysql
 
+pool = None
+
 async def get_db_pool():
     # return await aiomysql.create_pool(
     #     host=os.getenv("DB_HOST"),
