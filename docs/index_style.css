@@ -1376,3 +1376,12 @@ textarea {
 .main_map {
   visibility: visible;
 }
+
+#user-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: blue;
+  transition: left 1s linear, top 1s linear; /* smooth movement */
+}
