@@ -976,7 +976,7 @@ body.admin-login * { box-sizing: border-box; }
 
   display: none;
   width: 40%;
-  height: 38%;
+  height: 50%;
   background-color: beige;
   border: 1px solid rgb(255, 0, 0);
   text-align: center;
