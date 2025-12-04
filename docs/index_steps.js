@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // Function to render instructions
 function renderInstructions(route, finalFloor) {
     instructionListDiv.innerHTML = "";
+    var stepNum = 1;
 
     route.forEach((node, index) => {
         let readableText = "";
@@ -31,7 +32,8 @@ function renderInstructions(route, finalFloor) {
                 }
             }
 
-            readableText = `Step ${index + 1}: Continue along the route`;
+            readableText = `Step ${stepNum}: Continue along the route`;
+            stepNum = stepNum + 1;
         }
 
         // Door Instruction
@@ -39,7 +41,8 @@ function renderInstructions(route, finalFloor) {
             const buildingName = rawNode.split("_")[0];
             const doorMatch = rawNode.match(/_d(\d+)/);
             const doorNumber = doorMatch ? doorMatch[1] : "?";
-            readableText = `Step ${index + 1}: Go to ${buildingName} door ${doorNumber}`;
+            readableText = `Step ${stepNum}: Go to ${buildingName} door ${doorNumber}`;
+            stepNum = stepNum + 1;
         }
 
         // Elevator Instruction
@@ -47,9 +50,11 @@ function renderInstructions(route, finalFloor) {
             const nextNode = route[index + 1];
             const nextFloor = nextNode ? nextNode.split("-")[1] : "?";
             if (nextFloor != "?") {
-                readableText = `Step ${index + 1}: Take elevator to floor ${nextFloor}`;
+                readableText = `Step ${stepNum}: Take elevator to floor ${nextFloor}`;
+                stepNum = stepNum + 1;
             } else {
-                readableText = `Step ${index + 1}: Take elevator to floor ${finalFloor}`;
+                readableText = `Step ${stepNum}: Take elevator to floor ${finalFloor}`;
+                stepNum = stepNum + 1;
             }
         }
 
