@@ -16,9 +16,7 @@ async def update_threshold(node_id: str = Query(...)):
         async with pool.acquire() as conn:
             async with conn.cursor(aiomysql.DictCursor) as cur:
 
-                # -----------------------------
                 # DOOR NODE
-                # -----------------------------
                 if "_d" in node_id:
                     await cur.execute("SELECT threshold FROM nodes WHERE door_id = %s", (node_id,))
                     node = await cur.fetchone()
@@ -42,9 +40,7 @@ async def update_threshold(node_id: str = Query(...)):
                         "on_off_status": on_off
                     }
 
-                # -----------------------------
                 # ELEVATOR NODE
-                # -----------------------------
                 elif "_e" in node_id:
                     await cur.execute("SELECT threshold FROM nodes WHERE elevator_id = %s", (node_id,))
                     node = await cur.fetchone()
@@ -68,9 +64,7 @@ async def update_threshold(node_id: str = Query(...)):
                         "on_off_status": on_off
                     }
 
-                # -----------------------------
                 # INTERSECTION NODE
-                # -----------------------------
                 else:
                     await cur.execute("SELECT threshold FROM nodes WHERE intersection_id = %s", (node_id,))
                     node = await cur.fetchone()
