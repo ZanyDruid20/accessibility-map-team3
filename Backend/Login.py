@@ -26,7 +26,6 @@ async def login(request: LoginRequest):
 
                 stored = row.get("password")
 
-                # (No hashing yet, plain text)
                 if stored == request.password:
                     return {"success": True, "message": "Login successful"}
 
