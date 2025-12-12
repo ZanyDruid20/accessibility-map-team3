@@ -17,7 +17,6 @@ async def login(request: LoginRequest):
         async with pool.acquire() as conn:
             async with conn.cursor(aiomysql.DictCursor) as cur:
 
-                # FIXED: lowercase table name for Railway MySQL
                 await cur.execute("SELECT password FROM admin WHERE username=%s", (request.username,))
                 row = await cur.fetchone()
 
