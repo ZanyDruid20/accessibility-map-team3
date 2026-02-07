@@ -3,7 +3,7 @@
 Campus-wide accessibility navigation system built as a team project to support students and visitors with mobility needs.
 
 ## My Role
-I worked on the backend services, including authentication logic, routing constraints, and database schema design. I also helped deploy and stabilize the backend on Railway and improved reliability based on real usage and stakeholder feedback with my teammate.
+I worked as one of two backend engineers on the team, responsible for backend services including authentication logic, routing constraints, and database schema design. I independently handled deployment and stabilization of the FastAPI backend on Railway, resolving configuration and runtime issues discovered through cross testing with my teammates.
 
 ## Tech Stack
 - FastAPI
